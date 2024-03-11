@@ -1,7 +1,23 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+  
+    "jsx": "preserve",
     "paths": {
-      "@/*": ["./src/*"]
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@data/*": ["src/data/*"],
+      "@settings/*": ["src/settings/*"],
+      // "@ts-types/*": ["src/ts-types/*"],
+      "@utils/*": ["src/utils/*"]
     }
-  }
+  },
+  "include": [ "src/**/*.js", "src/components/common/sidebar/sidebar.jsx", "src/components/common/sidebar/sidebar-wrapper.jsx", "src/components/common/sidebar/sidebar-container.jsx", "src/components/common/sidebar/sidebar-container.jsx"],
+  "exclude": ["node_modules"]
 }
