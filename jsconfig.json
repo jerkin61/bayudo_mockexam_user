@@ -18,6 +18,6 @@
       "@utils/*": ["src/utils/*"]
     }
   },
-  "include": [ "src/**/*.js", "src/components/common/sidebar/sidebar.jsx", "src/components/common/sidebar/sidebar-wrapper.jsx", "src/components/common/sidebar/sidebar-container.jsx", "src/components/common/sidebar/sidebar-container.jsx"],
+  "include": ["src/**/*.js"],
   "exclude": ["node_modules"]
 }
