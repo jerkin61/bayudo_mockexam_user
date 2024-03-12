@@ -21,6 +21,7 @@ const AuthorizedMenu = dynamic(
 
 const NavbarWithSearch = () => {
   const { t } = useTranslation("common");
+  console.log("tttt", t);
   const { asPath } = useRouter();
   // const { data } = useTypesQuery();
   const data = "";
@@ -83,7 +84,7 @@ const NavbarWithSearch = () => {
                   <div>Authorized</div>
                 </li>
               ) : null}
-              {siteSettings.headerLinks?.map(({ href, label, icon }) => (
+              {siteSettings.headerLinks.map(({ href, label, icon }) => (
                 <li key={`${href}${label}`}>
                   <Link
                     href={href}

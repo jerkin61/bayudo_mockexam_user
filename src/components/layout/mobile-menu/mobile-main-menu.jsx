@@ -28,7 +28,7 @@ export default function MobileMainMenu() {
             </span> */}
           </li>
         ) : null}
-        {siteSettings.headerLinks?.map(({ href, label, icon }) => (
+        {siteSettings.headerLinks.map(({ href, label, icon }) => (
           <li key={`${href}${label}`}>
             <span
               onClick={() => handleClick(href)}

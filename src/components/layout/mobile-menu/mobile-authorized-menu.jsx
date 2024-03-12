@@ -15,7 +15,7 @@ export default function MobileAuthorizedMenu() {
   return (
     <SidebarWrapper>
       <ul className="flex-grow">
-        {siteSettings?.authorizedLinks.map(({ href, label }) => (
+        {siteSettings.authorizedLinks.map(({ href, label }) => (
           <li key={`${href}${label}`}>
             <span
               className="block py-3 px-5 md:px-8 text-sm font-semibold capitalize text-heading transition duration-200 hover:text-accent"

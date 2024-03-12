@@ -1,62 +1,104 @@
 import HomeLayout from "@components/layout/home-layout";
-
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 // const AdminDashboard = dynamic(() => import("@/components/dashboard/admin"));
 
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Dashboard({ userPermissions }) {
   return (
-    <div className="flex flex-col justify-between items-center w-full h-full relative overflow-hidden bg-[#2e2f30]">
-      <div className="flex-grow-0 flex-shrink-0 w-[414px] h-11 relative overflow-hidden">
-        <p className="absolute left-[132px] top-[13px] text-base font-semibold text-center text-white/60">
-          Exam List
-        </p>
-        <p className="absolute left-[220px] top-[11px] text-lg font-semibold text-center text-white">
-          Random
-        </p>
-      </div>
-      <div className="flex flex-col justify-between items-center self-stretch flex-grow relative px-[25px]">
-        <p className="self-stretch flex-grow w-full h-full text-3xl text-center text-white">
-          In the dry season how many things in the world is a better place in
-          the universe? Testing testing testing testing testing testing testing
-          testing testing testing testing testing testing testing testing
-          testing test
-        </p>
-        <div className="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-2.5">
-          <p className="self-stretch flex-grow-0 flex-shrink-0 w-[364px] h-[70px] text-xl font-semibold text-center text-white">
-            See Choices
-          </p>
-        </div>
-      </div>
-
-      <div className="flex flex-col justify-between items-center self-stretch flex-grow-0 flex-shrink-0 h-[62px] relative px-5">
-        <div className="self-stretch flex-grow-0 flex-shrink-0 h-5">
-          <p className="w-[374px] absolute left-5 top-0 text-[17px] font-semibold text-left text-white">
-            crop science
-          </p>
-        </div>
-        <div className="self-stretch flex-grow-0 flex-shrink-0 h-[35px] relative overflow-hidden">
-          <div className="w-[374px] h-[35px] absolute left-[-0.5px] top-[-1.5px]"></div>
-          <div className="w-[134px] h-[5px] absolute left-[119.5px] top-[19.5px] rounded-[100px] bg-[#e9e9e9]"></div>
-        </div>
-      </div>
-      <div className="flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 absolute left-[366px] top-[430px] gap-[29px]">
-        <div className="flex-grow-0 flex-shrink-0 w-[47px] h-[58.5px]">
-          <img
-            className="absolute left-[-0.5px] top-[-0.5px]"
-            // src="ellipse-3.png"
-          />
-        </div>
-        <div className="flex-grow-0 flex-shrink-0 w-[35px] h-[130.5px]">
-          <div className="w-[34.25px] h-[50.5px] opacity-90">
-            <p className="absolute left-[6.5px] top-[203px] text-[13px] font-semibold text-center text-white">
-              Share
+    <div class="flex flex-col justify-start items-start self-stretch flex-grow gap-2.5 px-[15px] py-2.5 rounded-[5px] bg-[#f1f9ff]">
+      <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[15px]">
+        <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 h-[598px] gap-[15px]">
+          <div class="flex flex-col justify-center items-center self-stretch flex-grow-0 flex-shrink-0 h-[168px] relative gap-2.5 px-5 py-2.5 bg-[#afc4cf]">
+            <div class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-2.5">
+              <p class="flex-grow-0 flex-shrink-0 text-[35px] font-bold text-left text-[#222223]">
+                Mock Test
+              </p>
+            </div>
+            <p class="flex-grow-0 flex-shrink-0 text-xl italic text-left text-[#17181a]">
+              for our hardworking students
             </p>
           </div>
-          <div className="w-[35px] h-[53.5px] opacity-90">
-            <p className="absolute left-[12.5px] top-[126px] text-[13px] font-semibold text-center text-white">
-              578
-            </p>
+          <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[15px] py-2.5">
+            <div class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white">
+              <svg
+                width="32"
+                height="33"
+                viewBox="0 0 32 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="flex-grow-0 flex-shrink-0"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <circle cx="16" cy="16.5" r="16" fill="#D9D9D9"></circle>
+              </svg>
+              <div class="flex flex-col justify-center items-start flex-grow relative gap-2.5">
+                <p class="self-stretch flex-grow-0 flex-shrink-0 w-[281px] text-xl font-semibold text-left text-[#222]">
+                  ALE Exam 2023-2004
+                </p>
+                <p class="self-stretch flex-grow-0 flex-shrink-0 w-[281px] text-[15px] text-left text-[#727272]">
+                  <span class="self-stretch flex-grow-0 flex-shrink-0 w-[281px] text-[15px] text-left text-[#727272]">
+                    Quiz items: 500
+                  </span>
+                  <br />
+                  <span class="self-stretch flex-grow-0 flex-shrink-0 w-[281px] text-[15px] text-left text-[#727272]">
+                    Time limit: 8 hrs per subject
+                  </span>
+                  <br />
+                  <span class="self-stretch flex-grow-0 flex-shrink-0 w-[281px] text-[15px] text-left text-[#727272]">
+                    Catagories : 5
+                  </span>
+                </p>
+                <p class="self-stretch flex-grow-0 flex-shrink-0 w-[281px] text-[11px] font-bold text-left text-[#727272]">
+                  Date added: 7/24/2002
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="flex-grow-0 flex-shrink-0"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <circle cx="16" cy="16" r="16" fill="#D9D9D9"></circle>
+              </svg>
+            </div>
+            <div class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-[#41b2f3]">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="flex-grow-0 flex-shrink-0"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="13.5"
+                  stroke="#D9D9D9"
+                  stroke-width="5"
+                ></circle>
+              </svg>
+            </div>
+            <div class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="flex-grow-0 flex-shrink-0"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <circle cx="16" cy="16" r="16" fill="#D9D9D9"></circle>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -70,26 +112,23 @@ Dashboard.Layout = HomeLayout;
 //   permissions: adminOnly,
 // };
 export const getServerSideProps = async (ctx) => {
-  // const { token, permissions } = getAuthCredentials(ctx);
-  // if (
-  //   !isAuthenticated({ token, permissions }) ||
-  //   !hasAccess(allowedRoles, permissions)
-  // ) {
-  //   console.log(
-  //     "Redirecting to login, authentication or access failed",
-  //     !isAuthenticated({ token, permissions }) ||
-  //       !hasAccess(allowedRoles, permissions)
-  //   );
-  //   return {
-  //     redirect: {
-  //       destination: "/login", // Ensure the path is correctly specified
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+  const { locale } = ctx;
+  console.log("locale", locale);
+  if (locale) {
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, [
+          "common",
+          "table",
+          "widgets",
+        ])),
+        // userPermissions: permissions,
+      },
+    };
+  }
   return {
     props: {
-      userPermissions: null,
+      // userPermissions: permissions,
     },
   };
 };

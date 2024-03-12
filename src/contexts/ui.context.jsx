@@ -1,15 +1,23 @@
-// import { loggedIn } from "@utils/is-loggedin";
+import { loggedIn } from "@utils/is-loggedin";
+import Cookies from "js-cookie";
 import React, { useMemo } from "react";
 
 const initialState = {
-  // isAuthorize: loggedIn(),
+  isAuthorize: loggedIn(),
   // sidebarView: "CART_VIEW",
   displaySidebar: false,
   displayHeaderSearch: false,
   displayMobileSearch: false,
   displayModalStickyBar: false,
 };
+const token = Cookies.get("auth_token");
+const permissions = Cookies.get("auth_permissions");
+console.log("loggedIn(),", loggedIn(), token, permissions);
 
+console.log(
+  '    if (!permissions?.includes("super_admin"',
+  !permissions?.includes("super_admin")
+);
 export const UIContext = React.createContext(initialState);
 
 UIContext.displayName = "UIContext";
@@ -74,6 +82,7 @@ function uiReducer(state, action) {
 }
 
 export const UIProvider = (props) => {
+  console.log("ssssloggedIn(),", loggedIn(), token, permissions);
   const [state, dispatch] = React.useReducer(uiReducer, initialState);
 
   const authorize = () => dispatch({ type: "AUTHORIZE" });

@@ -3,9 +3,9 @@ import NextLink from "next/link";
 const Link = ({ href, children, className, ...props }) => {
   return (
     <NextLink href={href}>
-      <a className={className} {...props}>
+      <span className={className} {...props}>
         {children}
-      </a>
+      </span>
     </NextLink>
   );
 };

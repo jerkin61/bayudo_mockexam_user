@@ -1,40 +1,30 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from "next/document";
+import { i18n } from "next-i18next";
 
-const APP_NAME = "next-pwa example";
-const APP_DESCRIPTION = "This is an example of using next-pwa plugin";
-
-class _Document extends Document {
+export default class CustomDocument extends Document {
   static async getInitialProps(ctx) {
     return await Document.getInitialProps(ctx);
   }
 
   render() {
-    return (
-      <Html lang="en" dir="ltr">
-        <Head>
-          <meta name="application-name" content={APP_NAME} />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta
-            name="apple-mobile-web-app-status-bar-style"
-            content="default"
-          />
-          <meta name="apple-mobile-web-app-title" content={APP_NAME} />
-          <meta name="description" content={APP_DESCRIPTION} />
-          <meta name="format-detection" content="telephone=no" />
-          <meta name="mobile-web-app-capable" content="yes" />
-          <meta name="theme-color" content="#FFFFFF" />
-          {/* TIP: set viewport head meta tag in _app.js, otherwise it will show a warning */}
-          {/* <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' /> */}
+    const { locale } = this.props.__NEXT_DATA__;
+    console.log("localeeee", locale);
+    const dir = locale === "ar" || locale === "he" ? "rtl" : "ltr";
 
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/icons/apple-touch-icon.png"
-          />
-          <link rel="manifest" href="/manifest.json" />
-          <link rel="shortcut icon" href="/favicon.ico" />
-        </Head>
-        <body>
+    if (process.env.NODE_ENV !== "production" && i18n && i18n.reloadResources) {
+      i18n.reloadResources(locale);
+    }
+
+    return (
+      <Html>
+        <Head />
+        <body dir={dir}>
           <Main />
           <NextScript />
         </body>
@@ -42,5 +32,3 @@ class _Document extends Document {
     );
   }
 }
-
-export default _Document;

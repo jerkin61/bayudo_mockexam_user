@@ -13,7 +13,7 @@ import { useSettingsQuery } from "@data/settings/use-settings.query";
 // import { QueryClient, QueryClientProvider } from "react-query";
 // import { Hydrate } from "react-query/hydration";
 // import { ReactQueryDevtools } from "react-query/devtools";
-import { appWithTranslation } from "next-i18next";
+// import { appWithTranslation } from "next-i18next";
 import { useEffect, useRef, useState } from "react";
 import { ToastContainer } from "react-toastify";
 // import { useSession } from "next-auth";
@@ -28,7 +28,9 @@ import {
 import { QueryClient, QueryClientProvider } from "react-query";
 import SidebarContainer from "../components/common/sidebar/sidebar-container";
 import { SearchProvider } from "@contexts/search.context";
-
+import { appWithTranslation } from "next-i18next";
+import { useSession } from "next-auth/react";
+import { SessionProvider } from "next-auth/react";
 const Noop = ({ children }) => <>{children}</>;
 
 const AppSettings = (props) => {
@@ -38,50 +40,51 @@ const AppSettings = (props) => {
   return <SettingsProvider initialValue={data?.settings?.options} {...props} />;
 };
 // const dehydratedState = dehydrate(helpers?.queryClient);
-// const SocialLoginProvider = () => {
-//   const [session, loading] = useSession();
-//   // const { mutate: socialLogin } = useSocialLoginMutation();
-//   const { closeModal } = useModalAction();
-//   const { authorize, isAuthorize } = useUI();
-//   const [errorMsg, setErrorMsg] = useState("");
+const SocialLoginProvider = () => {
+  const { session, loading } = useSession();
+  console.log("session", session);
+  //   // const { mutate: socialLogin } = useSocialLoginMutation();
+  //   const { closeModal } = useModalAction();
+  const { authorize, isAuthorize } = useUI();
+  const [errorMsg, setErrorMsg] = useState("");
 
-//   // useEffect(() => {
-//   //   // is true when valid social login access token and provider is available in the session
-//   //   // but not authorize/logged in yet
-//   //   if (!isAuthorize && session?.accessToken && session?.provider) {
-//   //     socialLogin(
-//   //       {
-//   //         provider: session?.provider,
-//   //         access_token: session?.accessToken,
-//   //       },
-//   //       {
-//   //         onSuccess: (data) => {
-//   //           if (data?.token && data?.permissions?.includes(CUSTOMER)) {
-//   //             Cookies.set("auth_token", data.token);
-//   //             Cookies.set("auth_permissions", data.permissions);
-//   //             authorize();
-//   //             closeModal();
-//   //           }
-//   //           if (!data.token) {
-//   //             setErrorMsg("The credentials was wrong!");
-//   //           }
-//   //           if (!data.permissions.includes(CUSTOMER)) {
-//   //             setErrorMsg("Doesn't have enough permission");
-//   //           }
-//   //         },
-//   //         onError: (error) => {
-//   //           console.log(error.message);
-//   //         },
-//   //       }
-//   //     );
-//   //   }
-//   // }, [isAuthorize, session]);
+  useEffect(() => {
+    // is true when valid social login access token and provider is available in the session
+    // but not authorize/logged in yet
+    if (!isAuthorize && session?.accessToken && session?.provider) {
+      socialLogin(
+        {
+          provider: session?.provider,
+          access_token: session?.accessToken,
+        },
+        {
+          onSuccess: (data) => {
+            if (data?.token && data?.permissions?.includes(CUSTOMER)) {
+              Cookies.set("auth_token", data.token);
+              Cookies.set("auth_permissions", data.permissions);
+              authorize();
+              closeModal();
+            }
+            if (!data.token) {
+              setErrorMsg("The credentials was wrong!");
+            }
+            if (!data.permissions.includes(CUSTOMER)) {
+              setErrorMsg("Doesn't have enough permission");
+            }
+          },
+          onError: (error) => {
+            console.log(error.message);
+          },
+        }
+      );
+    }
+  }, [isAuthorize, session]);
 
-//   // When rendering client side don't display anything until loading is complete
-//   if (typeof window !== "undefined" && loading) return null;
+  //   // When rendering client side don't display anything until loading is complete
+  //   if (typeof window !== "undefined" && loading) return null;
 
-//   return <div>{errorMsg}</div>;
-// };
+  return <div>{errorMsg}</div>;
+};
 
 function CustomApp({ Component, pageProps }) {
   const queryClientRef = useRef(null);
@@ -92,30 +95,33 @@ function CustomApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClientRef.current}>
       <Hydrate state={pageProps.dehydratedState}>
-        <AppSettings>
-          <ModalProvider>
-            {/* <CartProvider> */}
-            <UIProvider>
-              {/* <CheckoutProvider> */}
-              <SearchProvider>
-                <Layout {...pageProps}>
-                  {/* <Seo /> */}
-                  <Component {...pageProps} />
+        {" "}
+        <SessionProvider session={pageProps.session}>
+          <AppSettings>
+            <ModalProvider>
+              {/* <CartProvider> */}
+              <UIProvider>
+                {/* <CheckoutProvider> */}
+                <SearchProvider>
+                  <Layout {...pageProps}>
+                    {/* <Seo /> */}
+                    <Component {...pageProps} />
 
-                  {/* <div>Test</div> */}
-                </Layout>
-                {/* <Brader /> */}
-                <ToastContainer autoClose={2000} />
-                <ManagedModal />
-                <SidebarContainer />
-              </SearchProvider>
-              {/* </CheckoutProvider> */}
-              {/* <SocialLoginProvider /> */}
-            </UIProvider>
-            {/* </CartProvider> */}
-          </ModalProvider>
-        </AppSettings>
-        <ReactQueryDevtools />
+                    {/* <div>Test</div> */}
+                  </Layout>
+                  {/* <Brader /> */}
+                  <ToastContainer autoClose={2000} />
+                  <ManagedModal />
+                  <SidebarContainer />
+                </SearchProvider>
+                {/* </CheckoutProvider> */}
+                <SocialLoginProvider />
+              </UIProvider>
+              {/* </CartProvider> */}
+            </ModalProvider>
+          </AppSettings>
+          <ReactQueryDevtools />
+        </SessionProvider>
       </Hydrate>
     </QueryClientProvider>
   );

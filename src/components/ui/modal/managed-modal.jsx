@@ -2,11 +2,11 @@ import dynamic from "next/dynamic";
 import Modal from "@components/ui/modal/modal";
 import { useModalAction, useModalState } from "./modal.context";
 // import ShopProfileCard from "@components/profile/profile-card";
-// const Login = dynamic(() => import("@components/auth/login"));
-// const Register = dynamic(() => import("@components/auth/register"));
-// const ForgotPassword = dynamic(
-//   () => import("@components/auth/forget-password/forget-password")
-// );
+const Login = dynamic(() => import("@components/auth/login"));
+const Register = dynamic(() => import("@components/auth/register"));
+const ForgotPassword = dynamic(() =>
+  import("@components/auth/forget-password/forget-password")
+);
 // const ProductDetailsModalView = dynamic(
 //   () => import("@components/product/product-details-modal-view")
 // );
@@ -23,10 +23,10 @@ const ManagedModal = () => {
 
   return (
     <Modal open={isOpen} onClose={closeModal}>
-      {/* {view === "LOGIN_VIEW" && <Login />}
+      {view === "LOGIN_VIEW" && <Login />}
       {view === "REGISTER" && <Register />}
       {view === "FORGOT_VIEW" && <ForgotPassword />}
-      {view === "ADD_OR_UPDATE_ADDRESS" && <CreateOrUpdateAddressForm />}
+      {/*  {view === "ADD_OR_UPDATE_ADDRESS" && <CreateOrUpdateAddressForm />}
       {view === "DELETE_ADDRESS" && <AddressDeleteView />}
       {view === "PRODUCT_DETAILS" && (
         <ProductDetailsModalView productSlug={data} />

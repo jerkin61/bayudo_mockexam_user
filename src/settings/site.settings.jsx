@@ -55,18 +55,18 @@ export const siteSettings = {
   //     },
   //   ],
   // },
-  // headerLinks: [
-  //   { href: ROUTES.SHOPS, icon: null, label: "nav-menu-shops" },
-  //   { href: ROUTES.OFFERS, icon: null, label: "nav-menu-offer" },
-  //   { href: ROUTES.HELP, label: "nav-menu-faq" },
-  //   { href: ROUTES.CONTACT, label: "nav-menu-contact" },
-  // ],
-  // authorizedLinks: [
-  //   { href: ROUTES.PROFILE, label: "auth-menu-profile" },
-  //   { href: ROUTES.CHECKOUT, label: "auth-menu-checkout" },
-  //   { href: ROUTES.ORDERS, label: "auth-menu-my-orders" },
-  //   { href: ROUTES.LOGOUT, label: "auth-menu-logout" },
-  // ],
+  headerLinks: [
+    { href: "ROUTES.SHOPS", icon: null, label: "nav-menu-shops" },
+    { href: "ROUTES.OFFERS", icon: null, label: "nav-menu-offer" },
+    { href: "ROUTES.HELP", label: "nav-menu-faq" },
+    { href: "ROUTES.CONTACT", label: "nav-menu-contact" },
+  ],
+  authorizedLinks: [
+    { href: "profile", label: "auth-menu-profile" },
+    { href: "checkout", label: "auth-menu-checkout" },
+    { href: "order", label: "auth-menu-my-orders" },
+    { href: "ROUTES.LOGOU", label: "auth-menu-logout" },
+  ],
   dashboardSidebarMenu: [
     {
       href: "profile",
