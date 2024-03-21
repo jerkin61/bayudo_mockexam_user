@@ -7,8 +7,8 @@ import { CaretDown } from "@components/icons/caret-down";
 import ErrorMessage from "@components/ui/error-message";
 // import DropdownLoader from "@components/ui/loaders/dropdown-loader";
 import { zoomInBottom } from "@utils/motion/zoom-in-bottom";
-import * as typeIcon from "@components/icons/type";
-import { getIcon } from "@utils/get-icon";
+// import * as typeIcon from "@components/icons/type";
+// import { getIcon } from "@utils/get-icon";
 import Scrollbar from "@components/ui/scrollbar";
 // import { useTypesQuery } from "@data/type/use-types.query";
 import { useWindowSize } from "@utils/use-window-size";
@@ -18,6 +18,7 @@ const ProductTypeMenu = ({
   btnClassName = "border border-border-200 text-accent rounded min-w-150 px-4",
 }) => {
   // const { isLoading: loading, data, error } = useTypesQuery();
+  const { isLoading: loading, data, error } = {};
 
   const [isOpen, setOpen] = useState(false);
   const { width } = useWindowSize();
@@ -39,7 +40,7 @@ const ProductTypeMenu = ({
     containerOffset: 16, // give the menu some room to breath relative to the container
   });
 
-  if (error) return <ErrorMessage message={error.message} />;
+  // if (error) return <ErrorMessage message={error.message} />;
   // helper function to close the menu
   function close() {
     setOpen(false);
@@ -72,11 +73,11 @@ const ProductTypeMenu = ({
           >
             {selectedMenu?.icon && (
               <span className="flex w-5 h-5 me-2 items-center justify-center">
-                {getIcon({
+                {/* {getIcon({
                   iconList: typeIcon,
                   iconName: selectedMenu?.icon,
                   className: "max-h-full max-w-full",
-                })}
+                })} */}
               </span>
             )}
             {selectedMenu?.name}
@@ -110,7 +111,7 @@ const ProductTypeMenu = ({
                           onClick={() => handleClick(`/${slug}`)}
                           className="flex space-s-4 w-full items-center px-5 py-2.5 text-sm font-semibold capitalize text-body-dark transition duration-200 hover:text-accent focus:outline-none"
                         >
-                          {icon && (
+                          {/* {icon && (
                             <span className="flex w-5 h-5 items-center justify-center">
                               {getIcon({
                                 iconList: typeIcon,
@@ -118,7 +119,7 @@ const ProductTypeMenu = ({
                                 className: "max-h-full max-w-full",
                               })}
                             </span>
-                          )}
+                          )} */}
                           <span>{name}</span>
                         </button>
                       </div>
@@ -129,11 +130,11 @@ const ProductTypeMenu = ({
                       className="flex space-s-4 w-full items-center px-5 py-2.5 text-sm font-semibold capitalize text-body-dark transition duration-200 hover:text-accent focus:outline-none"
                     >
                       <span className="flex w-5 h-5 items-center justify-center">
-                        {getIcon({
+                        {/* {getIcon({
                           iconList: typeIcon,
                           iconName: "FruitsVegetable",
                           className: "max-h-full max-w-full",
-                        })}
+                        })} */}
                       </span>
 
                       <span>Grocery Two</span>
@@ -144,11 +145,11 @@ const ProductTypeMenu = ({
                       className="flex space-s-4 w-full items-center px-5 py-2.5 text-sm font-semibold capitalize text-body-dark transition duration-200 hover:text-accent focus:outline-none"
                     >
                       <span className="flex w-5 h-5 items-center justify-center">
-                        {getIcon({
+                        {/* {getIcon({
                           iconList: typeIcon,
                           iconName: "FurnitureIcon",
                           className: "max-h-full max-w-full",
-                        })}
+                        })} */}
                       </span>
 
                       <span>Furniture Two</span>

@@ -216,3 +216,27 @@
   height: 1rem;
   width: 0.5rem;
 }
+#scroll-container::-webkit-scrollbar {
+  height: 1rem;
+  width: 0;
+}
+div.App {
+  display: block;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: scroll;
+  -webkit-overflow-scrolling: auto;
+}
+#scroll-container {
+  scroll-snap-type: y proximity;
+  /* Reserve space for header plus some extra space for sneak peeking. */
+  /* scroll-padding-top: 15vh; */
+  overflow-y: scroll;
+}
+.element {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* Snap align start. */
+  scroll-snap-align: start;
+}

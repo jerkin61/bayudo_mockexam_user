@@ -11,7 +11,6 @@ const fetchExamlist = async ({ queryKey }) => {
     orderBy = "updated_at",
     sortedBy = "DESC",
   } = params;
-  const examlist = new ExamList();
   const url = `examlist?search=${text}&limit=${limit}&page=${page}&orderBy=${orderBy}&sortedBy=${sortedBy}`;
   const {
     data: { data, ...rest },

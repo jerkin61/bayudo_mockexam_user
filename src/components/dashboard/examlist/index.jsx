@@ -17,7 +17,6 @@ export default function Dashboard() {
     <>
       <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[15px]">
         <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 h-[90vh] gap-[15px]">
-          <ExamTitleContainer />
           <div className="main-container w-full h-full overflow-scroll">
             {data?.examlist.data.map((item, index) => (
               <ExamMainContainer key={index} item={item} />

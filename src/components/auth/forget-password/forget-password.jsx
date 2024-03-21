@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import Logo from "@components/ui/logo";
+import Logo from "@components/ui/logo";
 import Alert from "@components/ui/alert";
 import { useForgetPasswordMutation } from "@data/auth/use-forget-password.mutation";
 import { useVerifyForgetPasswordTokenMutation } from "@data/auth/use-verify-forget-password-token.mutation";
@@ -78,8 +78,8 @@ const ForgotPassword = () => {
   return (
     <div className="py-6 px-5 sm:p-8 bg-light w-screen md:max-w-md h-screen md:h-auto flex flex-col justify-center">
       <div className="flex justify-center">
-        {/* <Logo /> */}
-        <div>Logo</div>
+        <Logo />
+        {/* <div>Logo</div> */}
       </div>
       <p className="text-center text-sm md:text-base leading-relaxed text-body mt-4 sm:mt-5 mb-7 sm:mb-10">
         {t("forgot-password-helper")}

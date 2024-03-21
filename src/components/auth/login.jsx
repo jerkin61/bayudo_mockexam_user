@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { useLoginMutation } from "@data/auth/use-login.mutation";
-// import Logo from "@components/ui/logo";
+import Logo from "@components/ui/logo";
 import Alert from "@components/ui/alert";
 import Input from "@components/ui/input";
 import PasswordInput from "@components/ui/password-input";
@@ -72,8 +72,8 @@ const LoginForm = () => {
   return (
     <div className="py-6 px-5 sm:p-8 bg-light w-screen md:max-w-md h-screen md:h-auto flex flex-col justify-center">
       <div className="flex justify-center">
-        {/* <Logo /> */}
-        <div>Logo</div>
+        <Logo />
+        {/* <div>Logo</div> */}
       </div>
       <p className="text-center text-sm md:text-base text-body mt-4 sm:mt-5 mb-8 sm:mb-10">
         {t("login-helper")}

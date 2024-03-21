@@ -4,11 +4,11 @@
 // import { YouTubeIcon } from "@components/icons/youtube";
 // import { ROUTES } from "@utils/routes";
 export const siteSettings = {
-  name: "PickBazar",
+  name: "MXM",
   description: "",
   logo: {
     url: "/logo.svg",
-    alt: "PickBazar",
+    alt: "MXM",
     href: "/grocery",
     width: 128,
     height: 40,

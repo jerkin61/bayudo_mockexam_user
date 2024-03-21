@@ -3,10 +3,10 @@ import Link from "@components/ui/link";
 import cn from "classnames";
 import { useUI } from "@contexts/ui.context";
 import { siteSettings } from "@settings/site.settings";
-// import Logo from "@components/ui/logo";
+import Logo from "@components/ui/logo";
 // import Search from "@components/common/search";
 import JoinButton from "@components/layout/navbar/join-button";
-// import ProductTypeMenu from "@components/layout/navbar/product-type-menu";
+import ProductTypeMenu from "@components/layout/navbar/product-type-menu";
 import dynamic from "next/dynamic";
 // import { ROUTES } from "@utils/routes";
 // import { useTypesQuery } from "@data/type/use-types.query";
@@ -24,8 +24,8 @@ const NavbarWithSearch = () => {
   console.log("tttt", t);
   const { asPath } = useRouter();
   // const { data } = useTypesQuery();
-  const data = "";
-  const slugs = data?.types?.map((item) => item.slug);
+  const types = "main";
+  // const slugs = types?.map((item) => item.slug);
   const currentPath = asPath
     .substring(
       0,
@@ -33,11 +33,11 @@ const NavbarWithSearch = () => {
     )
     .replace(/\//g, "");
 
-  const hasType = slugs?.includes(currentPath);
+  // const hasType = slugs?.includes(currentPath);
+  const hasType = true;
 
   const navbarRef = useRef();
   const { isAuthorize, displayHeaderSearch, displayMobileSearch } = useUI();
-
   return (
     <header
       ref={navbarRef}
@@ -61,9 +61,10 @@ const NavbarWithSearch = () => {
           </div>
         ) : (
           <>
-            <div>Logo</div>
-            {/* <Logo className="mx-auto lg:mx-0" /> */}
+            {/* <div>Logo</div> */}
+            <Logo className="mx-auto lg:mx-0" />
             {/* <ProductTypeMenu className="ms-10 me-auto hidden xl:block" /> */}
+            <div className="lg:hidden">Exam List</div>
             <div className="hidden lg:block w-full">
               <div
                 className={cn(
@@ -79,11 +80,6 @@ const NavbarWithSearch = () => {
               </div>
             </div>
             <ul className="hidden lg:flex items-center flex-shrink-0 space-s-10">
-              {isAuthorize ? (
-                <li key="track-orders">
-                  <div>Authorized</div>
-                </li>
-              ) : null}
               {siteSettings.headerLinks.map(({ href, label, icon }) => (
                 <li key={`${href}${label}`}>
                   <Link

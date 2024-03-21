@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import ExamCategory from "./ExamCategory";
 import dayjs from "dayjs";
+import { useUI } from "@contexts/ui.context";
+import { useModalAction } from "@components/ui/modal/modal.context";
 
 const ExamMainContainer = ({ item, index }) => {
   console.log("item", item);
+  const { openSidebar, setSidebarView, toggleMobileSearch, isAuthorize } =
+    useUI();
+  const { openModal } = useModalAction();
   const [closeOrOpen, setCloseOrOpen] = useState(false);
   const {
     id,
@@ -17,9 +22,12 @@ const ExamMainContainer = ({ item, index }) => {
   } = item;
   const router = useRouter();
   console.log("closeOrOpen", closeOrOpen);
-
+  function handleAuthModal() {
+    return openModal("LOGIN_VIEW");
+  }
   return (
     <div
+      onClick={!isAuthorize && handleAuthModal}
       key={index}
       class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[15px] py-2.5"
     >
@@ -28,7 +36,9 @@ const ExamMainContainer = ({ item, index }) => {
           <div
             className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 h-10 w-10 relative overflow-hidden gap-2.5 rounded-[20px] bg-[#d9d9d9] "
             title={"text-edit"}
-            onClick={() => setCloseOrOpen(!closeOrOpen)}
+            onClick={() => {
+              isAuthorize && setCloseOrOpen(!closeOrOpen);
+            }}
           >
             {closeOrOpen ? (
               <svg
@@ -88,8 +98,8 @@ const ExamMainContainer = ({ item, index }) => {
         {closeOrOpen && (
           <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-2.5 pl-[50px] py-2.5">
             <div class="flex justify-between items-center self-stretch flex-grow-0 flex-shrink-0 relative">
-              <p class="flex-grow-0 flex-shrink-0 w-28 h-[19px] text-base font-bold text-left text-black">
-                CATEGORY
+              <p class="flex-grow-0 flex-shrink-0 w-full h-[19px] text-base font-bold text-left text-black">
+                PLEASE SELECT CATEGORY
               </p>
             </div>
             <ExamCategory examListId={id} examCategory={exam_category} />

@@ -76,10 +76,9 @@ const NavbarWithTypes = () => {
             "w-full h-14 md:h-16 lg:h-22 py-5 px-4 lg:px-8 flex justify-between items-center border-b border-gray-100 "
           )}
         >
-          {/* <Logo className="mx-auto lg:mx-0" /> */}
-          <div> Logo</div>
+          <Logo className="mx-auto lg:mx-0" />
+          {/* <div> Logo</div> */}
           <ul className="hidden lg:flex items-center flex-shrink-0 space-s-10">
-            {isAuthorize ? <li key="track-orders">Authorized</li> : null}
             {siteSettings.headerLinks?.map(({ href, icon, label }) => (
               <li key={`${href}${label}`}>
                 <Link

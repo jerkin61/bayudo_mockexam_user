@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { useRegisterMutation } from "@data/auth/use-register.mutation";
-// import Logo from "@components/ui/logo";
+import Logo from "@components/ui/logo";
 import Alert from "@components/ui/alert";
 import Input from "@components/ui/input";
 import PasswordInput from "@components/ui/password-input";
@@ -87,8 +87,8 @@ const RegisterForm = () => {
   return (
     <div className="py-6 px-5 sm:p-8 bg-light w-screen md:max-w-md h-screen md:h-auto flex flex-col justify-center">
       <div className="flex justify-center">
-        {/* <Logo /> */}
-        <div>Logo</div>
+        <Logo />
+        {/* <div>Logo</div> */}
       </div>
       <p className="text-center text-sm md:text-base leading-relaxed px-2 sm:px-0 text-body mt-4 sm:mt-5 mb-7 sm:mb-10">
         {t("registration-helper")}
