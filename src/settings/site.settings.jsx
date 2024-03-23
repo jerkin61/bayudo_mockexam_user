@@ -9,7 +9,7 @@ export const siteSettings = {
   logo: {
     url: "/logo.svg",
     alt: "MXM",
-    href: "/grocery",
+    href: "/main",
     width: 128,
     height: 40,
   },
@@ -62,10 +62,10 @@ export const siteSettings = {
     { href: "ROUTES.CONTACT", label: "nav-menu-contact" },
   ],
   authorizedLinks: [
-    { href: "profile", label: "auth-menu-profile" },
-    { href: "checkout", label: "auth-menu-checkout" },
-    { href: "order", label: "auth-menu-my-orders" },
-    { href: "ROUTES.LOGOU", label: "auth-menu-logout" },
+    // { href: "profile", label: "auth-menu-profile" },
+    // { href: "checkout", label: "auth-menu-checkout" },
+    // { href: "order", label: "auth-menu-my-orders" },
+    { href: "logout", label: "auth-menu-logout" },
   ],
   dashboardSidebarMenu: [
     {

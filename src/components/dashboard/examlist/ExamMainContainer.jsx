@@ -21,13 +21,18 @@ const ExamMainContainer = ({ item, index }) => {
     exam_category,
   } = item;
   const router = useRouter();
-  console.log("closeOrOpen", closeOrOpen);
   function handleAuthModal() {
     return openModal("LOGIN_VIEW");
   }
+
+  console.log("isAuthorize", isAuthorize);
   return (
     <div
-      onClick={!isAuthorize && handleAuthModal}
+      onClick={() => {
+        if (!isAuthorize) {
+          handleAuthModal();
+        }
+      }}
       key={index}
       class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[15px] py-2.5"
     >

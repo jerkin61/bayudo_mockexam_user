@@ -8,7 +8,7 @@ import {
   DirectLink,
   Element,
   Events,
-  animateScroll,
+  animateScroll as scroll,
   scrollSpy,
   scroller,
 } from "react-scroll";
@@ -21,19 +21,6 @@ import PerRandomQuestion from "./per-random-question";
 const QuestionList = () => {
   const { t } = useTranslation();
   const router = useRouter();
-  const page = 1;
-  const searchTerm = "";
-  // const {
-  //   data,
-  //   isLoading: loading,
-  //   error,
-  // } = useQuestionQuery({
-  //   limit: 20,
-  //   page,
-  //   text: searchTerm,
-  //   questionId: router?.query.questionId,
-  // });
-
   const {
     isFetching: loading,
     isFetchingNextPage: loadingMore,
@@ -53,7 +40,19 @@ const QuestionList = () => {
   function handleLoadMore() {
     fetchNextPage();
   }
+  const scrollToNextElement = () => {
+    const scrollContainer = document.getElementById("scroll-container");
+    if (!scrollContainer) return; // If element not found, exit the function
 
+    // Calculate the distance to scroll
+    const scrollDistance = scrollContainer.clientHeight;
+
+    // Scroll the element by the calculated distance
+    scrollContainer.scrollBy({
+      top: scrollDistance,
+      behavior: "smooth", // Optional: smooth scrolling effect
+    });
+  };
   const videoRefs = useRef([]);
 
   useEffect(() => {
@@ -95,22 +94,31 @@ const QuestionList = () => {
   if (loading && !data?.pages?.length) return <div>Loader</div>;
 
   return (
-    <div className="App bg-[#2e2f30] h-[100vh]" id="scroll-container">
-      {data?.pages?.map((questions, _idx) => (
-        <Fragment key={_idx}>
+    <div
+      className="App bg-[#2e2f30] h-[100vh] overflow-hidden"
+      id="scroll-container"
+    >
+      {data?.pages?.map((questions, pageIndex) => (
+        <Fragment key={pageIndex}>
           {" "}
-          {questions?.data?.map((question) => (
-            <Element className="element" name={`element${_idx + 1}`} key={_idx}>
+          {questions?.data?.map((question, questionIndex) => (
+            <Element
+              className="element"
+              name={`element${pageIndex + 1}-${questionIndex + 1}`}
+              key={`element-${pageIndex}-${questionIndex}`}
+            >
+              {" "}
+              {hasNextPage && <Waypoint onEnter={handleLoadMore} />}
               <PerRandomQuestion
+                nextPageScroll={scrollToNextElement}
+                key={`question-${pageIndex}-${questionIndex}`}
                 question={question}
-                setVideoRef={handleVideoRef(_idx)}
+                setVideoRef={handleVideoRef(pageIndex, questionIndex)}
               />{" "}
             </Element>
           ))}{" "}
         </Fragment>
       ))}
-
-      {hasNextPage && <Waypoint onEnter={handleLoadMore} />}
     </div>
   );
 };

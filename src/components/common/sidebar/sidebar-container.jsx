@@ -11,9 +11,9 @@ import { useUI } from "../../../contexts/ui.context";
 // const MobileCategoryBoxMenu = dynamic(
 //   () => import("@components/category/mobile-category-box-menu")
 // );
-// const MobileAuthorizedMenu = dynamic(
-//   () => import("@components/layout/mobile-menu/mobile-authorized-menu")
-// );
+const MobileAuthorizedMenu = dynamic(() =>
+  import("@components/layout/mobile-menu/mobile-authorized-menu")
+);
 // const MobileMainMenu = dynamic(
 //   () => import("@components/layout/mobile-menu/mobile-main-menu")
 // );
@@ -33,12 +33,12 @@ export default function SidebarContainer() {
       // }
       // useBlurBackdrop={true}
     >
-      <div>None</div>
+      {/* <div>None</div> */}
       {/* {sidebarView === "CART_VIEW" && <CartSidebarView />}
       {sidebarView === "FILTER_VIEW" && <MobileCategoryMenu />}
       {sidebarView === "FILTER_LAYOUT_TWO_VIEW" && <MobileCategoryBoxMenu />}
-      {sidebarView === "MAIN_MENU_VIEW" && <MobileMainMenu />}
-      {sidebarView === "AUTH_MENU_VIEW" && <MobileAuthorizedMenu />} */}
+      {sidebarView === "MAIN_MENU_VIEW" && <MobileMainMenu />} */}
+      {sidebarView === "AUTH_MENU_VIEW" && <MobileAuthorizedMenu />}
     </Sidebar>
   );
 }

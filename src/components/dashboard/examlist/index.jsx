@@ -11,7 +11,6 @@ export default function Dashboard() {
     isLoading: loading,
     error,
   } = useExamlistQuery({ limit: 20, page, text: searchTerm });
-  console.log("data", data?.examlist.data);
 
   return (
     <>

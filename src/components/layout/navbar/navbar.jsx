@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { siteSettings } from "@settings/site.settings";
-// import Logo from "@components/ui/logo";
+import Logo from "@components/ui/logo";
 import NavLink from "@components/ui/link/nav-link";
 import JoinButton from "@components/layout/navbar/join-button";
 import { addActiveScroll } from "@utils/add-active-scroll";
@@ -24,8 +24,8 @@ const Navbar = () => {
   return (
     <header ref={navbarRef} className="site-header h-14 md:h-16 lg:h-22">
       <nav className="h-14 md:h-16 lg:h-22 fixed w-full z-20 bg-light shadow-sm py-5 px-4 lg:px-5 xl:px-8 flex justify-between items-center">
-        {/* <Logo className="mx-auto lg:mx-0" /> */}
-        <div>logo</div>
+        <Logo className="mx-auto lg:mx-0" />
+        {/* <div>logo</div> */}
         <ul className="hidden lg:flex items-center space-s-8">
           {isAuthorize ? <li key="track-orders">authorized</li> : null}
           {siteSettings.headerLinks?.map(({ href, label, icon }) => (

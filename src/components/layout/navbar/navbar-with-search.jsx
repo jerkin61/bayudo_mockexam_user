@@ -64,7 +64,13 @@ const NavbarWithSearch = () => {
             {/* <div>Logo</div> */}
             <Logo className="mx-auto lg:mx-0" />
             {/* <ProductTypeMenu className="ms-10 me-auto hidden xl:block" /> */}
-            <div className="lg:hidden">Exam List</div>
+            <Link href={siteSettings.logo.href}>
+              {" "}
+              <div className="lg:hidden text-base font-semibold cursor-pointer">
+                Exam List
+              </div>
+            </Link>
+
             <div className="hidden lg:block w-full">
               <div
                 className={cn(
