@@ -107,7 +107,11 @@ const ExamMainContainer = ({ item, index }) => {
                 PLEASE SELECT CATEGORY
               </p>
             </div>
-            <ExamCategory examListId={id} examCategory={exam_category} />
+            <ExamCategory
+              examName={name}
+              examListId={id}
+              examCategory={exam_category}
+            />
           </div>
         )}
       </div>

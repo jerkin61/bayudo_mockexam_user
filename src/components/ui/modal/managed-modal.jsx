@@ -7,9 +7,9 @@ const Register = dynamic(() => import("@components/auth/register"));
 const ForgotPassword = dynamic(() =>
   import("@components/auth/forget-password/forget-password")
 );
-// const ProductDetailsModalView = dynamic(
-//   () => import("@components/product/product-details-modal-view")
-// );
+const SelectExamType = dynamic(() =>
+  import("@components/ui/modal/select-exam-type")
+);
 // const CreateOrUpdateAddressForm = dynamic(
 //   () => import("@components/address/address-form")
 // );
@@ -26,6 +26,7 @@ const ManagedModal = () => {
       {view === "LOGIN_VIEW" && <Login />}
       {view === "REGISTER" && <Register />}
       {view === "FORGOT_VIEW" && <ForgotPassword />}
+      {view === "SELECT_EXAMTYPE" && <SelectExamType data={data} />}
       {/*  {view === "ADD_OR_UPDATE_ADDRESS" && <CreateOrUpdateAddressForm />}
       {view === "DELETE_ADDRESS" && <AddressDeleteView />}
       {view === "PRODUCT_DETAILS" && (

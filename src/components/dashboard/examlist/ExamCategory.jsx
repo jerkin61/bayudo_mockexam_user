@@ -1,7 +1,7 @@
 import React from "react";
 import ExamCategoryContainer from "./ExamCategoryContainer";
 
-const ExamCategory = ({ examCategory, examListId }) => {
+const ExamCategory = ({ examCategory, examListId, examName }) => {
   return (
     <div className="w-full">
       {" "}
@@ -13,6 +13,7 @@ const ExamCategory = ({ examCategory, examListId }) => {
       {examCategory &&
         examCategory.map((item, index) => (
           <ExamCategoryContainer
+            examName={examName}
             item={item}
             index={index}
             examListId={examListId}
