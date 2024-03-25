@@ -18,7 +18,6 @@ export const ownerOnly = [STORE_OWNER];
 export function setAuthCredentials(token, permissions) {
   if (typeof token === "string") {
     Cookie.set(AUTH_CRED, JSON.stringify({ token, permissions }));
-    // console.log("token", JSON.stringify({ token, permissions }));
   }
 }
 
@@ -26,14 +25,11 @@ export function getAuthCredentials(context) {
   let authCred;
   if (context) {
     authCred = parseSSRCookie(context)[AUTH_CRED];
-    console.log("authCredauthCred", authCred);
   } else {
     authCred = Cookie.get(AUTH_CRED);
   }
-  console.log("authCred", authCred);
   if (authCred) {
     const decodedAuthCred = decodeURIComponent(authCred);
-    // console.log("JSON.parse(decodedAuthCred)", JSON.parse(decodedAuthCred));
     return JSON.parse(decodedAuthCred);
   }
 

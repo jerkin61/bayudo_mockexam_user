@@ -32,7 +32,6 @@ const PerRandomQuestion = ({
   const [selectedKey, setSelectedKey] = React.useState(null);
   const videoRef = React.useRef(null);
   const [rightOrWrong, setRightOrWrong] = React.useState(null);
-  console.log("questtionnn", question);
   const classesName = cn(
     classes.root,
     {
@@ -50,7 +49,6 @@ const PerRandomQuestion = ({
       setErrorMsg(thisAnswer ? "Youre correct" : "Youre wrong");
     }
   };
-  console.log("test", rightOrWrong);
   return (
     <div
       class="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full"

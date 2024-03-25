@@ -6,7 +6,6 @@ import { useUI } from "@contexts/ui.context";
 import { useModalAction } from "@components/ui/modal/modal.context";
 
 const ExamMainContainer = ({ item, index }) => {
-  console.log("item", item);
   const { openSidebar, setSidebarView, toggleMobileSearch, isAuthorize } =
     useUI();
   const { openModal } = useModalAction();
@@ -25,7 +24,6 @@ const ExamMainContainer = ({ item, index }) => {
     return openModal("LOGIN_VIEW");
   }
 
-  console.log("isAuthorize", isAuthorize);
   return (
     <div
       onClick={() => {

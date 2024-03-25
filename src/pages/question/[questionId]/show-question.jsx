@@ -20,7 +20,6 @@ export default function QuestionList() {
 QuestionList.Layout = HomeLayout;
 
 export const getServerSideProps = async (ctx) => {
-  console.log("ctx", ctx);
   const { token, permissions } = getAuthCredentials(ctx);
   // if (
   //   !isAuthenticated({ token, permissions }) ||

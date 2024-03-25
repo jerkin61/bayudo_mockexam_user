@@ -21,13 +21,10 @@ const ActionButtons = ({
   function handleDelete(e) {
     e.preventDefault();
     openModal(deleteModalView, id);
-    console.log("triggered");
   }
   function handleTypeOfExam(e) {
     e.preventDefault();
-    console.log("redirect", redirect);
     // openModal(randomOrNormalModalView, id);
-    console.log("triggered");
   }
   //   function handleUserStatus(type: string) {
   //     openModal("BAN_CUSTOMER", { id, type });

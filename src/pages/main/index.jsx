@@ -60,7 +60,6 @@ Dashboard.Layout = HomeLayout;
 // };
 export const getServerSideProps = async (ctx) => {
   const { locale } = ctx;
-  console.log("locale", locale);
   if (locale) {
     return {
       props: {

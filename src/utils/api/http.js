@@ -13,10 +13,6 @@ const http = axios.create({
 // Change request data/error here
 http.interceptors.request.use(
   (config) => {
-    console.log(
-      "process.env.NEXT_PUBLIC_REST_API_ENDPOINT",
-      process.env.NEXT_PUBLIC_REST_API_ENDPOINT
-    );
     const token = getToken();
     config.headers = {
       ...config.headers,

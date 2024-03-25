@@ -23,9 +23,7 @@ const PerChoiceContainer = ({
   rightAnswer,
   rightOrWrong,
 }) => {
-  console.log("rightOrWrong", rightOrWrong);
   const isCorrect = choice.key === rightAnswer;
-  console.log("choice.right_ans", choice.right_ans);
   return (
     <button
       disabled={rightOrWrong !== null}

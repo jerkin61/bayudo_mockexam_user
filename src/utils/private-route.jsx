@@ -12,7 +12,6 @@ const PrivateRoute = ({ children, authProps }) => {
     !!permissions.length &&
     hasAccess(authProps.permissions, permissions);
 
-  console.log("PrivateRoute", isUser);
   React.useEffect(() => {
     if (!isUser) router.replace("/login"); // If not authenticated, force log in
   }, [isUser]);

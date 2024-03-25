@@ -42,7 +42,6 @@ const AppSettings = (props) => {
 // const dehydratedState = dehydrate(helpers?.queryClient);
 const SocialLoginProvider = () => {
   const { session, loading } = useSession();
-  console.log("session", session);
   //   // const { mutate: socialLogin } = useSocialLoginMutation();
   //   const { closeModal } = useModalAction();
   const { authorize, isAuthorize } = useUI();

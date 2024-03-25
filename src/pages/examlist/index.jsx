@@ -22,12 +22,7 @@ ExamList.Layout = HomeLayout;
 
 export const getServerSideProps = async (ctx) => {
   const { token, permissions } = getAuthCredentials(ctx);
-  console.log(
-    "  !isAuthenticated({ token, permissions }) ",
-    !isAuthenticated({ token, permissions }),
-    token,
-    permissions
-  );
+
   if (
     !isAuthenticated({ token, permissions }) ||
     !hasAccess(allowedRoles, permissions)

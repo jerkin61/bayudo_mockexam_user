@@ -13,6 +13,7 @@ import {
   scroller,
 } from "react-scroll";
 import { useQuestionQuery } from "@data/question/use-question.query";
+
 import { useTranslation } from "react-i18next";
 import { Waypoint } from "react-waypoint";
 import PerMainQuestion from "./per-main-question";
@@ -21,6 +22,7 @@ import PerMainQuestion from "./per-main-question";
 const QuestionList = () => {
   const { t } = useTranslation();
   const router = useRouter();
+  const limit = 20;
   const {
     isFetching: loading,
     isFetchingNextPage: loadingMore,
@@ -31,11 +33,12 @@ const QuestionList = () => {
     error,
   } = useQuestionQuery({
     // type: "bakery",
-    limit: 20,
+    limit,
     questionId: router?.query.questionId,
     // text: query?.text,
     // category: query?.category ,
   });
+
   if (isError && error) return <dvi>Error</dvi>;
   function handleLoadMore() {
     fetchNextPage();
@@ -115,23 +118,28 @@ const QuestionList = () => {
       {data?.pages?.map((questions, pageIndex) => (
         <Fragment key={pageIndex}>
           {" "}
-          {questions?.data?.map((question, questionIndex) => (
-            <Element
-              className="element"
-              name={`element${pageIndex + 1}-${questionIndex + 1}`}
-              key={`element-${pageIndex}-${questionIndex}`}
-            >
-              {" "}
-              {hasNextPage && <Waypoint onEnter={handleLoadMore} />}
-              <PerMainQuestion
-                previousPageScroll={previousPageScroll}
-                nextPageScroll={scrollToNextElement}
-                key={`question-${pageIndex}-${questionIndex}`}
-                question={question}
-                setVideoRef={handleVideoRef(pageIndex, questionIndex)}
-              />{" "}
-            </Element>
-          ))}{" "}
+          {questions?.data?.map((question, questionIndex) => {
+            const questionNumber = pageIndex * limit + questionIndex + 1;
+            return (
+              <Element
+                className="element"
+                name={`element${pageIndex + 1}-${questionIndex + 1}`}
+                key={`element-${pageIndex}-${questionIndex}`}
+              >
+                {" "}
+                {hasNextPage && <Waypoint onEnter={handleLoadMore} />}
+                <PerMainQuestion
+                  isFirst={`${pageIndex}-${questionIndex}`}
+                  previousPageScroll={previousPageScroll}
+                  nextPageScroll={scrollToNextElement}
+                  key={`question-${pageIndex}-${questionIndex}`}
+                  question={question}
+                  questionNumber={questionNumber}
+                  setVideoRef={handleVideoRef(pageIndex, questionIndex)}
+                />{" "}
+              </Element>
+            );
+          })}{" "}
         </Fragment>
       ))}
     </div>

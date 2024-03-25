@@ -21,7 +21,6 @@ const AuthorizedMenu = dynamic(
 
 const NavbarWithSearch = () => {
   const { t } = useTranslation("common");
-  console.log("tttt", t);
   const { asPath } = useRouter();
   // const { data } = useTypesQuery();
   const types = "main";

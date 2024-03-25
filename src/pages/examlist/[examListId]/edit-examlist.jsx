@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 
 export default function UpdateExamListPage() {
   const { query } = useRouter();
-  console.log("qyuery", query);
   const {
     data,
     isLoading: loading,
