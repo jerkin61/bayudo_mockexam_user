@@ -56,9 +56,9 @@ const SelectExamType = ({ data }) => {
                 ></path>
               </svg>
             </div>
-            <NextLink href={`/maintest/question/${id}/show-question`}>
-              <Button type="normal"> Start the exam </Button>
-            </NextLink>{" "}
+            {/* <NextLink href={`/maintest/question/${id}/show-question`}> */}
+            <Button type="normal"> Start the exam </Button>
+            {/* </NextLink>{" "} */}
           </div>
         </div>
       </div>

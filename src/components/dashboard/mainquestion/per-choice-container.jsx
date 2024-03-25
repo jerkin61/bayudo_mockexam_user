@@ -9,10 +9,11 @@ const getBackgroundColor = (selected, rightOrWrong, choiceKey, rightAnswer) => {
       : "";
   }
 };
-const getCursor = (rightOrWrong) => {
-  return rightOrWrong !== null ? "not-allowed" : "pointer";
+const getCursor = (rightOrWrong, isLoading) => {
+  return isLoading || rightOrWrong !== null ? "not-allowed" : "pointer";
 };
 const PerChoiceContainer = ({
+  isLoading,
   choice,
   classesName,
   index,
@@ -26,7 +27,7 @@ const PerChoiceContainer = ({
   const isCorrect = choice.key === rightAnswer;
   return (
     <button
-      disabled={rightOrWrong !== null}
+      disabled={isLoading || rightOrWrong !== null}
       onClick={() => onSelect(choice.key)}
       className={
         "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer"
@@ -38,7 +39,7 @@ const PerChoiceContainer = ({
           choice.key,
           rightAnswer
         ),
-        cursor: getCursor(rightOrWrong),
+        cursor: getCursor(rightOrWrong, isLoading),
       }}
     >
       {" "}

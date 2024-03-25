@@ -22,7 +22,9 @@ import PerMainQuestion from "./per-main-question";
 const QuestionList = () => {
   const { t } = useTranslation();
   const router = useRouter();
-  const limit = 20;
+  const limit = 1;
+  const [triggered, setTriggered] = React.useState(false);
+  const [currPage, setCurrPage] = React.useState(1);
   const {
     isFetching: loading,
     isFetchingNextPage: loadingMore,
@@ -38,12 +40,18 @@ const QuestionList = () => {
     // text: query?.text,
     // category: query?.category ,
   });
-
+  console.log("daaaaaa", data?.pages + 1);
   if (isError && error) return <dvi>Error</dvi>;
   function handleLoadMore() {
-    fetchNextPage();
+    if (!triggered) {
+      fetchNextPage();
+      setTriggered(true);
+    }
   }
+  console.log("hasNextPage", hasNextPage);
   const scrollToNextElement = () => {
+    setCurrPage(currPage + 1);
+    if (currPage !== data?.pages + 1) hasNextPage && fetchNextPage();
     const scrollContainer = document.getElementById("scroll-container");
     if (!scrollContainer) return; // If element not found, exit the function
 
@@ -58,6 +66,7 @@ const QuestionList = () => {
   };
 
   const previousPageScroll = () => {
+    setCurrPage(currPage - 1);
     const scrollContainer = document.getElementById("scroll-container");
     if (!scrollContainer) return; // If element not found, exit the function
 
@@ -127,7 +136,9 @@ const QuestionList = () => {
                 key={`element-${pageIndex}-${questionIndex}`}
               >
                 {" "}
-                {hasNextPage && <Waypoint onEnter={handleLoadMore} />}
+                {hasNextPage && (
+                  <Waypoint onEnter={handleLoadMore} fireOnRapidScroll />
+                )}
                 <PerMainQuestion
                   isFirst={`${pageIndex}-${questionIndex}`}
                   previousPageScroll={previousPageScroll}

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PerChoiceContainer from "./per-choice-container";
 import cn from "classnames";
 import Alert from "../../ui/alert";
 import { useAnswerExamMutation } from "@data/answer/use-answer.mutation";
 import { useUpdateAnswerExamMutation } from "@data/answer/use-update-answer.mutation";
+import { usePerAnswerQuery } from "@data/answer/use-per-answer.query";
 const classes = {
   root: "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   normal:
@@ -34,6 +35,10 @@ const PerMainQuestion = ({
     useAnswerExamMutation();
   const { mutateAsync: updateAnswerExam, isLoading: updateAnswerExamLoading } =
     useUpdateAnswerExamMutation();
+  const { data, isLoading: answerIsLoading } =
+    usePerAnswerQuery(questionNumber);
+
+  console.log("data", data);
   const onSelectKey = (key) => {
     setSelectedKey(key);
     const payload = {
@@ -44,7 +49,7 @@ const PerMainQuestion = ({
       right_answer: right_ans,
       correct: right_ans === key,
     };
-    if (!idx)
+    if (!data && !idx)
       answerExam(payload, {
         onSuccess: async ({ id }) => {
           // console.log("data", data);
@@ -52,9 +57,12 @@ const PerMainQuestion = ({
         },
       });
     else {
-      updateAnswerExam(idx, payload);
+      updateAnswerExam({ id: data ? data.id : idx, payload });
     }
   };
+  useEffect(() => {
+    if (data) setSelectedKey(data.user_answer);
+  }, [data]);
   const classesName = cn(
     classes.root,
     {
@@ -64,8 +72,16 @@ const PerMainQuestion = ({
     },
     className
   );
-
+  const checkAnswer = () => {
+    if (selectedKey) {
+      const thisAnswer = selectedKey === question.right_ans;
+      setRightOrWrong(thisAnswer);
+      setAlertType(thisAnswer ? "success" : "error");
+      setErrorMsg(thisAnswer ? "Youre correct" : "Youre wrong");
+    }
+  };
   const isFirstCheck = isFirst === "0-0";
+  if (answerIsLoading) return <div>Loading</div>;
   return (
     <div
       class="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full"
@@ -92,6 +108,7 @@ const PerMainQuestion = ({
           {choices &&
             JSON.parse(choices).map((choice) => (
               <PerChoiceContainer
+                isLoading={answerExamLoading || updateAnswerExamLoading}
                 classesName={classesName}
                 choice={choice}
                 key={choice.key}
@@ -124,6 +141,12 @@ const PerMainQuestion = ({
           >
             {"Next page"}
           </button>
+          {/* <button
+            class=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
+            onClick={checkAnswer}
+          >
+            {"Check"}
+          </button> */}
         </div>
         {errorMsg && (
           <Alert

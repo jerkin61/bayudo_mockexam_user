@@ -31,7 +31,13 @@ import { SearchProvider } from "@contexts/search.context";
 import { appWithTranslation } from "next-i18next";
 import { useSession } from "next-auth/react";
 import { SessionProvider } from "next-auth/react";
+
 const Noop = ({ children }) => <>{children}</>;
+
+export const defaultReactQueryConfig = {
+  staleTime: 300000, // 5 minutes
+  keepPreviousData: true,
+};
 
 const AppSettings = (props) => {
   const { data, isLoading: loading, error } = useSettingsQuery();
@@ -88,7 +94,11 @@ const SocialLoginProvider = () => {
 function CustomApp({ Component, pageProps }) {
   const queryClientRef = useRef(null);
   if (!queryClientRef.current) {
-    queryClientRef.current = new QueryClient();
+    queryClientRef.current = new QueryClient({
+      defaultOptions: {
+        queries: defaultReactQueryConfig,
+      },
+    });
   }
   const Layout = Component.Layout || Noop;
   return (
