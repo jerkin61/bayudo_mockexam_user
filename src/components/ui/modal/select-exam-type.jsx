@@ -1,9 +1,60 @@
 import NextLink from "next/link";
 import Button from "../button";
+import { useExamCategoryTakenMutation } from "@data/examcategorytaken/use-examcategorytaken.mutation";
+import { usePerExamCategoryTaken } from "@data/examcategorytaken/use-per-examcategorytaken.query";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 const SelectExamType = ({ data }) => {
-  const { item, examName } = data;
-  const { category_name, updated_at, instruction, time_limit_per_item, id } =
-    item;
+  const router = useRouter();
+  const { item, examName, examTaken } = data;
+  const {
+    exam_id,
+    category_name,
+    updated_at,
+    items_count,
+    instruction,
+    time_limit_per_item,
+    id,
+  } = item;
+  console.log("examTaken", item);
+  console.log("examTaken", id);
+  const {
+    mutateAsync: craeteExamCategory,
+    isLoading: craeteExamCategoryLoading,
+  } = useExamCategoryTakenMutation();
+  const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
+    usePerExamCategoryTaken(id);
+
+  console.log("dataPerExamCategoryaaaa", dataPerExamCategory);
+  const exam_category_id = dataPerExamCategory?.id;
+  const confirmStartTest = () => {
+    const payload = {
+      exam_taken_id: examTaken,
+      time_done: null,
+      number_of_items: items_count,
+      pass: 0,
+      exam_result: 0,
+      exam_percentage: 0,
+      exam_category_id: id,
+    };
+    craeteExamCategory(payload, {
+      onSuccess: async ({ id: examCategoryId }) => {
+        await router.push(
+          `/maintest/question/${examTaken}/${exam_category_id}/${examCategoryId}/show-question`
+        );
+      },
+      onError: ({ response }) => {
+        toast.error(response.data.exam_category_id[0]);
+      },
+    });
+  };
+
+  const confirmResumeTest = () => {
+    dataPerExamCategory &&
+      router.push(
+        `/maintest/question/${examTaken}/${exam_category_id}/${id}/show-question`
+      );
+  };
   return (
     <div className="py-6 px-5 sm:p-8  w-screen md:max-w-md h-screen md:h-auto flex flex-col justify-center bg-[#f1f9ff]">
       <div class="flex flex-col justify-start items-start self-stretch flex-grow gap-2.5 px-[15px] py-2.5 rounded-[5px] bg-[#f1f9ff]">
@@ -57,7 +108,16 @@ const SelectExamType = ({ data }) => {
               </svg>
             </div>
             {/* <NextLink href={`/maintest/question/${id}/show-question`}> */}
-            <Button type="normal"> Start the exam </Button>
+            <div className="flex flex-row gap-[10px]">
+              <Button type="normal" onClick={confirmResumeTest}>
+                {" "}
+                Resume Exam{" "}
+              </Button>{" "}
+              <Button type="normal" onClick={confirmStartTest}>
+                {" "}
+                Start the exam{" "}
+              </Button>
+            </div>
             {/* </NextLink>{" "} */}
           </div>
         </div>

@@ -240,3 +240,7 @@ div.App {
   /* Snap align start. */
   scroll-snap-align: start;
 }
+
+.element:last-child .last-page-button {
+  display:block!important;
+}

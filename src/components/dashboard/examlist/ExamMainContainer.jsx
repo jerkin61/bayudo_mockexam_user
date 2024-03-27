@@ -19,6 +19,8 @@ const ExamMainContainer = ({ item, index }) => {
     passing_rate,
     exam_category,
   } = item;
+
+  console.log("ExamMainContainer", item);
   const router = useRouter();
   function handleAuthModal() {
     return openModal("LOGIN_VIEW");

@@ -32,6 +32,7 @@ export class CoreApi {
       is_active,
       shop_id,
       limit = 30,
+      questionId,
     } = params;
     const searchString = this.stringifySearchQuery({
       type,
@@ -41,7 +42,7 @@ export class CoreApi {
       shop_id,
       is_active,
     });
-    const queryString = `?search=${searchString}&searchJoin=and&limit=${limit}`;
+    const queryString = `?search=${searchString}&searchJoin=and&limit=${limit}&question_id=${questionId}`;
     return this.http.get(this._base_path + queryString);
   }
   findAll() {

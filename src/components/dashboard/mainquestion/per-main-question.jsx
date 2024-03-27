@@ -15,19 +15,23 @@ const classes = {
     "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[red] cursor-pointer",
 };
 const PerMainQuestion = ({
+  completeExam,
+  questionLastPage,
+  lastPage,
+  examCategoryTaken,
+  loadingMore,
   questionNumber,
   isFirst,
   question,
-  setVideoRef,
   className,
   nextPageScroll,
   previousPageScroll,
+  locked,
 }) => {
   const { choices, id, right_ans } = question;
   const [errorMsg, setErrorMsg] = React.useState("");
   const [alertType, setAlertType] = React.useState("");
   const [selectedKey, setSelectedKey] = React.useState(null);
-  const videoRef = React.useRef(null);
   const [rightOrWrong, setRightOrWrong] = React.useState(null);
   const [idx, setIdx] = React.useState("");
 
@@ -42,7 +46,7 @@ const PerMainQuestion = ({
   const onSelectKey = (key) => {
     setSelectedKey(key);
     const payload = {
-      exam_taken_category_id: 1,
+      exam_taken_category_id: examCategoryTaken,
       user_answer: key,
       question_no: questionNumber,
       answered_id: id,
@@ -80,16 +84,16 @@ const PerMainQuestion = ({
       setErrorMsg(thisAnswer ? "Youre correct" : "Youre wrong");
     }
   };
+
+  const completeExamButtonTrigger = () => {
+    completeExam();
+  };
+  console.log("questionLastPage", questionLastPage);
   const isFirstCheck = isFirst === "0-0";
-  if (answerIsLoading) return <div>Loading</div>;
+  const isLastCheck = isFirst === `${questionLastPage - 1}-0`;
+  if (answerIsLoading) return <div>Per Main Question Loading</div>;
   return (
-    <div
-      class="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full"
-      ref={(ref) => {
-        videoRef.current = ref;
-        setVideoRef(ref);
-      }}
-    >
+    <div class="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full">
       <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[15px]">
         <div class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 gap-2.5">
           <div class="flex flex-col align-center w-full self-stretch flex-grow-0 flex-shrink-0 relative gap-2.5 px-5 py-2.5 rounded-[5px]">
@@ -108,6 +112,7 @@ const PerMainQuestion = ({
           {choices &&
             JSON.parse(choices).map((choice) => (
               <PerChoiceContainer
+                locked={locked}
                 isLoading={answerExamLoading || updateAnswerExamLoading}
                 classesName={classesName}
                 choice={choice}
@@ -136,8 +141,13 @@ const PerMainQuestion = ({
             {"Previous page"}
           </button>{" "}
           <button
+            disabled={isLastCheck}
             class=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
             onClick={nextPageScroll}
+            style={{
+              opacity: isLastCheck ? 0.5 : 1,
+              cursor: isLastCheck && "not-allowed",
+            }}
           >
             {"Next page"}
           </button>
@@ -148,6 +158,14 @@ const PerMainQuestion = ({
             {"Check"}
           </button> */}
         </div>
+        {!lastPage && (
+          <button
+            onClick={completeExamButtonTrigger}
+            className="last-page-button hidden mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
+          >
+            Complete Exam
+          </button>
+        )}
         {errorMsg && (
           <Alert
             variant={alertType}

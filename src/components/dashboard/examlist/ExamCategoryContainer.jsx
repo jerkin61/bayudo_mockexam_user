@@ -5,8 +5,10 @@ import React from "react";
 import dayjs from "dayjs";
 import { useModalAction } from "../../ui/modal/modal.context";
 import Button from "../../ui/button";
+import { useExamTakenMutation } from "@data/examtaken/use-examtaken.mutation";
+import { usePerExamTaken } from "@data/examtaken/use-per-examtaken.query";
 
-const ExamCategoryContainer = ({ item, index, examName }) => {
+const ExamCategoryContainer = ({ item, index, examName, examListId }) => {
   const { openModal } = useModalAction();
   const {
     id,
@@ -17,8 +19,53 @@ const ExamCategoryContainer = ({ item, index, examName }) => {
     items_count,
     time_limit,
     time_limit_per_item,
+    exam_id,
   } = item;
 
+  const { mutateAsync: craeteExamTaken, isLoading: craeteExamTakenLoading } =
+    useExamTakenMutation();
+
+  // "id": 1,
+  // 		"user_id": 6,
+  // 		"exam_id": 3,
+  // 		"take": 1,
+  // 		"time_done": "2024-03-24 16:23:23",
+  // 		"time_started": "2024-03-24 16:23:23",
+  // 		"number_of_items": 132,
+  // 		"pass": 0,
+  // 		"exam_result": 432,
+  // 		"exam_percentage": 0.2,
+  console.log("dataPerExamCategory", examListId);
+  const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
+    usePerExamTaken(examListId);
+  console.log("itemmmm", dataPerExamCategory);
+  const confirmCreateExamTaken = () => {
+    const payload = {
+      user_id: 6,
+      exam_id,
+      take: 1,
+      time_done: "2024-03-24 16:23:23",
+      time_started: "2024-03-24 16:23:23",
+      exam_percentage: 0,
+      number_of_items: 20,
+    };
+    craeteExamTaken(payload, {
+      onSuccess: async ({ id: examTaken }) => {
+        openModal("SELECT_EXAMTYPE", { examTaken, item, examName });
+
+        // await router.push(
+        //   `/maintest/question/${examTaken}/${examCategoryId}/show-question`
+        // );
+      },
+      onError: ({ response }) => {
+        openModal("SELECT_EXAMTYPE", {
+          examTaken: dataPerExamCategory?.id,
+          item,
+          examName,
+        });
+      },
+    });
+  };
   const router = useRouter();
   return (
     <div
@@ -80,10 +127,7 @@ const ExamCategoryContainer = ({ item, index, examName }) => {
         <NextLink href={`/question/${id}/show-question`}>
           <Button type="normal"> Random Questions </Button>
         </NextLink>{" "}
-        <Button
-          onClick={() => openModal("SELECT_EXAMTYPE", { item, examName })}
-          type="normal"
-        >
+        <Button onClick={confirmCreateExamTaken} type="normal">
           {" "}
           Take test{" "}
         </Button>
