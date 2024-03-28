@@ -8,6 +8,7 @@ import { Waypoint } from "react-waypoint";
 import PerMainQuestion from "./per-main-question";
 // import { Waypoint } from "react-scroll";
 import { useUpdateExamCategoryTakenMutation } from "@data/examcategorytaken/use-update-examcategorytaken.mutation";
+import PageLoader from "../../ui/page-loader";
 
 const QuestionList = () => {
   const { t } = useTranslation();
@@ -15,7 +16,10 @@ const QuestionList = () => {
   const limit = 1;
   const [triggered, setTriggered] = React.useState(false);
   const [currPage, setCurrPage] = React.useState(1);
-  const [locked, setLocked] = React.useState(false);
+  const checkCompleted =
+    !router?.query.completed === "true" ||
+    router?.query.completed === undefined;
+  const [locked, setLocked] = React.useState(checkCompleted ? false : true);
 
   const {
     isFetching: loading,
@@ -82,7 +86,7 @@ const QuestionList = () => {
     });
   };
   console.log("data", data);
-  if (loading && !data?.pages?.length) return <div>Loader</div>;
+  if (loading && !data?.pages?.length) return <PageLoader />;
   return (
     <div
       className="App bg-[#2e2f30] h-[100vh] overflow-hidden"
@@ -93,7 +97,7 @@ const QuestionList = () => {
           {" "}
           {data?.pages[0]?.data.length === 0 && (
             <div className="p-10">
-              <div class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white">
+              <div class="flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white">
                 <p class="flex-grow w-[323px] text-base font-semibold text-center text-black">
                   No data here.
                 </p>
@@ -113,6 +117,7 @@ const QuestionList = () => {
                   <Waypoint onEnter={handleLoadMore} fireOnRapidScroll />
                 )}
                 <PerMainQuestion
+                  checkCompleted={checkCompleted}
                   examCategoryTaken={router?.query.exam_category_id}
                   isFirst={`${pageIndex}-${questionIndex}`}
                   previousPageScroll={previousPageScroll}

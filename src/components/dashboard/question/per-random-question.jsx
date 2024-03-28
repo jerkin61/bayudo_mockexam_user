@@ -12,13 +12,13 @@ import {
   scroller,
 } from "react-scroll";
 const classes = {
-  root: "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
+  root: "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   normal:
-    "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
+    "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   correct:
-    "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[green] cursor-pointer",
+    "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[green] cursor-pointer",
   wrong:
-    "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[red] cursor-pointer",
+    "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[red] cursor-pointer",
 };
 const PerRandomQuestion = ({
   question,
@@ -51,20 +51,20 @@ const PerRandomQuestion = ({
   };
   return (
     <div
-      class="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full"
+      class="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll"
       ref={(ref) => {
         videoRef.current = ref;
         setVideoRef(ref);
       }}
     >
-      <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[15px]">
-        <div class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 gap-2.5">
-          <div class="flex flex-col align-center w-full self-stretch flex-grow-0 flex-shrink-0 relative gap-2.5 px-5 py-2.5 rounded-[5px]">
+      <div class="flex flex-col justify-start items-center self-stretch gap-[15px]">
+        <div class="flex flex-col justify-start items-start self-stretch gap-2.5">
+          <div class="flex flex-col align-center w-full self-stretch relative gap-2.5 px-5 py-2.5 rounded-[5px]">
             {/* <span className="text-white text-bold">
               {question.exam_category.category_name}
             </span> */}
             <span
-              class="w-full self-stretch flex-grow-0 flex-shrink-0 w-[324px] text-base font-semibold text-center text-white"
+              class="w-full self-stretch w-[324px] text-base font-semibold text-center text-white"
               dangerouslySetInnerHTML={{
                 __html:
                   question.exam_category.category_name +
@@ -74,7 +74,7 @@ const PerRandomQuestion = ({
             />
           </div>
         </div>
-        <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[15px] py-2.5">
+        <div class="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5">
           {choices &&
             JSON.parse(choices).map((choice) => (
               <PerChoiceContainer

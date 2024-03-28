@@ -35,7 +35,7 @@ const PerChoiceContainer = ({
       disabled={isLoading || locked || rightOrWrong !== null}
       onClick={() => onSelect(choice.key)}
       className={
-        "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer"
+        "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer"
       }
       style={{
         backgroundColor: getBackgroundColor(

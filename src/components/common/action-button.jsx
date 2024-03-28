@@ -72,7 +72,7 @@ const ActionButtons = ({
 
       {closeDetails && (
         <div
-          className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 h-10 w-10 relative overflow-hidden gap-2.5 rounded-[20px] bg-[#d9d9d9] "
+          className="flex flex-col justify-start items-center h-10 w-10 relative overflow-hidden gap-2.5 rounded-[20px] bg-[#d9d9d9] "
           title={"text-edit"}
           onClick={() => setCloseOrOpen(!closeOrOpen)}
         >
@@ -83,7 +83,7 @@ const ActionButtons = ({
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              class="flex-grow-0 flex-shrink-0 w-6 h-6 absolute left-2 top-2"
+              class="w-6 h-6 absolute left-2 top-2"
               preserveAspectRatio="none"
             >
               <path d="M19 12.998H5V10.998H19V12.998Z" fill="#14130A"></path>
@@ -95,7 +95,7 @@ const ActionButtons = ({
               viewBox="0 0 24 25"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              class="flex-grow-0 flex-shrink-0 w-6 h-6 absolute left-2 top-2"
+              class="w-6 h-6 absolute left-2 top-2"
               preserveAspectRatio="none"
             >
               <path

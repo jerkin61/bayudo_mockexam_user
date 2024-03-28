@@ -5,14 +5,15 @@ import Alert from "../../ui/alert";
 import { useAnswerExamMutation } from "@data/answer/use-answer.mutation";
 import { useUpdateAnswerExamMutation } from "@data/answer/use-update-answer.mutation";
 import { usePerAnswerQuery } from "@data/answer/use-per-answer.query";
+import { useRouter } from "next/router";
 const classes = {
-  root: "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
+  root: "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   normal:
-    "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
+    "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   correct:
-    "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[green] cursor-pointer",
+    "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[green] cursor-pointer",
   wrong:
-    "flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[red] cursor-pointer",
+    "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[red] cursor-pointer",
 };
 const PerMainQuestion = ({
   completeExam,
@@ -34,7 +35,7 @@ const PerMainQuestion = ({
   const [selectedKey, setSelectedKey] = React.useState(null);
   const [rightOrWrong, setRightOrWrong] = React.useState(null);
   const [idx, setIdx] = React.useState("");
-
+  const router = useRouter();
   const { mutateAsync: answerExam, isLoading: answerExamLoading } =
     useAnswerExamMutation();
   const { mutateAsync: updateAnswerExam, isLoading: updateAnswerExamLoading } =
@@ -67,6 +68,9 @@ const PerMainQuestion = ({
   useEffect(() => {
     if (data) setSelectedKey(data.user_answer);
   }, [data]);
+  useEffect(() => {
+    if (locked && selectedKey) checkAnswer();
+  }, [selectedKey]);
   const classesName = cn(
     classes.root,
     {
@@ -87,18 +91,19 @@ const PerMainQuestion = ({
 
   const completeExamButtonTrigger = () => {
     completeExam();
+    router.push("/my-exams");
   };
   console.log("questionLastPage", questionLastPage);
   const isFirstCheck = isFirst === "0-0";
   const isLastCheck = isFirst === `${questionLastPage - 1}-0`;
   if (answerIsLoading) return <div>Per Main Question Loading</div>;
   return (
-    <div class="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full">
-      <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[15px]">
-        <div class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 gap-2.5">
-          <div class="flex flex-col align-center w-full self-stretch flex-grow-0 flex-shrink-0 relative gap-2.5 px-5 py-2.5 rounded-[5px]">
+    <div class="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll">
+      <div class="flex flex-col justify-start items-center self-stretch gap-[15px]">
+        <div class="flex flex-col justify-start items-start self-stretch gap-2.5">
+          <div class="flex flex-col align-center w-full self-stretch relative gap-2.5 px-5 py-2.5 rounded-[5px]">
             <span
-              class="w-full self-stretch flex-grow-0 flex-shrink-0 w-[324px] text-base font-semibold text-center text-white"
+              class="w-full self-stretch w-[324px] text-base font-semibold text-center text-white"
               dangerouslySetInnerHTML={{
                 __html:
                   question.exam_category.category_name +
@@ -108,7 +113,7 @@ const PerMainQuestion = ({
             />
           </div>
         </div>
-        <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[15px] py-2.5">
+        <div class="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5">
           {choices &&
             JSON.parse(choices).map((choice) => (
               <PerChoiceContainer
@@ -151,19 +156,29 @@ const PerMainQuestion = ({
           >
             {"Next page"}
           </button>
-          {/* <button
-            class=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
-            onClick={checkAnswer}
-          >
-            {"Check"}
-          </button> */}
+          {/* {locked && (
+            <button
+              class=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
+              onClick={checkAnswer}
+            >
+              {"Check"}
+            </button>
+          )} */}
         </div>
-        {!lastPage && (
+        {!lastPage && !locked && (
           <button
             onClick={completeExamButtonTrigger}
             className="last-page-button hidden mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
           >
             Complete Exam
+          </button>
+        )}
+        {!lastPage && locked && (
+          <button
+            onClick={completeExamButtonTrigger}
+            className="last-page-button hidden  w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
+          >
+            End of review
           </button>
         )}
         {errorMsg && (

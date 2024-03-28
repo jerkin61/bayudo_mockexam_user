@@ -16,6 +16,7 @@ import { useQuestionQuery } from "@data/question/use-question.query";
 import { useTranslation } from "react-i18next";
 import { Waypoint } from "react-waypoint";
 import PerRandomQuestion from "./per-random-question";
+import PageLoader from "../../ui/page-loader";
 // import { Waypoint } from "react-scroll";
 
 const QuestionList = () => {
@@ -91,7 +92,7 @@ const QuestionList = () => {
   const handleVideoRef = (index) => (ref) => {
     videoRefs.current[index] = ref;
   };
-  if (loading && !data?.pages?.length) return <div>Loader</div>;
+  if (loading && !data?.pages?.length) return <PageLoader />;
 
   return (
     <div

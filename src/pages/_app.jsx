@@ -31,6 +31,7 @@ import { SearchProvider } from "@contexts/search.context";
 import { appWithTranslation } from "next-i18next";
 import { useSession } from "next-auth/react";
 import { SessionProvider } from "next-auth/react";
+import PageLoader from "../components/ui/page-loader";
 
 const Noop = ({ children }) => <>{children}</>;
 
@@ -41,7 +42,7 @@ export const defaultReactQueryConfig = {
 
 const AppSettings = (props) => {
   const { data, isLoading: loading, error } = useSettingsQuery();
-  if (loading) return <div>Loader</div>;
+  if (loading) return <PageLoader />;
   if (error) return <div>Error:{error}</div>;
   return <SettingsProvider initialValue={data?.settings?.options} {...props} />;
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { getAuthCredentials, hasAccess } from "./auth-utils";
+import PageLoader from "../components/ui/page-loader";
 // import Loader from "@components/ui/loader/loader";
 
 const PrivateRoute = ({ children, authProps }) => {
@@ -24,7 +25,7 @@ const PrivateRoute = ({ children, authProps }) => {
   }
   // Session is being fetched, or no user.
   // If no user, useEffect() will redirect.
-  return <div>Loader </div>;
+  return <PageLoader />;
   // return <Loader showText={false} />;
 };
 
