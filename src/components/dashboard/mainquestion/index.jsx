@@ -89,7 +89,7 @@ const QuestionList = () => {
   if (loading && !data?.pages?.length) return <PageLoader />;
   return (
     <div
-      className="App bg-[#2e2f30] h-[100vh] overflow-hidden"
+      className="App bg-[#071B24] h-[100vh] overflow-hidden"
       id="scroll-container"
     >
       {data?.pages?.map((questions, pageIndex) => (
@@ -97,8 +97,8 @@ const QuestionList = () => {
           {" "}
           {data?.pages[0]?.data.length === 0 && (
             <div className="p-10">
-              <div class="flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white">
-                <p class="flex-grow w-[323px] text-base font-semibold text-center text-black">
+              <div className="flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white">
+                <p className="flex-grow w-[323px] text-base font-semibold text-center text-black">
                   No data here.
                 </p>
               </div>

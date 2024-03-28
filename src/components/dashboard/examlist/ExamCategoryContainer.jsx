@@ -71,42 +71,42 @@ const ExamCategoryContainer = ({ item, index, examName, examListId }) => {
     <div
       key={index}
       // onClick={() => openModal("SELECT_EXAMTYPE")}
-      class="flex flex-col justify-center items-center self-stretch relative gap-2.5 p-2.5 rounded-[5px] bg-[#e0ecf2] hover:bg-[#afc4cf]"
+      className="flex flex-col justify-center items-center self-stretch relative gap-2.5 p-2.5 rounded-[5px] bg-[#e0ecf2] hover:bg-[#afc4cf]"
     >
-      <div class="exam-category-container flex flex-col justify-center items-start flex-grow relative gap-2.5 w-[80%] w-full">
-        <p class="text-xl font-semibold text-left text-[#222]">
+      <div className="exam-category-container flex flex-col justify-center items-start flex-grow relative gap-2.5 w-[80%] w-full">
+        <p className="text-xl font-semibold text-left text-[#222]">
           {category_name}
         </p>
-        <div class="flex flex-col md:flex-row justify-start items-start self-stretch flex-col flex-shrink-0 relative gap-[50px]">
-          <div class="flex flex-col justify-start items-start relative gap-2.5">
-            <p class="w-[253px] text-[15px] text-left text-[#727272]">
-              <span class="w-[253px] text-[15px] font-bold text-left text-[#727272]">
+        <div className="flex flex-col md:flex-row justify-start items-start self-stretch flex-col flex-shrink-0 relative gap-[50px]">
+          <div className="flex flex-col justify-start items-start relative gap-2.5">
+            <p className="w-[253px] text-[15px] text-left text-[#727272]">
+              <span className="w-[253px] text-[15px] font-bold text-left text-[#727272]">
                 Quiz items:
               </span>
-              <span class="w-[253px] text-[15px] text-left text-[#727272]">
+              <span className="w-[253px] text-[15px] text-left text-[#727272]">
                 {items_count}
               </span>
               <br />
-              <span class="w-[253px] text-[15px] font-bold text-left text-[#727272]">
+              <span className="w-[253px] text-[15px] font-bold text-left text-[#727272]">
                 Time limit:
               </span>
-              <span class="w-[253px] text-[15px] text-left text-[#727272]">
+              <span className="w-[253px] text-[15px] text-left text-[#727272]">
                 {time_limit}
               </span>
               <br />
-              <span class="w-[253px] text-[15px] font-bold text-left text-[#727272]">
+              <span className="w-[253px] text-[15px] font-bold text-left text-[#727272]">
                 Per Item:
               </span>
-              <span class="w-[253px] text-[15px] text-left text-[#727272]">
+              <span className="w-[253px] text-[15px] text-left text-[#727272]">
                 {time_limit_per_item}
               </span>
             </p>
-            <p class="text-[11px] font-bold text-left text-[#727272]">
+            <p className="text-[11px] font-bold text-left text-[#727272]">
               Date added: {dayjs(created_at).format("MMMM D, YYYY")}
             </p>
           </div>
-          <p class="flex-grow text-[15px] text-left text-[#727272]">
-            <span class="flex-grow text-[15px] font-bold text-left text-[#727272]">
+          <p className="flex-grow text-[15px] text-left text-[#727272]">
+            <span className="flex-grow text-[15px] font-bold text-left text-[#727272]">
               Description:
             </span>
             <span

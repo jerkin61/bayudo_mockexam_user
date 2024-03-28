@@ -246,7 +246,7 @@ div.App {
 }
 
 /* page loader */
-/* HTML: <div class="loader"></div> */
+/* HTML: <div className="loader"></div> */
 .loader {
   display: inline-flex;
   gap: 5px;

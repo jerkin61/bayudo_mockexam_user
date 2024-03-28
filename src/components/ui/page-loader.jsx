@@ -8,7 +8,7 @@ const PageLoader = () => {
       }
     >
       <div className="flex relative "></div>
-      <div class="loader -mt-20"></div>;
+      <div className="loader -mt-20"></div>;
     </div>
   );
 };

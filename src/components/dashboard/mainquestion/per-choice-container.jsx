@@ -60,7 +60,7 @@ const PerChoiceContainer = ({
             viewBox="0 0 32 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="flex-grow-0 flex-shrink-0"
+            className="flex-grow-0 flex-shrink-0"
             preserveAspectRatio="xMidYMid meet"
           >
             <circle
@@ -78,7 +78,7 @@ const PerChoiceContainer = ({
             viewBox="0 0 32 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="flex-grow-0 flex-shrink-0"
+            className="flex-grow-0 flex-shrink-0"
             preserveAspectRatio="xMidYMid meet"
           >
             <circle cx="16" cy="16" r="16" fill="#D9D9D9"></circle>

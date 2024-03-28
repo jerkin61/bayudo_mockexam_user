@@ -83,7 +83,7 @@ const ActionButtons = ({
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 absolute left-2 top-2"
+              className="w-6 h-6 absolute left-2 top-2"
               preserveAspectRatio="none"
             >
               <path d="M19 12.998H5V10.998H19V12.998Z" fill="#14130A"></path>
@@ -95,7 +95,7 @@ const ActionButtons = ({
               viewBox="0 0 24 25"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 absolute left-2 top-2"
+              className="w-6 h-6 absolute left-2 top-2"
               preserveAspectRatio="none"
             >
               <path

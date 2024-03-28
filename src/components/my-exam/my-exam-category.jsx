@@ -14,17 +14,17 @@ const MyExamCategory = ({ data }) => {
     exam_category_id,
   } = data;
   return (
-    <div class="self-stretch text-[15px] text-left text-[#727272] flex flex-col gap-2 w-full gap-[20px]">
-      <span class="self-stretch text-[15px] font-bold text-left text-[#727272]">
+    <div className="self-stretch text-[15px] text-left text-[#727272] flex flex-col gap-2 w-full gap-[20px]">
+      <span className="self-stretch text-[15px] font-bold text-left text-[#727272]">
         Exam Category: {exam_category.category_name}
       </span>
-      <span class="self-stretch text-[15px] text-left text-[#727272]">
+      <span className="self-stretch text-[15px] text-left text-[#727272]">
         Exam result / items: {exam_result} / {number_of_items}
       </span>
-      <span class="self-stretch text-[15px] italic text-left text-[#727272]">
+      <span className="self-stretch text-[15px] italic text-left text-[#727272]">
         Percentage: {exam_percentage} %
       </span>
-      <span class="self-stretch flex flex-row text-[15px] gap-[10px] text-left text-[#727272]">
+      <span className="self-stretch flex flex-row text-[15px] gap-[10px] text-left text-[#727272]">
         <Link
           href={`/maintest/question/${exam_taken_id}/${id}/${exam_category_id}/show-question?completed=true`}
         >
@@ -37,7 +37,7 @@ const MyExamCategory = ({ data }) => {
               viewBox="0 0 24 25"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 relative"
+              className="w-6 h-6 relative"
               preserveAspectRatio="none"
             >
               <path

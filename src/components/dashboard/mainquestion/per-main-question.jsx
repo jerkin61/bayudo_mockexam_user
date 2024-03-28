@@ -98,12 +98,12 @@ const PerMainQuestion = ({
   const isLastCheck = isFirst === `${questionLastPage - 1}-0`;
   if (answerIsLoading) return <div>Per Main Question Loading</div>;
   return (
-    <div class="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll">
-      <div class="flex flex-col justify-start items-center self-stretch gap-[15px]">
-        <div class="flex flex-col justify-start items-start self-stretch gap-2.5">
-          <div class="flex flex-col align-center w-full self-stretch relative gap-2.5 px-5 py-2.5 rounded-[5px]">
+    <div className="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll">
+      <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
+        <div className="flex flex-col justify-start items-start self-stretch gap-2.5">
+          <div className="flex flex-col align-center w-full self-stretch relative gap-2.5 px-5 py-2.5 rounded-[5px]">
             <span
-              class="w-full self-stretch w-[324px] text-base font-semibold text-center text-white"
+              className="w-full self-stretch w-[324px] text-base font-semibold text-center text-white"
               dangerouslySetInnerHTML={{
                 __html:
                   question.exam_category.category_name +
@@ -113,7 +113,7 @@ const PerMainQuestion = ({
             />
           </div>
         </div>
-        <div class="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5">
+        <div className="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5">
           {choices &&
             JSON.parse(choices).map((choice) => (
               <PerChoiceContainer
@@ -132,11 +132,11 @@ const PerMainQuestion = ({
               />
             ))}{" "}
         </div>{" "}
-        <div class="flex flex-row w-full self-stretch gap-[20px]">
+        <div className="flex flex-row w-full self-stretch gap-[20px]">
           {" "}
           <button
             disabled={isFirstCheck}
-            class=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
+            className=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
             onClick={previousPageScroll}
             style={{
               opacity: isFirstCheck ? 0.5 : 1,
@@ -147,7 +147,7 @@ const PerMainQuestion = ({
           </button>{" "}
           <button
             disabled={isLastCheck}
-            class=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
+            className=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
             onClick={nextPageScroll}
             style={{
               opacity: isLastCheck ? 0.5 : 1,
@@ -158,7 +158,7 @@ const PerMainQuestion = ({
           </button>
           {/* {locked && (
             <button
-              class=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
+              className=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
               onClick={checkAnswer}
             >
               {"Check"}

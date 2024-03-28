@@ -39,9 +39,9 @@ export default function Dashboard({}) {
         {/* <BakeryCategory /> */}
         <main className="flex-1">
           <div className="bg-gray-100 min-h-full lg:p-8">
-            <div class="flex flex-col justify-start items-start self-stretch flex-grow gap-2.5 px-[15px] py-2.5 rounded-[5px] bg-[#f1f9ff]">
-              <div class="flex flex-col justify-start items-center self-stretch gap-[15px]">
-                <div class="flex flex-col justify-start items-center self-stretch h-[598px] gap-[15px]">
+            <div className="flex flex-col justify-start items-start self-stretch flex-grow gap-2.5 px-[15px] py-2.5 rounded-[5px] bg-[#f1f9ff]">
+              <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
+                <div className="flex flex-col justify-start items-center self-stretch h-[598px] gap-[15px]">
                   <ExamListContainer />
                 </div>
               </div>

@@ -16,10 +16,10 @@ export default function UpdateExamListPage() {
   if (loading) return <PageLoader />;
   return (
     <>
-      <div class="flex flex-col justify-center items-start w-full overflow-hidden gap-[30px] p-[30px] rounded-[5px] bg-white">
-        <div class="flex flex-col justify-center items-center self-stretch gap-2.5 p-5 bg-[#afc4cf]">
-          <div class="flex justify-center items-center relative gap-2.5">
-            <p class="text-xl font-bold text-left text-[#222]">
+      <div className="flex flex-col justify-center items-start w-full overflow-hidden gap-[30px] p-[30px] rounded-[5px] bg-white">
+        <div className="flex flex-col justify-center items-center self-stretch gap-2.5 p-5 bg-[#afc4cf]">
+          <div className="flex justify-center items-center relative gap-2.5">
+            <p className="text-xl font-bold text-left text-[#222]">
               Add Examination
             </p>
           </div>

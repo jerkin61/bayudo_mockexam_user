@@ -15,8 +15,8 @@ export default function Dashboard() {
   if (loading) return <PageLoader />;
   return (
     <>
-      <div class="flex flex-col justify-start items-center self-stretch gap-[15px]">
-        <div class="flex flex-col justify-start items-center self-stretch h-[90vh] gap-[15px]">
+      <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
+        <div className="flex flex-col justify-start items-center self-stretch h-[90vh] gap-[15px]">
           <div className="main-container w-full h-full overflow-scroll">
             {data?.examlist?.data.map((item, index) => (
               <ExamMainContainer key={index} item={item} />

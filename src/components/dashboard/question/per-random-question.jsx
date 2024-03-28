@@ -51,20 +51,20 @@ const PerRandomQuestion = ({
   };
   return (
     <div
-      class="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll"
+      className="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll"
       ref={(ref) => {
         videoRef.current = ref;
         setVideoRef(ref);
       }}
     >
-      <div class="flex flex-col justify-start items-center self-stretch gap-[15px]">
-        <div class="flex flex-col justify-start items-start self-stretch gap-2.5">
-          <div class="flex flex-col align-center w-full self-stretch relative gap-2.5 px-5 py-2.5 rounded-[5px]">
+      <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
+        <div className="flex flex-col justify-start items-start self-stretch gap-2.5">
+          <div className="flex flex-col align-center w-full self-stretch relative gap-2.5 px-5 py-2.5 rounded-[5px]">
             {/* <span className="text-white text-bold">
               {question.exam_category.category_name}
             </span> */}
             <span
-              class="w-full self-stretch w-[324px] text-base font-semibold text-center text-white"
+              className="w-full self-stretch w-[324px] text-base font-semibold text-center text-white"
               dangerouslySetInnerHTML={{
                 __html:
                   question.exam_category.category_name +
@@ -74,7 +74,7 @@ const PerRandomQuestion = ({
             />
           </div>
         </div>
-        <div class="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5">
+        <div className="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5">
           {choices &&
             JSON.parse(choices).map((choice) => (
               <PerChoiceContainer
@@ -99,7 +99,7 @@ const PerRandomQuestion = ({
         </div>{" "}
         {selectedKey && (
           <button
-            class=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
+            className=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
             onClick={rightOrWrong === null ? checkAnswer : nextPageScroll}
           >
             {rightOrWrong === null ? "Confirm" : "Next page"}

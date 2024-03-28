@@ -96,7 +96,7 @@ const QuestionList = () => {
 
   return (
     <div
-      className="App bg-[#2e2f30] h-[100vh] overflow-hidden"
+      className="App bg-[#071B24] h-[100vh] overflow-hidden"
       id="scroll-container"
     >
       {data?.pages?.map((questions, pageIndex) => (

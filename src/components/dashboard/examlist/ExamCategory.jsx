@@ -6,7 +6,7 @@ const ExamCategory = ({ examCategory, examListId, examName }) => {
     <div className="w-full flex flex-col gap-5">
       {" "}
       {!examCategory.length && (
-        <div class="flex justify-center items-center self-stretch relative gap-2.5 p-2.5 rounded-[5px] bg-[#e0ecf2]">
+        <div className="flex justify-center items-center self-stretch relative gap-2.5 p-2.5 rounded-[5px] bg-[#e0ecf2]">
           No category assigned
         </div>
       )}
