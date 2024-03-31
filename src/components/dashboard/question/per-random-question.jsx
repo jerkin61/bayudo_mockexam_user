@@ -11,6 +11,7 @@ import {
   scrollSpy,
   scroller,
 } from "react-scroll";
+import { useModalAction } from "../../ui/modal/modal.context";
 const classes = {
   root: "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   normal:
@@ -26,7 +27,8 @@ const PerRandomQuestion = ({
   className,
   nextPageScroll,
 }) => {
-  const { choices } = question;
+  const { openModal } = useModalAction();
+  const { choices, explanation } = question;
   const [errorMsg, setErrorMsg] = React.useState("");
   const [alertType, setAlertType] = React.useState("");
   const [selectedKey, setSelectedKey] = React.useState(null);
@@ -103,6 +105,14 @@ const PerRandomQuestion = ({
             onClick={rightOrWrong === null ? checkAnswer : nextPageScroll}
           >
             {rightOrWrong === null ? "Confirm" : "Next page"}
+          </button>
+        )}{" "}
+        {errorMsg && (
+          <button
+            className=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
+            onClick={() => openModal("CHECK_EXPLANATION", { explanation })}
+          >
+            Check explanation
           </button>
         )}{" "}
         {/* <button className="bg-[red] h-[10px]" onClick={nextPageScroll}>

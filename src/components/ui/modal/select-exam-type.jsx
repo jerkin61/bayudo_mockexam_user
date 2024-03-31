@@ -16,8 +16,7 @@ const SelectExamType = ({ data }) => {
     time_limit_per_item,
     id,
   } = item;
-  console.log("examTaken", item);
-  console.log("examTaken", id);
+
   const {
     mutateAsync: craeteExamCategory,
     isLoading: craeteExamCategoryLoading,
@@ -25,7 +24,6 @@ const SelectExamType = ({ data }) => {
   const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
     usePerExamCategoryTaken(id);
 
-  console.log("dataPerExamCategoryaaaa", dataPerExamCategory);
   const exam_category_id = dataPerExamCategory?.id;
   const confirmStartTest = () => {
     const payload = {
@@ -73,13 +71,9 @@ const SelectExamType = ({ data }) => {
                   <p className="self-stretch w-full text-xl font-semibold text-left text-[#222]">
                     Welcome to your exam
                   </p>
-                  <p className="self-stretch w-full text-xl text-left text-[#222]">
-                    <span className="self-stretch w-full text-xl text-left text-[#222]">
-                      Examination instructions:{" "}
-                    </span>
-                    <br />
-                    {instruction}
-                  </p>
+
+                  <div dangerouslySetInnerHTML={{ __html: instruction }} />
+
                   <p className="self-stretch w-full text-[11px] font-bold text-left text-[#727272]">
                     Date Finished: 7/24/2002
                   </p>

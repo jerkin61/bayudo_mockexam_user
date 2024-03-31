@@ -6,6 +6,7 @@ import { useAnswerExamMutation } from "@data/answer/use-answer.mutation";
 import { useUpdateAnswerExamMutation } from "@data/answer/use-update-answer.mutation";
 import { usePerAnswerQuery } from "@data/answer/use-per-answer.query";
 import { useRouter } from "next/router";
+import PageLoader from "../../ui/page-loader";
 const classes = {
   root: "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   normal:
@@ -17,6 +18,8 @@ const classes = {
 };
 const PerMainQuestion = ({
   completeExam,
+  updateExamCategoryLoading,
+  checkCompleted,
   questionLastPage,
   lastPage,
   examCategoryTaken,
@@ -35,15 +38,17 @@ const PerMainQuestion = ({
   const [selectedKey, setSelectedKey] = React.useState(null);
   const [rightOrWrong, setRightOrWrong] = React.useState(null);
   const [idx, setIdx] = React.useState("");
+  const [showComplate, setShowComplete] = React.useState(true);
   const router = useRouter();
   const { mutateAsync: answerExam, isLoading: answerExamLoading } =
     useAnswerExamMutation();
   const { mutateAsync: updateAnswerExam, isLoading: updateAnswerExamLoading } =
     useUpdateAnswerExamMutation();
-  const { data, isLoading: answerIsLoading } =
-    usePerAnswerQuery(questionNumber);
+  const { data, isLoading: answerIsLoading } = usePerAnswerQuery({
+    id: questionNumber,
+    examCategoryTaken,
+  });
 
-  console.log("data", data);
   const onSelectKey = (key) => {
     setSelectedKey(key);
     const payload = {
@@ -86,6 +91,7 @@ const PerMainQuestion = ({
       setRightOrWrong(thisAnswer);
       setAlertType(thisAnswer ? "success" : "error");
       setErrorMsg(thisAnswer ? "Youre correct" : "Youre wrong");
+      setShowComplete(false);
     }
   };
 
@@ -93,10 +99,10 @@ const PerMainQuestion = ({
     completeExam();
     router.push("/my-exams");
   };
-  console.log("questionLastPage", questionLastPage);
-  const isFirstCheck = isFirst === "0-0";
-  const isLastCheck = isFirst === `${questionLastPage - 1}-0`;
-  if (answerIsLoading) return <div>Per Main Question Loading</div>;
+  const creatingData = answerExamLoading || updateAnswerExamLoading;
+  const isFirstCheck = isFirst === "0-0" || creatingData;
+  const isLastCheck = isFirst === `${questionLastPage - 1}-0` || creatingData;
+  if (answerIsLoading) return <PageLoader />;
   return (
     <div className="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll">
       <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
@@ -107,7 +113,7 @@ const PerMainQuestion = ({
               dangerouslySetInnerHTML={{
                 __html:
                   question.exam_category.category_name +
-                  ":" +
+                  ": " +
                   question.question,
               }}
             />
@@ -156,24 +162,21 @@ const PerMainQuestion = ({
           >
             {"Next page"}
           </button>
-          {/* {locked && (
-            <button
-              className=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
-              onClick={checkAnswer}
-            >
-              {"Check"}
-            </button>
-          )} */}
         </div>
         {!lastPage && !locked && (
           <button
+            disabled={updateExamCategoryLoading}
             onClick={completeExamButtonTrigger}
             className="last-page-button hidden mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
+            style={{
+              opacity: updateExamCategoryLoading ? 0.5 : 1,
+              cursor: updateExamCategoryLoading && "not-allowed",
+            }}
           >
             Complete Exam
           </button>
         )}
-        {!lastPage && locked && (
+        {!lastPage && locked && !showComplate && (
           <button
             onClick={completeExamButtonTrigger}
             className="last-page-button hidden  w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"

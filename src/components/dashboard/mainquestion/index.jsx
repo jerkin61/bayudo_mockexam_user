@@ -43,9 +43,12 @@ const QuestionList = () => {
     isLoading: updateExamCategoryLoading,
   } = useUpdateExamCategoryTakenMutation();
 
-  const completeExam = () => {
+  const completeExam = async () => {
     setLocked(true);
-    updateExamCategory({ id: router?.query.exam_category_id });
+    await updateExamCategory({
+      id: router?.query.exam_category_id,
+      completed: true,
+    });
   };
   if (isError && error) return <dvi>Error</dvi>;
   function handleLoadMore() {
@@ -117,6 +120,7 @@ const QuestionList = () => {
                   <Waypoint onEnter={handleLoadMore} fireOnRapidScroll />
                 )}
                 <PerMainQuestion
+                  updateExamCategoryLoading={updateExamCategoryLoading}
                   checkCompleted={checkCompleted}
                   examCategoryTaken={router?.query.exam_category_id}
                   isFirst={`${pageIndex}-${questionIndex}`}

@@ -35,10 +35,8 @@ const ExamCategoryContainer = ({ item, index, examName, examListId }) => {
   // 		"pass": 0,
   // 		"exam_result": 432,
   // 		"exam_percentage": 0.2,
-  console.log("dataPerExamCategory", examListId);
   const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
     usePerExamTaken(examListId);
-  console.log("itemmmm", dataPerExamCategory);
   const confirmCreateExamTaken = () => {
     const payload = {
       user_id: 6,
@@ -127,7 +125,11 @@ const ExamCategoryContainer = ({ item, index, examName, examListId }) => {
         <NextLink href={`/question/${id}/show-question`}>
           <Button type="normal"> Random Questions </Button>
         </NextLink>{" "}
-        <Button onClick={confirmCreateExamTaken} type="normal">
+        <Button
+          disabled={!exam_id}
+          onClick={confirmCreateExamTaken}
+          type="normal"
+        >
           {" "}
           Take test{" "}
         </Button>

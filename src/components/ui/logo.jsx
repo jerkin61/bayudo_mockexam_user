@@ -3,6 +3,7 @@ import Link from "@components/ui/link";
 import cn from "classnames";
 import { siteSettings } from "@settings/site.settings";
 import { useSettings } from "@contexts/settings.context";
+import { useRouter } from "next/router";
 
 const Logo = ({ className, ...props }) => {
   const { logo, siteTitle } = useSettings();
