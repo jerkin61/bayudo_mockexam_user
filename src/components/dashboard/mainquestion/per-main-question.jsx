@@ -62,7 +62,6 @@ const PerMainQuestion = ({
     if (!data && !idx)
       answerExam(payload, {
         onSuccess: async ({ id }) => {
-          // console.log("data", data);
           setIdx(id);
         },
       });
@@ -121,22 +120,24 @@ const PerMainQuestion = ({
         </div>
         <div className="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5">
           {choices &&
-            JSON.parse(choices).map((choice) => (
-              <PerChoiceContainer
-                locked={locked}
-                isLoading={answerExamLoading || updateAnswerExamLoading}
-                classesName={classesName}
-                choice={choice}
-                key={choice.key}
-                rightAnswer={question.right_ans}
-                className={className}
-                type={choice.key === choice.right_ans}
-                selected={selectedKey === choice.key}
-                setRightOrWrong={setRightOrWrong}
-                rightOrWrong={rightOrWrong}
-                onSelect={onSelectKey}
-              />
-            ))}{" "}
+            JSON.parse(choices)
+              .sort((a, b) => a.key.localeCompare(b.key))
+              .map((choice) => (
+                <PerChoiceContainer
+                  locked={locked}
+                  isLoading={answerExamLoading || updateAnswerExamLoading}
+                  classesName={classesName}
+                  choice={choice}
+                  key={choice.key}
+                  rightAnswer={question.right_ans}
+                  className={className}
+                  type={choice.key === choice.right_ans}
+                  selected={selectedKey === choice.key}
+                  setRightOrWrong={setRightOrWrong}
+                  rightOrWrong={rightOrWrong}
+                  onSelect={onSelectKey}
+                />
+              ))}{" "}
         </div>{" "}
         <div className="flex flex-row w-full self-stretch gap-[20px]">
           {" "}

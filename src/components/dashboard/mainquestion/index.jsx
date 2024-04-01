@@ -37,7 +37,7 @@ const QuestionList = () => {
     // text: query?.text,
     // category: query?.category ,
   });
-
+  console.log("router?.query.exam_category_id", router?.query.exam_category_id);
   const {
     mutateAsync: updateExamCategory,
     isLoading: updateExamCategoryLoading,
@@ -46,6 +46,7 @@ const QuestionList = () => {
   const completeExam = async () => {
     setLocked(true);
     await updateExamCategory({
+      exam_category_id: router?.question_id,
       id: router?.query.exam_category_id,
       completed: true,
     });
@@ -65,24 +66,19 @@ const QuestionList = () => {
       setCurrPage(currPage + 1);
     }
     const scrollContainer = document.getElementById("scroll-container");
-    if (!scrollContainer) return; // If element not found, exit the function
-
-    // Calculate the distance to scroll
+    if (!scrollContainer) return;
     const scrollDistance = scrollContainer.clientHeight;
     scrollContainer.scrollBy({
       top: scrollDistance,
-      behavior: "smooth", // Optional: smooth scrolling effect
+      behavior: "smooth",
     });
   };
 
   const previousPageScroll = () => {
     setCurrPage(currPage - 1);
     const scrollContainer = document.getElementById("scroll-container");
-    if (!scrollContainer) return; // If element not found, exit the function
-
-    // Calculate the distance to scroll
+    if (!scrollContainer) return;
     const scrollDistance = -scrollContainer.clientHeight;
-
     scrollContainer.scrollBy({
       top: scrollDistance,
       behavior: "smooth",

@@ -38,7 +38,7 @@ const SelectExamType = ({ data }) => {
     craeteExamCategory(payload, {
       onSuccess: async ({ id: examCategoryId }) => {
         await router.push(
-          `/maintest/question/${examTaken}/${exam_category_id}/${examCategoryId}/show-question?completed=no`
+          `/maintest/question/${examTaken}/${examCategoryId}/${id}/show-question`
         );
       },
       onError: ({ response }) => {
@@ -81,8 +81,6 @@ const SelectExamType = ({ data }) => {
               </div>
             </div>
           </div>
-          {/* <div className="flex justify-between items-end self-stretch p-2.5 rounded-[5px] bg-white"> */}
-          {/* <NextLink href={`/maintest/question/${id}/show-question`}> */}
           <div className="flex flex-row gap-[10px] w-full justify-between">
             <Button type="normal" onClick={confirmResumeTest}>
               {" "}
@@ -93,8 +91,6 @@ const SelectExamType = ({ data }) => {
               Start the exam{" "}
             </Button>
           </div>
-          {/* </NextLink>{" "} */}
-          {/* </div> */}
         </div>
       </div>
     </div>
