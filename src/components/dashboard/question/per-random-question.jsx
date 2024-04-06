@@ -2,6 +2,7 @@ import React from "react";
 import PerChoiceContainer from "./per-choice-container";
 import cn from "classnames";
 import Alert from "../../ui/alert";
+import { usePerExaminee } from "@data/examinee/use-per-examinee.query";
 import {
   Link,
   DirectLink,
@@ -27,6 +28,7 @@ const PerRandomQuestion = ({
   className,
   nextPageScroll,
 }) => {
+  const { data: me, loading: meLoading } = usePerExaminee();
   const { openModal } = useModalAction();
   const { choices, explanation } = question;
   const [errorMsg, setErrorMsg] = React.useState("");
@@ -51,6 +53,9 @@ const PerRandomQuestion = ({
       setErrorMsg(thisAnswer ? "Youre correct" : "Youre wrong");
     }
   };
+  const showFeedbackModal = () => {
+    openModal("QUESTION_FEEDBACK", { question, me });
+  };
   return (
     <div
       className="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll"
@@ -61,6 +66,29 @@ const PerRandomQuestion = ({
     >
       <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
         <div className="flex flex-col justify-start items-start self-stretch gap-2.5">
+          <div className="w-full h-6">
+            {errorMsg && (
+              <span
+                className="relative flex flex-end justify-end"
+                onClick={showFeedbackModal}
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="flex-grow-0 flex-shrink-0 w-6 h-6 relative"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M11 7H13V9H11V7ZM11 11H13V17H11V11ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
+                    fill="#CCCCCC"
+                  ></path>
+                </svg>
+              </span>
+            )}
+          </div>
           <div className="flex flex-col align-center w-full self-stretch relative gap-2.5 px-5 py-2.5 rounded-[5px]">
             {/* <span className="text-white text-bold">
               {question.exam_category.category_name}

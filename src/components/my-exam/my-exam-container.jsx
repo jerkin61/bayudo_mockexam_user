@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "../ui/button";
-import { usePerExaminee } from "@data/examinee/use-per-examinee.query";
 import { useExamTakenQuery } from "@data/examtaken/use-examtaken.query";
 import MyExamTakenContainer from "./my-exam-taken-container";
 import { useRouter } from "next/router";
@@ -9,7 +8,6 @@ import PageLoader from "../ui/page-loader";
 const MyExamContainer = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [page, setPage] = React.useState(1);
-  const { data: me, loading: meLoading } = usePerExaminee();
   const { data, loading } = useExamTakenQuery({
     limit: 20,
     page,

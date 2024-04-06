@@ -13,6 +13,9 @@ const SelectExamType = dynamic(() =>
 const ExplanationModal = dynamic(() =>
   import("@components/ui/modal/explanation-modal")
 );
+const QuestionFeedbackModal = dynamic(() =>
+  import("@components/ui/modal/question-feedback-modal")
+);
 // const CreateOrUpdateAddressForm = dynamic(
 //   () => import("@components/address/address-form")
 // );
@@ -31,6 +34,7 @@ const ManagedModal = () => {
       {view === "FORGOT_VIEW" && <ForgotPassword />}
       {view === "SELECT_EXAMTYPE" && <SelectExamType data={data} />}
       {view === "CHECK_EXPLANATION" && <ExplanationModal data={data} />}
+      {view === "QUESTION_FEEDBACK" && <QuestionFeedbackModal data={data} />}
       {/*  {view === "ADD_OR_UPDATE_ADDRESS" && <CreateOrUpdateAddressForm />}
       {view === "DELETE_ADDRESS" && <AddressDeleteView />}
       {view === "PRODUCT_DETAILS" && (

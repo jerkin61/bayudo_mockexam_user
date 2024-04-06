@@ -48,7 +48,6 @@ const PerMainQuestion = ({
     id: questionNumber,
     examCategoryTaken,
   });
-
   const onSelectKey = (key) => {
     setSelectedKey(key);
     const payload = {
