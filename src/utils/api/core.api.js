@@ -33,6 +33,7 @@ export class CoreApi {
       shop_id,
       limit = 30,
       questionId,
+      random,
     } = params;
     const searchString = this.stringifySearchQuery({
       type,
@@ -42,7 +43,7 @@ export class CoreApi {
       shop_id,
       is_active,
     });
-    const queryString = `?search=${searchString}&searchJoin=and&limit=${limit}&question_id=${questionId}`;
+    const queryString = `?search=${searchString}&searchJoin=and&limit=${limit}&question_id=${questionId}&random=${random}`;
     return this.http.get(this._base_path + queryString);
   }
   findAll() {

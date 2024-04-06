@@ -170,7 +170,7 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
             quillClass=" bg-[#e0ecf2]"
           />
         </div>
-        <p className="self-stretch w-full text-[11px] font-bold text-left text-[#727272]">
+        <p className="self-stretch w-full text-[11px] font-bold text-left text-[#140d0d]">
           Add choice value first then add the choice key (a, b, c .. you can add
           up till j)
         </p>
@@ -348,7 +348,10 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
       </div>
       <div class="flex flex-col justify-center items-end self-stretch flex-grow-0 flex-shrink-0 gap-2.5">
         <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[312px] gap-10 p-2.5 rounded-[5px] bg-white">
-          <div class="flex justify-center items-center flex-grow relative overflow-hidden gap-2.5 px-5 py-2.5 bg-[#41b2f3]">
+          <div
+            onClick={closeModal}
+            class="flex justify-center items-center flex-grow relative overflow-hidden gap-2.5 px-5 py-2.5 bg-[#41b2f3]"
+          >
             <p class="flex-grow-0 flex-shrink-0 text-base font-semibold text-center text-white">
               Cancel
             </p>
@@ -360,12 +363,6 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
             >
               Submit
             </Button>
-            {/* <button
-              type="submit"
-              class="flex-grow-0 flex-shrink-0 text-base font-semibold text-center text-white"
-            >
-              Submit
-            </button> */}
           </div>
         </div>
       </div>

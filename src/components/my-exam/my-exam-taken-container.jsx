@@ -28,28 +28,28 @@ const MyExamTakenContainer = ({ data }) => {
         {/* <p className="self-stretch w-[323px] text-xl font-semibold text-left text-[#222]">
           Taken: 1st
         </p> */}
-        <p className="self-stretch w-[323px] text-[15px] text-left text-[#727272]">
-          <span className="self-stretch w-[323px] text-[15px] font-bold text-left text-[#727272]">
+        <p className="self-stretch w-[323px] text-[15px] text-left text-[#140d0d]">
+          <span className="self-stretch w-[323px] text-[15px] font-bold text-left text-[#140d0d]">
             Exam Result
           </span>
-          <span className="self-stretch w-[323px] text-[15px] text-left text-[#727272]">
+          <span className="self-stretch w-[323px] text-[15px] text-left text-[#140d0d]">
             : {totalExamResult + " / " + totalNumberOfItems}
           </span>
         </p>{" "}
-        <p className="self-stretch w-[323px] text-[15px] text-left text-[#727272]">
-          <span className="self-stretch w-[323px] text-[15px] italic text-left text-[#727272]">
+        <p className="self-stretch w-[323px] text-[15px] text-left text-[#140d0d]">
+          <span className="self-stretch w-[323px] text-[15px] italic text-left text-[#140d0d]">
             {" "}
-            <span className="self-stretch w-[323px] text-[15px] font-bold text-left text-[#727272]">
+            <span className="self-stretch w-[323px] text-[15px] font-bold text-left text-[#140d0d]">
               Exam Percentage
             </span>
             : {(totalExamResult / totalNumberOfItems).toFixed(2) * 100}%{" "}
           </span>
-          <span className="self-stretch w-[323px] text-[15px] text-left text-[#727272]"></span>
+          <span className="self-stretch w-[323px] text-[15px] text-left text-[#140d0d]"></span>
         </p>
         {exam_category_taken?.map((data) => (
           <MyExamCategory data={data} />
         ))}
-        <p className="self-stretch w-[323px] text-[11px] font-bold text-left text-[#727272]">
+        <p className="self-stretch w-[323px] text-[11px] font-bold text-left text-[#140d0d]">
           {dayjs(updated_at).format("MMMM D, YYYY")}
         </p>
       </div>

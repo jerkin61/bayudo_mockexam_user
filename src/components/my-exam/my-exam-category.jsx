@@ -5,6 +5,7 @@ import Button from "../ui/button";
 const MyExamCategory = ({ data }) => {
   console.log("MyExamCategory", data);
   const {
+    completed,
     exam_category,
     exam_taken_id,
     number_of_items,
@@ -14,23 +15,26 @@ const MyExamCategory = ({ data }) => {
     exam_category_id,
   } = data;
   return (
-    <div className="self-stretch text-[15px] text-left text-[#727272] flex flex-col gap-2 w-full gap-[20px]">
-      <span className="self-stretch text-[15px] font-bold text-left text-[#727272]">
+    <div className="p-4 self-stretch text-[15px] text-left text-[#140d0d] flex flex-col gap-2 w-full gap-[20px] border border-l-5 border-gray-400">
+      <span className="self-stretch text-[15px] font-bold text-left text-[#140d0d]">
         Exam Category: {exam_category.category_name}
       </span>
-      <span className="self-stretch text-[15px] text-left text-[#727272]">
+      <span className="self-stretch text-[15px] text-left text-[#140d0d]">
         Exam result / items: {exam_result} / {number_of_items}
       </span>
-      <span className="self-stretch text-[15px] italic text-left text-[#727272]">
+      <span className="self-stretch text-[15px] text-left text-[#140d0d]">
+        Status: {completed ? "Completed" : "Not completed"}
+      </span>
+      <span className="self-stretch text-[15px] italic text-left text-[#140d0d]">
         Percentage: {exam_percentage} %
       </span>
-      <span className="self-stretch flex flex-row text-[15px] gap-[10px] text-left text-[#727272]">
+      <span className="self-stretch flex flex-row text-[15px] gap-[10px] text-left text-[#140d0d]">
         <Link
           href={`/maintest/question/${exam_taken_id}/${id}/${exam_category_id}/show-question?completed=true`}
         >
           <Button className="flex flex-row gap-3">
             {" "}
-            <p>Review Exam</p>{" "}
+            <p>{completed ? "Review Exam" : "Continue Exam"}</p>{" "}
             <svg
               width="24"
               height="25"

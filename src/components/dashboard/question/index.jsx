@@ -36,6 +36,7 @@ const QuestionList = () => {
     questionId: router?.query.questionId,
     // text: query?.text,
     // category: query?.category ,
+    random: 1,
   });
   if (isError && error) return <dvi>Error</dvi>;
   function handleLoadMore() {

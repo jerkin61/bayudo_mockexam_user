@@ -36,7 +36,7 @@ const ExamMainContainer = ({ item, index }) => {
       key={index}
       className="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5"
     >
-      <div className="flex flex-col justify-center items-start self-stretch overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white hover:bg-[#41b2f3]/50">
+      <div className="flex flex-col justify-center items-start self-stretch overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white hover:bg-[#41b2f3]/50 border-[2px]">
         <div className="flex justify-center items-center self-stretch relative gap-2.5 px-2.5">
           <div
             className="flex flex-col justify-start items-center h-10 w-10 relative overflow-hidden gap-2.5 rounded-[20px] bg-[#d9d9d9] "
@@ -78,24 +78,24 @@ const ExamMainContainer = ({ item, index }) => {
             <p className="text-xl font-semibold text-left text-[#222]">
               {name}
             </p>
-            <p className="text-[15px] text-left text-[#727272]">
-              <span className="text-[15px] text-left text-[#727272]">
+            <p className="text-[15px] text-left text-[#140d0d]">
+              <span className="text-[15px] text-left text-[#140d0d]">
                 Quiz items: {number_of_items}
               </span>
               <br />
-              <span className="text-[15px] text-left text-[#727272]">
+              <span className="text-[15px] text-left text-[#140d0d]">
                 Time limit: {total_time_limit_hours}
               </span>
               <br />
-              <span className="text-[15px] text-left text-[#727272]">
+              <span className="text-[15px] text-left text-[#140d0d]">
                 Categories : 5
               </span>{" "}
               <br />
-              <span className="text-[15px] text-left text-[#727272]">
+              <span className="text-[15px] text-left text-[#140d0d]">
                 Passing Rate : {passing_rate}
               </span>
             </p>
-            <p className="text-[11px] font-bold text-left text-[#727272]">
+            <p className="text-[11px] font-bold text-left text-[#140d0d]">
               Date added: {dayjs(created_at).format("MMMM D, YYYY")}
             </p>
           </div>

@@ -2,7 +2,7 @@ import { usePerQuestionFeedbackQueryByQuestionId } from "@data/question-feedback
 import CreateQuestionFeedback from "../../dashboard/question/CreateQuestionFeedback";
 import { usePerExaminee } from "@data/examinee/use-per-examinee.query";
 
-const QuestionFeedbackModal = ({ data }) => {
+const QuestionFeedbackModal = ({ data, closeModal }) => {
   const { question } = data;
   const { id } = question;
   console.log("ssssss", question);
@@ -28,7 +28,7 @@ const QuestionFeedbackModal = ({ data }) => {
               <div className="flex justify-start items-start self-stretch gap-2.5 rounded-[5px] bg-white overflow-scroll h-full w-full">
                 <div className="flex flex-col justify-center items-start flex-grow relative gap-2.5">
                   {" "}
-                  <div className="p-5 self-stretch w-full text-2 font-bold text-left text-[#727272]">
+                  <div className="p-5 self-stretch w-full text-2 font-bold text-left text-[#140d0d]">
                     Please suggest edit here if you think that the answer is
                     incorrect. We will update it as soon as possible and notify
                     you regarding the update. We appreciate your support and
@@ -38,7 +38,7 @@ const QuestionFeedbackModal = ({ data }) => {
                     initialValues={questionFeedbackData}
                     question={question}
                   />
-                  <p className="self-stretch w-full text-[11px] font-bold text-left text-[#727272]">
+                  <p className="self-stretch w-full text-[11px] font-bold text-left text-[#140d0d]">
                     Date Finished: 7/24/2002
                   </p>
                 </div>

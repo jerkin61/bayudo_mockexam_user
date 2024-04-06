@@ -2,24 +2,24 @@ import { useRouter } from "next/router";
 import React, { useState, useEffect, Fragment, useRef } from "react";
 import { Element, animateScroll as scroll } from "react-scroll";
 import { useQuestionQuery } from "@data/question/use-question.query";
-
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { Waypoint } from "react-waypoint";
 import PerMainQuestion from "./per-main-question";
 // import { Waypoint } from "react-scroll";
 import { useUpdateExamCategoryTakenMutation } from "@data/examcategorytaken/use-update-examcategorytaken.mutation";
 import PageLoader from "../../ui/page-loader";
-
+import { usePerExamCategoryTaken } from "@data/examcategorytaken/use-per-examcategorytaken.query";
 const QuestionList = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const limit = 1;
   const [triggered, setTriggered] = React.useState(false);
   const [currPage, setCurrPage] = React.useState(1);
+
   const checkCompleted =
     !router?.query.completed === "true" ||
     router?.query.completed === undefined;
-  const [locked, setLocked] = React.useState(checkCompleted ? false : true);
 
   const {
     isFetching: loading,
@@ -34,22 +34,39 @@ const QuestionList = () => {
     // type: "bakery",
     limit,
     questionId: router?.query.questionId,
+    random: 1,
     // text: query?.text,
     // category: query?.category ,
   });
+  const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
+    usePerExamCategoryTaken(router?.query.questionId);
+  const [locked, setLocked] = React.useState(false);
   console.log("router?.query.exam_category_id", router?.query.exam_category_id);
+  console.log("dataPerExamCategory", dataPerExamCategory);
   const {
     mutateAsync: updateExamCategory,
     isLoading: updateExamCategoryLoading,
   } = useUpdateExamCategoryTakenMutation();
-
+  React.useEffect(() => {
+    if (dataPerExamCategory) dataPerExamCategory.completed && setLocked(true);
+  }, [dataPerExamCategory]);
   const completeExam = async () => {
-    setLocked(true);
-    await updateExamCategory({
-      exam_category_id: router?.question_id,
-      id: router?.query.exam_category_id,
-      completed: true,
-    });
+    await updateExamCategory(
+      {
+        exam_category_id: router?.question_id,
+        id: router?.query.exam_category_id,
+        payload: { completed: 1 },
+      },
+      {
+        onSuccess: () => {
+          setLocked(true);
+          router.push("/my-exams");
+        },
+        onError: () => {
+          toast.error("Error update exam category taken.");
+        },
+      }
+    );
   };
   if (isError && error) return <dvi>Error</dvi>;
   function handleLoadMore() {
@@ -85,7 +102,9 @@ const QuestionList = () => {
     });
   };
   console.log("data", data);
-  if (loading && !data?.pages?.length) return <PageLoader />;
+  if (loading && dataPerExamCategoryLoading && !data?.pages?.length)
+    return <PageLoader />;
+
   return (
     <div
       className="App bg-[#071B24] h-[100vh] overflow-hidden"

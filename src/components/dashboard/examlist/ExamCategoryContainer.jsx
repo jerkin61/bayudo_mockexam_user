@@ -7,6 +7,7 @@ import { useModalAction } from "../../ui/modal/modal.context";
 import Button from "../../ui/button";
 import { useExamTakenMutation } from "@data/examtaken/use-examtaken.mutation";
 import { usePerExamTaken } from "@data/examtaken/use-per-examtaken.query";
+import PageLoader from "../../ui/page-loader";
 
 const ExamCategoryContainer = ({ item, index, examName, examListId }) => {
   const { openModal } = useModalAction();
@@ -25,18 +26,12 @@ const ExamCategoryContainer = ({ item, index, examName, examListId }) => {
   const { mutateAsync: craeteExamTaken, isLoading: craeteExamTakenLoading } =
     useExamTakenMutation();
 
-  // "id": 1,
-  // 		"user_id": 6,
-  // 		"exam_id": 3,
-  // 		"take": 1,
-  // 		"time_done": "2024-03-24 16:23:23",
-  // 		"time_started": "2024-03-24 16:23:23",
-  // 		"number_of_items": 132,
-  // 		"pass": 0,
-  // 		"exam_result": 432,
-  // 		"exam_percentage": 0.2,
   const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
     usePerExamTaken(examListId);
+
+  console.log("dataPerExamCategory", dataPerExamCategory);
+  console.log("item", item);
+  console.log("!dataPerExamCategory", !dataPerExamCategory);
   const confirmCreateExamTaken = () => {
     const payload = {
       user_id: 6,
@@ -47,24 +42,23 @@ const ExamCategoryContainer = ({ item, index, examName, examListId }) => {
       exam_percentage: 0,
       number_of_items: 20,
     };
-    craeteExamTaken(payload, {
-      onSuccess: async ({ id: examTaken }) => {
-        openModal("SELECT_EXAMTYPE", { examTaken, item, examName });
-
-        // await router.push(
-        //   `/maintest/question/${examTaken}/${examCategoryId}/show-question`
-        // );
-      },
-      onError: ({ response }) => {
-        openModal("SELECT_EXAMTYPE", {
-          examTaken: dataPerExamCategory?.id,
-          item,
-          examName,
-        });
-      },
-    });
+    if (!dataPerExamCategory) {
+      console.log("craeteExamTaken");
+      craeteExamTaken(payload, {
+        onSuccess: async ({ id: examTaken }) => {
+          openModal("SELECT_EXAMTYPE", { examTaken, item, examName });
+        },
+      });
+    } else {
+      openModal("SELECT_EXAMTYPE", {
+        examTaken: dataPerExamCategory?.id,
+        item,
+        examName,
+      });
+    }
   };
   const router = useRouter();
+  if (dataPerExamCategoryLoading) return <PageLoader />;
   return (
     <div
       key={index}
@@ -77,38 +71,38 @@ const ExamCategoryContainer = ({ item, index, examName, examListId }) => {
         </p>
         <div className="flex flex-col md:flex-row justify-start items-start self-stretch flex-col flex-shrink-0 relative gap-[50px]">
           <div className="flex flex-col justify-start items-start relative gap-2.5">
-            <p className="w-[253px] text-[15px] text-left text-[#727272]">
-              <span className="w-[253px] text-[15px] font-bold text-left text-[#727272]">
+            <p className="w-[253px] text-[15px] text-left text-[#140d0d]">
+              <span className="w-[253px] text-[15px] font-bold text-left text-[#140d0d]">
                 Quiz items:
               </span>
-              <span className="w-[253px] text-[15px] text-left text-[#727272]">
+              <span className="w-[253px] text-[15px] text-left text-[#140d0d]">
                 {items_count}
               </span>
               <br />
-              <span className="w-[253px] text-[15px] font-bold text-left text-[#727272]">
+              <span className="w-[253px] text-[15px] font-bold text-left text-[#140d0d]">
                 Time limit:
               </span>
-              <span className="w-[253px] text-[15px] text-left text-[#727272]">
+              <span className="w-[253px] text-[15px] text-left text-[#140d0d]">
                 {time_limit}
               </span>
               <br />
-              <span className="w-[253px] text-[15px] font-bold text-left text-[#727272]">
+              <span className="w-[253px] text-[15px] font-bold text-left text-[#140d0d]">
                 Per Item:
               </span>
-              <span className="w-[253px] text-[15px] text-left text-[#727272]">
+              <span className="w-[253px] text-[15px] text-left text-[#140d0d]">
                 {time_limit_per_item}
               </span>
             </p>
-            <p className="text-[11px] font-bold text-left text-[#727272]">
+            <p className="text-[11px] font-bold text-left text-[#140d0d]">
               Date added: {dayjs(created_at).format("MMMM D, YYYY")}
             </p>
           </div>
-          <p className="flex-grow text-[15px] text-left text-[#727272]">
-            <span className="flex-grow text-[15px] font-bold text-left text-[#727272]">
+          <p className="flex-grow text-[15px] text-left text-[#140d0d]">
+            <span className="flex-grow text-[15px] font-bold text-left text-[#140d0d]">
               Description:
             </span>
             <span
-              className="flex-grow text-[15px] text-left text-[#727272] wrap"
+              className="flex-grow text-[15px] text-left text-[#140d0d] wrap"
               dangerouslySetInnerHTML={{ __html: description }}
             />
           </p>

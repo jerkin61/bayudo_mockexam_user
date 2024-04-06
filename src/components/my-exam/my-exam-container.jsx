@@ -12,6 +12,7 @@ const MyExamContainer = () => {
     limit: 20,
     page,
     text: searchTerm,
+    completed: true,
   });
   const { query } = useRouter();
   console.log("me", query?.text);
@@ -31,7 +32,7 @@ const MyExamContainer = () => {
 
           <div className="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5">
             {data &&
-              data?.data.map((data) => <MyExamTakenContainer data={data} />)}
+              data?.data?.map((data) => <MyExamTakenContainer data={data} />)}
           </div>
         </div>
       </div>

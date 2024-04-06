@@ -5,17 +5,10 @@ import { usePerExamCategoryTaken } from "@data/examcategorytaken/use-per-examcat
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 const SelectExamType = ({ data }) => {
+  console.log("daaatttaa", data);
   const router = useRouter();
   const { item, examName, examTaken } = data;
-  const {
-    exam_id,
-    category_name,
-    updated_at,
-    items_count,
-    instruction,
-    time_limit_per_item,
-    id,
-  } = item;
+  const { category_name, items_count, instruction, id } = item;
 
   const {
     mutateAsync: craeteExamCategory,
@@ -74,7 +67,7 @@ const SelectExamType = ({ data }) => {
 
                   <div dangerouslySetInnerHTML={{ __html: instruction }} />
 
-                  <p className="self-stretch w-full text-[11px] font-bold text-left text-[#727272]">
+                  <p className="self-stretch w-full text-[11px] font-bold text-left text-[#140d0d]">
                     Date Finished: 7/24/2002
                   </p>
                 </div>
@@ -82,11 +75,19 @@ const SelectExamType = ({ data }) => {
             </div>
           </div>
           <div className="flex flex-row gap-[10px] w-full justify-between">
-            <Button type="normal" onClick={confirmResumeTest}>
+            <Button
+              disabled={!dataPerExamCategory}
+              type="normal"
+              onClick={confirmResumeTest}
+            >
               {" "}
               Resume Exam{" "}
             </Button>{" "}
-            <Button type="normal" onClick={confirmStartTest}>
+            <Button
+              type="normal"
+              disabled={dataPerExamCategory}
+              onClick={confirmStartTest}
+            >
               {" "}
               Start the exam{" "}
             </Button>

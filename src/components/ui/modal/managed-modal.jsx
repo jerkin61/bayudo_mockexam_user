@@ -34,7 +34,9 @@ const ManagedModal = () => {
       {view === "FORGOT_VIEW" && <ForgotPassword />}
       {view === "SELECT_EXAMTYPE" && <SelectExamType data={data} />}
       {view === "CHECK_EXPLANATION" && <ExplanationModal data={data} />}
-      {view === "QUESTION_FEEDBACK" && <QuestionFeedbackModal data={data} />}
+      {view === "QUESTION_FEEDBACK" && (
+        <QuestionFeedbackModal data={data} closeModal={closeModal} />
+      )}
       {/*  {view === "ADD_OR_UPDATE_ADDRESS" && <CreateOrUpdateAddressForm />}
       {view === "DELETE_ADDRESS" && <AddressDeleteView />}
       {view === "PRODUCT_DETAILS" && (
