@@ -11,7 +11,7 @@ const initialState = {
   displayModalStickyBar: false,
 };
 const token = Cookies.get("auth_token");
-const permissions = Cookies.get("auth_permissions");
+export const permissions = Cookies.get("auth_permissions");
 
 export const UIContext = React.createContext(initialState);
 

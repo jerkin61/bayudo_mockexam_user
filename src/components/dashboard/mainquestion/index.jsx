@@ -30,19 +30,26 @@ const QuestionList = () => {
     data,
     error,
     lastPage: questionLastPage,
-  } = useQuestionQuery({
-    // type: "bakery",
-    limit,
-    questionId: router?.query.questionId,
-    random: 1,
-    // text: query?.text,
-    // category: query?.category ,
-  });
+  } = useQuestionQuery(
+    {
+      // type: "bakery",
+      limit,
+      questionId: router?.query.questionId,
+      random: 1,
+      // text: query?.text,
+      // category: query?.category ,
+    },
+    {
+      onSuccess: (data) => {
+        console.log(data);
+        if (data.pages.length === 1) fetchNextPage();
+      },
+    }
+  );
   const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
     usePerExamCategoryTaken(router?.query.questionId);
   const [locked, setLocked] = React.useState(false);
-  console.log("router?.query.exam_category_id", router?.query.exam_category_id);
-  console.log("dataPerExamCategory", dataPerExamCategory);
+
   const {
     mutateAsync: updateExamCategory,
     isLoading: updateExamCategoryLoading,
@@ -71,7 +78,7 @@ const QuestionList = () => {
   if (isError && error) return <dvi>Error</dvi>;
   function handleLoadMore() {
     if (!triggered) {
-      fetchNextPage();
+      // fetchNextPage();
       setTriggered(true);
     }
   }
@@ -131,9 +138,9 @@ const QuestionList = () => {
                 key={`element-${pageIndex}-${questionIndex}`}
               >
                 {" "}
-                {hasNextPage && (
+                {/* {hasNextPage && (
                   <Waypoint onEnter={handleLoadMore} fireOnRapidScroll />
-                )}
+                )} */}
                 <PerMainQuestion
                   updateExamCategoryLoading={updateExamCategoryLoading}
                   checkCompleted={checkCompleted}
@@ -147,7 +154,7 @@ const QuestionList = () => {
                   loadingMore={loadingMore}
                   hasNextPage={hasNextPage}
                   lastPage={moreDataAvailable}
-                  questionLastPage={data?.pages.length}
+                  questionLastPage={questionLastPage}
                   completeExam={completeExam}
                   locked={locked}
                 />{" "}

@@ -3,25 +3,21 @@ import React, { useState, useEffect, Fragment, useRef } from "react";
 import { render } from "react-dom";
 import { motion } from "framer-motion";
 import Button from "@components/ui/button";
-import {
-  Link,
-  DirectLink,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
+import { Element, animateScroll as scroll } from "react-scroll";
 import { useQuestionQuery } from "@data/question/use-question.query";
 import { useTranslation } from "react-i18next";
 import { Waypoint } from "react-waypoint";
 import PerRandomQuestion from "./per-random-question";
 import PageLoader from "../../ui/page-loader";
-// import { Waypoint } from "react-scroll";
+
+import { permissions } from "../../../contexts/ui.context";
 
 const QuestionList = () => {
+  // const { permissions, token } = getAuthCredentials();
+
   const { t } = useTranslation();
   const router = useRouter();
+
   const {
     isFetching: loading,
     isFetchingNextPage: loadingMore,
@@ -30,49 +26,42 @@ const QuestionList = () => {
     isError,
     data,
     error,
-  } = useQuestionQuery({
-    // type: "bakery",
-    limit: 20,
-    questionId: router?.query.questionId,
-    // text: query?.text,
-    // category: query?.category ,
-    random: 1,
-  });
+  } = useQuestionQuery(
+    {
+      limit: 1,
+      questionId: router?.query.questionId,
+      random: 1,
+    },
+    { onError: () => fetchNextPage() }
+  );
   if (isError && error) return <dvi>Error</dvi>;
   function handleLoadMore() {
     fetchNextPage();
   }
   const scrollToNextElement = () => {
     const scrollContainer = document.getElementById("scroll-container");
-    if (!scrollContainer) return; // If element not found, exit the function
+    if (!scrollContainer) return;
 
-    // Calculate the distance to scroll
     const scrollDistance = scrollContainer.clientHeight;
 
-    // Scroll the element by the calculated distance
     scrollContainer.scrollBy({
       top: scrollDistance,
-      behavior: "smooth", // Optional: smooth scrolling effect
+      behavior: "smooth",
     });
   };
   const videoRefs = useRef([]);
-
   useEffect(() => {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 1, // Adjust this value to change the scroll trigger point
+      threshold: 1,
     };
 
-    // This function handles the intersection of videos
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // const videoElement = entry.target;
-          // videoElement.play();
         } else {
           const videoElement = entry.target;
-          // videoElement.pause();
         }
       });
     };
@@ -82,14 +71,11 @@ const QuestionList = () => {
       observerOptions
     );
 
-    // We observe each video reference to trigger play/pause
-    // We disconnect the observer when the component is unmounted
     return () => {
       observer.disconnect();
     };
   }, [data]);
 
-  // This function handles the reference of each video
   const handleVideoRef = (index) => (ref) => {
     videoRefs.current[index] = ref;
   };
@@ -110,8 +96,10 @@ const QuestionList = () => {
               key={`element-${pageIndex}-${questionIndex}`}
             >
               {" "}
-              {hasNextPage && <Waypoint onEnter={handleLoadMore} />}
+              {/* {hasNextPage && <Waypoint onEnter={handleLoadMore} />} */}
               <PerRandomQuestion
+                loadingMore={loadingMore}
+                handleLoadMore={handleLoadMore}
                 nextPageScroll={scrollToNextElement}
                 key={`question-${pageIndex}-${questionIndex}`}
                 question={question}

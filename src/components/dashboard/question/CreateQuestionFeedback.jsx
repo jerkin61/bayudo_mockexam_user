@@ -54,14 +54,13 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
         },
         {
           onSuccess: () => {
+            queryClient.invalidateQueries(["question-feedback"]);
             closeModal();
             toast.success("Suggestion are updated. Thanks for your input.");
           },
         },
         {
-          onSettled: () => {
-            queryClient.invalidateQueries(["question-feedback"]);
-          },
+          onSettled: () => {},
         }
       );
     } else {

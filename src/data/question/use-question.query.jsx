@@ -49,6 +49,7 @@ const useQuestionQuery = (params, options) => {
   return useInfiniteQuery(["question", params], fetchQuestion, {
     ...options,
     getNextPageParam: ({ paginatorInfo }) => paginatorInfo.nextPageUrl,
+    staleTime: Infinity,
   });
 };
 

@@ -3,16 +3,14 @@ import PerChoiceContainer from "./per-choice-container";
 import cn from "classnames";
 import Alert from "../../ui/alert";
 import { usePerExaminee } from "@data/examinee/use-per-examinee.query";
-import {
-  Link,
-  DirectLink,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
 import { useModalAction } from "../../ui/modal/modal.context";
+import { usePerQuestionFeedbackQueryByQuestionId } from "@data/question-feedback/use-per-question-feedback.query";
+import {
+  // adminAndOwnerOnly,
+  getAuthCredentials,
+  // hasAccess,
+} from "@utils/auth-utils";
+import { permissions } from "../../../contexts/ui.context";
 const classes = {
   root: "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   normal:
@@ -27,14 +25,19 @@ const PerRandomQuestion = ({
   setVideoRef,
   className,
   nextPageScroll,
+  handleLoadMore,
+  loadingMore,
 }) => {
+  console.log("permissionspermissionspermissions", permissions);
   const { data: me, loading: meLoading } = usePerExaminee();
   const { openModal } = useModalAction();
-  const { choices, explanation } = question;
+  const { choices, explanation, id } = question;
   const [errorMsg, setErrorMsg] = React.useState("");
   const [alertType, setAlertType] = React.useState("");
   const [selectedKey, setSelectedKey] = React.useState(null);
   const videoRef = React.useRef(null);
+  const { data: questionFeedbackData, loading } =
+    usePerQuestionFeedbackQueryByQuestionId({ id });
   const [rightOrWrong, setRightOrWrong] = React.useState(null);
   const classesName = cn(
     classes.root,
@@ -46,6 +49,7 @@ const PerRandomQuestion = ({
     className
   );
   const checkAnswer = () => {
+    handleLoadMore();
     if (selectedKey) {
       const thisAnswer = selectedKey === question.right_ans;
       setRightOrWrong(thisAnswer);
@@ -54,8 +58,9 @@ const PerRandomQuestion = ({
     }
   };
   const showFeedbackModal = () => {
-    openModal("QUESTION_FEEDBACK", { question, me });
+    openModal("QUESTION_FEEDBACK", { question, questionFeedbackData, me });
   };
+
   return (
     <div
       className="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll"
@@ -68,6 +73,7 @@ const PerRandomQuestion = ({
         <div className="flex flex-col justify-start items-start self-stretch gap-2.5">
           <div className="w-full h-6">
             {errorMsg && (
+              // && permissions === "staff"
               <span
                 className="relative flex flex-end justify-end"
                 onClick={showFeedbackModal}
@@ -127,8 +133,10 @@ const PerRandomQuestion = ({
         </div>{" "}
         {selectedKey && (
           <button
+            disabled={loadingMore}
             className=" mt-6 w-full bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
             onClick={rightOrWrong === null ? checkAnswer : nextPageScroll}
+            style={{ cursor: loadingMore && "not-allowed" }}
           >
             {rightOrWrong === null ? "Confirm" : "Next page"}
           </button>
