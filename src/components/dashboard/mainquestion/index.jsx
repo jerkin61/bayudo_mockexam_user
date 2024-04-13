@@ -108,7 +108,6 @@ const QuestionList = () => {
       behavior: "smooth",
     });
   };
-  console.log("data", data);
   if (loading && dataPerExamCategoryLoading && !data?.pages?.length)
     return <PageLoader />;
 

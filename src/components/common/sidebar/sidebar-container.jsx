@@ -33,7 +33,6 @@ export default function SidebarContainer() {
       // }
       // useBlurBackdrop={true}
     >
-      {/* <div>None</div> */}
       {/* {sidebarView === "CART_VIEW" && <CartSidebarView />}
       {sidebarView === "FILTER_VIEW" && <MobileCategoryMenu />}
       {sidebarView === "FILTER_LAYOUT_TWO_VIEW" && <MobileCategoryBoxMenu />}

@@ -6,10 +6,7 @@ import PageLoader from "../page-loader";
 const QuestionFeedbackModal = ({ data, closeModal }) => {
   const { question, questionFeedbackData } = data;
   const { id } = question;
-  console.log(
-    "questionFeedbackDataquestionFeedbackDataquestionFeedbackData",
-    questionFeedbackData
-  );
+
   return (
     <div className="py-6 px-5 sm:p-8  w-screen md:max-w-md h-screen md:h-auto flex flex-col justify-center bg-[#f1f9ff]">
       <div className="flex flex-col justify-start items-start self-stretch flex-grow gap-2.5 px-[15px] py-2.5 rounded-[5px] bg-[#f1f9ff]">

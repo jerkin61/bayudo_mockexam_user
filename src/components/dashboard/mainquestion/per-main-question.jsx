@@ -10,6 +10,7 @@ import PageLoader from "../../ui/page-loader";
 import { usePerExaminee } from "@data/examinee/use-per-examinee.query";
 import { useModalAction } from "@components/ui/modal/modal.context";
 import { usePerQuestionFeedbackQueryByQuestionId } from "@data/question-feedback/use-per-question-feedback.query";
+import { permissions } from "../../../contexts/ui.context";
 const classes = {
   root: "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   normal:
@@ -102,7 +103,7 @@ const PerMainQuestion = ({
       setShowComplete(false);
     }
   };
-
+  console.log("permissions", permissions);
   const completeExamButtonTrigger = () => {
     completeExam();
   };
@@ -116,7 +117,7 @@ const PerMainQuestion = ({
         <div className="flex flex-col justify-start items-start self-stretch gap-2.5">
           {" "}
           <div className="w-full h-6">
-            {errorMsg && (
+            {errorMsg && permissions === "staff" && (
               <span
                 className="relative flex flex-end justify-end"
                 onClick={showFeedbackModal}

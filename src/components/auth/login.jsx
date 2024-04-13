@@ -116,15 +116,14 @@ const LoginForm = () => {
       </form>
       {/* End of forgot login form */}
 
-      <div className="flex flex-col items-center justify-center relative text-sm text-heading mt-8 sm:mt-11 mb-6 sm:mb-8">
+      {/* <div className="flex flex-col items-center justify-center relative text-sm text-heading mt-8 sm:mt-11 mb-6 sm:mb-8">
         <hr className="w-full" />
         <span className="absolute start-2/4 -top-2.5 px-2 -ms-4 bg-light">
           {t("text-or")}
         </span>
-      </div>
-
+      </div> */}
+      {/* 
       <div className="grid grid-cols-1 gap-4 mt-2">
-        {/* Uncomment below code to use facebook login */}
         <Button
           className="w-full !bg-social-facebook hover:!bg-social-facebook-hover"
           // loading={loading}
@@ -147,7 +146,7 @@ const LoginForm = () => {
           <GoogleIcon className="w-4 h-4 mr-3" />
           {t("text-login-google")}
         </Button>
-      </div>
+      </div> */}
 
       <div className="flex flex-col items-center justify-center relative text-sm text-heading mt-8 sm:mt-11 mb-6 sm:mb-8">
         <hr className="w-full" />

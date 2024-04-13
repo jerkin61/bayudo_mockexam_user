@@ -10,7 +10,7 @@ import {
   getAuthCredentials,
   // hasAccess,
 } from "@utils/auth-utils";
-import { permissions } from "../../../contexts/ui.context";
+import { permissions } from "../../../utils/is-loggedin";
 const classes = {
   root: "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   normal:
@@ -72,8 +72,7 @@ const PerRandomQuestion = ({
       <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
         <div className="flex flex-col justify-start items-start self-stretch gap-2.5">
           <div className="w-full h-6">
-            {errorMsg && (
-              // && permissions === "staff"
+            {errorMsg && permissions === "staff" && (
               <span
                 className="relative flex flex-end justify-end"
                 onClick={showFeedbackModal}
