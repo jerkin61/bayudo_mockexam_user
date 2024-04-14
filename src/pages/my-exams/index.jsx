@@ -15,8 +15,8 @@ export const sitePages = {
     description: "Bakery Details",
     banner: {
       heading: "heading-mocktest",
-      subheading: "subheading-bakery",
-      image: "/banner/bakery.png",
+      subheading: "subheading-mocktest",
+      image: "/banner/mockexam.png",
     },
   },
 };

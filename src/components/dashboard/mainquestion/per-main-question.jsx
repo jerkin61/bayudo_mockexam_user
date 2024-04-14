@@ -38,7 +38,7 @@ const PerMainQuestion = ({
 }) => {
   const { openModal } = useModalAction();
   const { data: me, loading: meLoading } = usePerExaminee();
-  const { choices, id, right_ans, explanation } = question;
+  const { choices, id, right_ans, reviewed, explanation } = question;
   const [errorMsg, setErrorMsg] = React.useState("");
   const [alertType, setAlertType] = React.useState("");
   const [selectedKey, setSelectedKey] = React.useState(null);
@@ -112,12 +112,12 @@ const PerMainQuestion = ({
   const isLastCheck = isFirst === `${questionLastPage - 1}-0` || creatingData;
   if (answerIsLoading) return <PageLoader />;
   return (
-    <div className="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll">
+    <div className="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll lg:mt-[70px]">
       <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
         <div className="flex flex-col justify-start items-start self-stretch gap-2.5">
           {" "}
           <div className="w-full h-6">
-            {errorMsg && permissions === "staff" && (
+            {errorMsg && !reviewed && permissions === "staff" && (
               <span
                 className="relative flex flex-end justify-end"
                 onClick={showFeedbackModal}

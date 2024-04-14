@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Button from "../ui/button";
+import dayjs from "dayjs";
 
 const MyExamCategory = ({ data }) => {
   console.log("MyExamCategory", data);
@@ -13,6 +14,7 @@ const MyExamCategory = ({ data }) => {
     exam_percentage,
     id,
     exam_category_id,
+    updated_at,
   } = data;
   return (
     <div className="p-4 self-stretch text-[15px] text-left text-[#140d0d] flex flex-col gap-2 w-full gap-[20px] border border-l-5 border-gray-400">
@@ -27,6 +29,10 @@ const MyExamCategory = ({ data }) => {
       </span>
       <span className="self-stretch text-[15px] italic text-left text-[#140d0d]">
         Percentage: {exam_percentage} %
+      </span>
+      <span className="self-stretch text-[15px] italic text-left text-[#140d0d]">
+        {completed ? "Completed" : "Updated"} on :{" "}
+        {dayjs(updated_at).format("MMMM D, YYYY")}
       </span>
       <span className="self-stretch flex flex-row text-[15px] gap-[10px] text-left text-[#140d0d]">
         <Link

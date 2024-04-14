@@ -15,7 +15,7 @@ export const sitePages = {
     banner: {
       heading: "heading-mocktest",
       subheading: "subheading-bakery",
-      image: "/banner/bakery.png",
+      image: "/banner/mockexam.png",
     },
   },
 };

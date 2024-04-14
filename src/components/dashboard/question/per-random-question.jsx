@@ -31,7 +31,7 @@ const PerRandomQuestion = ({
   console.log("permissionspermissionspermissions", permissions);
   const { data: me, loading: meLoading } = usePerExaminee();
   const { openModal } = useModalAction();
-  const { choices, explanation, id } = question;
+  const { choices, explanation, id, reviewed } = question;
   const [errorMsg, setErrorMsg] = React.useState("");
   const [alertType, setAlertType] = React.useState("");
   const [selectedKey, setSelectedKey] = React.useState(null);
@@ -48,6 +48,8 @@ const PerRandomQuestion = ({
     },
     className
   );
+
+  console.log("reviewed", reviewed);
   const checkAnswer = () => {
     handleLoadMore();
     if (selectedKey) {
@@ -63,7 +65,7 @@ const PerRandomQuestion = ({
 
   return (
     <div
-      className="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll"
+      className="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll lg:mt-[70px]"
       ref={(ref) => {
         videoRef.current = ref;
         setVideoRef(ref);
@@ -72,7 +74,7 @@ const PerRandomQuestion = ({
       <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
         <div className="flex flex-col justify-start items-start self-stretch gap-2.5">
           <div className="w-full h-6">
-            {errorMsg && permissions === "staff" && (
+            {errorMsg && !reviewed && permissions === "staff" && (
               <span
                 className="relative flex flex-end justify-end"
                 onClick={showFeedbackModal}

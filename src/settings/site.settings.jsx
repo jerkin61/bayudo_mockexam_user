@@ -64,7 +64,7 @@ export const siteSettings = {
   authorizedLinks: [
     // { href: "profile", label: "auth-menu-profile" },
     // { href: "checkout", label: "auth-menu-checkout" },
-    // { href: "order", label: "auth-menu-my-orders" },
+    { href: "my-exams", label: "auth-menu-my-exams" },
     { href: "logout", label: "auth-menu-logout" },
   ],
   dashboardSidebarMenu: [

@@ -44,10 +44,9 @@ const NavbarWithSearch = () => {
     >
       <nav
         className={cn(
-          "w-full h-14 md:h-16 lg:h-22 py-5 px-4 lg:px-8 flex justify-between items-center  top-0 end-0 z-20 transition-transform duration-300",
+          "w-full h-14 md:h-16 lg:h-22 py-5 px-4 lg:px-8 flex justify-between items-center  top-0 end-0 z-20 transition-transform duration-300 bg-light",
           {
-            "fixed bg-light lg:bg-transparent lg:absolute":
-              !displayHeaderSearch && hasType,
+            "fixed bg-light lg:absolute": !displayHeaderSearch && hasType,
             "is-sticky fixed bg-light shadow-sm":
               displayHeaderSearch || !hasType,
           }
@@ -84,7 +83,7 @@ const NavbarWithSearch = () => {
                 {/* <div>Search</div> */}
               </div>
             </div>
-            <ul className="hidden lg:flex items-center flex-shrink-0 space-s-10">
+            {/* <ul className="hidden lg:flex items-center flex-shrink-0 space-s-10">
               {siteSettings.headerLinks.map(({ href, label, icon }) => (
                 <li key={`${href}${label}`}>
                   <Link
@@ -105,7 +104,7 @@ const NavbarWithSearch = () => {
                   <JoinButton />
                 </li>
               )}
-            </ul>
+            </ul> */}
           </>
         )}
       </nav>

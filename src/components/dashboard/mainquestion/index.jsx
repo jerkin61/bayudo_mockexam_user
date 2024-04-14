@@ -35,7 +35,7 @@ const QuestionList = () => {
       // type: "bakery",
       limit,
       questionId: router?.query.questionId,
-      random: 1,
+      // random: 1,
       // text: query?.text,
       // category: query?.category ,
     },

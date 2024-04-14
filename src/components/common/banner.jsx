@@ -18,12 +18,12 @@ const Banner = ({ banner, className }) => {
       <div className="min-h-140 overflow-hidden -z-1">
         <Image
           alt={banner?.heading}
-          src={"/banner/grocery.png"}
+          src={"/banner/mockexam.jpg"}
           layout="fill"
-          objectFit="cover"
+          objectFit="fill"
         />
       </div>
-      <div className="p-5 mt-8 absolute inset-0 w-full flex flex-col items-center justify-center text-center">
+      <div className="p-5 mt-[8rem] absolute inset-0 w-full flex flex-col items-center justify-center text-center">
         <h1 className="text-4xl xl:text-5xl tracking-tight text-heading font-bold mb-5 xl:mb-8">
           {t(banner?.heading)}
         </h1>

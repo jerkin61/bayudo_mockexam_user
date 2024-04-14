@@ -9,7 +9,7 @@ export default function MobileAuthorizedMenu() {
   const router = useRouter();
   const { closeSidebar } = useUI();
   function handleClick(path) {
-    router.push(path);
+    router.push(`/${path}`);
     return closeSidebar();
   }
   return (

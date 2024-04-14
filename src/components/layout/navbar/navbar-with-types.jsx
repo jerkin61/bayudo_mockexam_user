@@ -78,7 +78,7 @@ const NavbarWithTypes = () => {
         >
           <Logo className="mx-auto lg:mx-0" />
           {/* <div> Logo</div> */}
-          <ul className="hidden lg:flex items-center flex-shrink-0 space-s-10">
+          {/* <ul className="hidden lg:flex items-center flex-shrink-0 space-s-10">
             {siteSettings.headerLinks?.map(({ href, icon, label }) => (
               <li key={`${href}${label}`}>
                 <Link
@@ -99,7 +99,7 @@ const NavbarWithTypes = () => {
                 <JoinButton />
               </li>
             )}
-          </ul>
+          </ul> */}
         </nav>
 
         <div className="flex items-center mx-auto w-full max-w-6xl space-x-6 h-20 md:h-24 px-5 overflow-x-auto">
