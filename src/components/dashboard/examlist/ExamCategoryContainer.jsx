@@ -9,7 +9,13 @@ import { useExamTakenMutation } from "@data/examtaken/use-examtaken.mutation";
 import { usePerExamTaken } from "@data/examtaken/use-per-examtaken.query";
 import PageLoader from "../../ui/page-loader";
 
-const ExamCategoryContainer = ({ item, index, examName, examListId }) => {
+const ExamCategoryContainer = ({
+  item,
+  index,
+  examName,
+  examListId,
+  userId,
+}) => {
   const { openModal } = useModalAction();
   const {
     id,
@@ -34,7 +40,7 @@ const ExamCategoryContainer = ({ item, index, examName, examListId }) => {
   console.log("!dataPerExamCategory", !dataPerExamCategory);
   const confirmCreateExamTaken = () => {
     const payload = {
-      user_id: 6,
+      user_id: userId,
       exam_id,
       take: 1,
       time_done: "2024-03-24 16:23:23",
@@ -108,12 +114,6 @@ const ExamCategoryContainer = ({ item, index, examName, examListId }) => {
           </p>
         </div>
       </div>
-
-      {/* <ActionButtons
-          id={id}
-          editUrl={`${router.asPath}/${examListId}/${id}/edit-category`}
-          deleteModalView="DELETE_EXAMCATEGORY"
-        /> */}
       <div className="w-full flex flex-row gap-1">
         {" "}
         <NextLink href={`/question/${id}/show-question`}>

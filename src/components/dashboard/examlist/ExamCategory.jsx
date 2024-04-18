@@ -1,7 +1,7 @@
 import React from "react";
 import ExamCategoryContainer from "./ExamCategoryContainer";
 
-const ExamCategory = ({ examCategory, examListId, examName }) => {
+const ExamCategory = ({ examCategory, examListId, examName, userId }) => {
   return (
     <div className="w-full flex flex-col gap-5">
       {" "}
@@ -13,6 +13,7 @@ const ExamCategory = ({ examCategory, examListId, examName }) => {
       {examCategory &&
         examCategory.map((item, index) => (
           <ExamCategoryContainer
+            userId={userId}
             examName={examName}
             item={item}
             index={index}

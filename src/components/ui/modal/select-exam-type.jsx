@@ -35,7 +35,8 @@ const SelectExamType = ({ data }) => {
         );
       },
       onError: ({ response }) => {
-        toast.error(response.data.exam_category_id[0]);
+        // toast.error(response.data.exam_category_id[0]);
+        toast.error("Something went wrong");
       },
     });
   };
@@ -85,7 +86,7 @@ const SelectExamType = ({ data }) => {
             </Button>{" "}
             <Button
               type="normal"
-              disabled={dataPerExamCategory}
+              disabled={dataPerExamCategoryLoading || dataPerExamCategory}
               onClick={confirmStartTest}
             >
               {" "}

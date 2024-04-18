@@ -13,6 +13,7 @@ import { useTranslation } from "next-i18next";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useModalAction } from "@components/ui/modal/modal.context";
+import { toast } from "react-toastify";
 
 const registerFormSchema = yup.object().shape({
   name: yup.string().required("error-name-required"),
@@ -31,13 +32,12 @@ const defaultValues = {
 
 const RegisterForm = () => {
   const { t } = useTranslation("common");
-  const { mutate, isLoading: loading } = useRegisterMutation();
+  const { mutateAsync, isLoading: loading } = useRegisterMutation();
   const [errorMsg, setErrorMsg] = useState("");
   const {
     register,
     handleSubmit,
     setError,
-
     formState: { errors },
   } = useForm({
     defaultValues,
@@ -50,12 +50,13 @@ const RegisterForm = () => {
     router.push(`/${path}`);
     closeModal();
   }
-  function onSubmit({ name, email, password }) {
-    mutate(
+  function onSubmit({ name, email, password, group_code }) {
+    mutateAsync(
       {
         name,
         email,
         password,
+        group_code,
       },
       {
         onSuccess: (data) => {
@@ -64,6 +65,7 @@ const RegisterForm = () => {
             Cookies.set("auth_permissions", data.permissions);
             authorize();
             closeModal();
+            router.reload();
             return;
           }
           if (!data.token) {
@@ -77,8 +79,9 @@ const RegisterForm = () => {
           Object.keys(data).forEach((field) => {
             setError(field, {
               type: "manual",
-              message: data[field][0],
+              message: data[field],
             });
+            toast.error(data[field]);
           });
         },
       }
@@ -138,6 +141,14 @@ const RegisterForm = () => {
           error={t(errors.password?.message)}
           variant="outline"
           className="mb-5"
+        />{" "}
+        <Input
+          label={"Group code"}
+          {...register("group_code")}
+          type="text"
+          variant="outline"
+          className="mb-5"
+          error={t(errors.group_code?.message)}
         />
         <div className="mt-8">
           <Button className="w-full h-12" loading={loading} disabled={loading}>

@@ -4,6 +4,7 @@ import { useExamTakenQuery } from "@data/examtaken/use-examtaken.query";
 import MyExamTakenContainer from "./my-exam-taken-container";
 import { useRouter } from "next/router";
 import PageLoader from "../ui/page-loader";
+import Card from "../common/card";
 
 const MyExamContainer = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -31,6 +32,7 @@ const MyExamContainer = () => {
           </div>
 
           <div className="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5">
+            {!data?.data.length && <Card>You have started an exam yet.</Card>}
             {data &&
               data?.data?.map((data) => <MyExamTakenContainer data={data} />)}
           </div>

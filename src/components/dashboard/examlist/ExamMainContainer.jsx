@@ -4,10 +4,10 @@ import ExamCategory from "./ExamCategory";
 import dayjs from "dayjs";
 import { useUI } from "@contexts/ui.context";
 import { useModalAction } from "@components/ui/modal/modal.context";
+import Card from "../../common/card";
 
-const ExamMainContainer = ({ item, index }) => {
-  const { openSidebar, setSidebarView, toggleMobileSearch, isAuthorize } =
-    useUI();
+const ExamMainContainer = ({ item, index, userId }) => {
+  const { isAuthorize } = useUI();
   const { openModal } = useModalAction();
   const [closeOrOpen, setCloseOrOpen] = useState(false);
   const {
@@ -20,7 +20,6 @@ const ExamMainContainer = ({ item, index }) => {
     exam_category,
   } = item;
 
-  console.log("ExamMainContainer", item);
   const router = useRouter();
   function handleAuthModal() {
     return openModal("LOGIN_VIEW");
@@ -108,6 +107,7 @@ const ExamMainContainer = ({ item, index }) => {
               </p>
             </div>
             <ExamCategory
+              userId={userId}
               examName={name}
               examListId={id}
               examCategory={exam_category}

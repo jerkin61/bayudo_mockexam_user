@@ -15,6 +15,7 @@ import * as yup from "yup";
 import { FacebookIcon } from "@components/icons/facebook";
 import { GoogleIcon } from "@components/icons/google";
 import { useModalAction } from "@components/ui/modal/modal.context";
+import { useRouter } from "next/router";
 
 const loginFormSchema = yup.object().shape({
   email: yup
@@ -34,6 +35,7 @@ const LoginForm = () => {
   const { mutate: login, isLoading: loading } = useLoginMutation();
   const [errorMsg, setErrorMsg] = useState("");
   const { authorize } = useUI();
+  const router = useRouter();
   const { openModal, closeModal } = useModalAction();
   const {
     register,
@@ -57,6 +59,7 @@ const LoginForm = () => {
             Cookies.set("auth_permissions", data.permissions);
             authorize();
             closeModal();
+            router.reload();
             return;
           }
           if (!data.token) {
@@ -73,7 +76,6 @@ const LoginForm = () => {
     <div className="py-6 px-5 sm:p-8 bg-light w-screen md:max-w-md h-screen md:h-auto flex flex-col justify-center">
       <div className="flex justify-center">
         <Logo />
-        {/* <div>Logo</div> */}
       </div>
       <p className="text-center text-sm md:text-base text-body mt-4 sm:mt-5 mb-8 sm:mb-10">
         {t("login-helper")}
@@ -104,6 +106,7 @@ const LoginForm = () => {
           className="mb-5"
           forgotPageRouteOnClick={() => openModal("FORGOT_VIEW")}
         />
+
         <div className="mt-8">
           <Button
             className="w-full h-11 sm:h-12"

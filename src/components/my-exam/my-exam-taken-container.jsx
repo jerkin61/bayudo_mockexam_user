@@ -25,9 +25,7 @@ const MyExamTakenContainer = ({ data }) => {
         <p className="self-stretch w-[323px] text-xl font-semibold text-left text-[#222]">
           {exam.name}
         </p>
-        {/* <p className="self-stretch w-[323px] text-xl font-semibold text-left text-[#222]">
-          Taken: 1st
-        </p> */}
+        |
         <p className="self-stretch w-[323px] text-[15px] text-left text-[#140d0d]">
           <span className="self-stretch w-[323px] text-[15px] font-bold text-left text-[#140d0d]">
             Exam Result
