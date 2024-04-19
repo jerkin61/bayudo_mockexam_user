@@ -40,7 +40,7 @@ const SelectExamType = ({ data }) => {
       },
     });
   };
-
+  console.log("dataPerExamCategory", dataPerExamCategory);
   const confirmResumeTest = () => {
     dataPerExamCategory &&
       router.push(
