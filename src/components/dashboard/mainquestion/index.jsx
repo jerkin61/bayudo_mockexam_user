@@ -75,6 +75,14 @@ const QuestionList = () => {
       }
     );
   };
+
+  const completeExamPerItem = async () => {
+    await updateExamCategory({
+      exam_category_id: router?.question_id,
+      id: router?.query.exam_category_id,
+    });
+  };
+
   if (isError && error) return <dvi>Error</dvi>;
   function handleLoadMore() {
     if (!triggered) {
@@ -87,6 +95,7 @@ const QuestionList = () => {
   const scrollToNextElement = () => {
     if (moreDataAvailable) {
       fetchNextPage();
+      completeExamPerItem();
       setCurrPage(currPage + 1);
     }
     const scrollContainer = document.getElementById("scroll-container");

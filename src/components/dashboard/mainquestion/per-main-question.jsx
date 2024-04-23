@@ -197,7 +197,7 @@ const PerMainQuestion = ({
               cursor: isLastCheck && "not-allowed",
             }}
           >
-            {"Next page"}
+            Next Page
           </button>
         </div>
         {!lastPage && !locked && (
