@@ -47,15 +47,19 @@ const QuestionList = () => {
     }
   );
   const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
-    usePerExamCategoryTaken(router?.query.questionId);
+    usePerExamCategoryTaken({ id: router?.query.exam_category_id });
+  // const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
+  //   usePerExamCategoryTaken({ id: router?.query.questionId });
   const [locked, setLocked] = React.useState(false);
 
   const {
     mutateAsync: updateExamCategory,
     isLoading: updateExamCategoryLoading,
   } = useUpdateExamCategoryTakenMutation();
+  console.log("dataPerExamCategory", dataPerExamCategory, "here");
   React.useEffect(() => {
-    if (dataPerExamCategory) dataPerExamCategory.completed && setLocked(true);
+    if (dataPerExamCategory)
+      dataPerExamCategory.completed === 1 && setLocked(true);
   }, [dataPerExamCategory]);
   const completeExam = async () => {
     await updateExamCategory(

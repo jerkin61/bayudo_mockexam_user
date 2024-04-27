@@ -11,6 +11,7 @@ import { usePerExaminee } from "@data/examinee/use-per-examinee.query";
 import { useModalAction } from "@components/ui/modal/modal.context";
 import { usePerQuestionFeedbackQueryByQuestionId } from "@data/question-feedback/use-per-question-feedback.query";
 import { permissions } from "../../../contexts/ui.context";
+import { sanitizeHTML } from "../../../utils/helper";
 const classes = {
   root: "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   normal:
@@ -103,7 +104,6 @@ const PerMainQuestion = ({
       setShowComplete(false);
     }
   };
-  console.log("permissions", permissions);
   const completeExamButtonTrigger = () => {
     completeExam();
   };
@@ -115,7 +115,7 @@ const PerMainQuestion = ({
   const isLastCheck = isFirst === `${questionLastPage - 1}-0` || creatingData;
   if (answerIsLoading) return <PageLoader />;
   return (
-    <div className="flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll lg:mt-[70px]">
+    <div className="per-main-question-container flex flex-col justify-between items-center p-[25px] h-full flex justify-center items-center h-full overflow-x-scroll lg:mt-[70px]">
       <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
         <div className="flex flex-col justify-start items-start self-stretch gap-2.5">
           {" "}
@@ -146,10 +146,11 @@ const PerMainQuestion = ({
             <span
               className="w-full self-stretch w-[324px] text-base font-semibold text-center text-white"
               dangerouslySetInnerHTML={{
-                __html:
+                __html: sanitizeHTML(
                   question.exam_category.category_name +
-                  ": " +
-                  question.question,
+                    ": " +
+                    question.question
+                ),
               }}
             />
           </div>

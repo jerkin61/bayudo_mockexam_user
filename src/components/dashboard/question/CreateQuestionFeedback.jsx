@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { useQueryClient } from "react-query";
 import { usePerExaminee } from "@data/examinee/use-per-examinee.query";
 import PageLoader from "../../ui/page-loader";
+import { sanitizeHTML } from "../../../utils/helper";
 
 const CreateQuestionFeedback = ({ initialValues, question }) => {
   const { closeModal } = useModalAction();
@@ -245,7 +246,9 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
                 <div class="flex flex-col justify-center items-start flex-grow relative gap-2.5">
                   <span
                     class="flex-grow-0 flex-shrink-0 text-sm text-left text-black"
-                    dangerouslySetInnerHTML={{ __html: choice.value }}
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeHTML(choice.value),
+                    }}
                   />
                 </div>
                 <div

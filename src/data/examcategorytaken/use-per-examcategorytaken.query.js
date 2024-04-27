@@ -1,13 +1,27 @@
 import http from "@utils/api/http";
 import { useQuery } from "react-query";
 
-export const fetchPerExamCategoryTaken = async (id) => {
+export const fetchPerExamCategoryTaken = async (payload) => {
+  const { id, completed } = payload;
   const { data } = await http.get(`examcategorytaken/${id}`);
   return data;
 };
 
-export const usePerExamCategoryTaken = (id) => {
-  return useQuery(["examcategorytaken", id], () =>
-    fetchPerExamCategoryTaken(id)
+export const usePerExamCategoryTaken = (payload) => {
+  return useQuery(["examcategorytaken", payload], () =>
+    fetchPerExamCategoryTaken(payload)
+  );
+};
+export const fetchPerExamCategoryTakenByExamCategoryId = async (payload) => {
+  const { id, completed } = payload;
+  const { data } = await http.get(
+    `examcategorytakenbyexamcategoryid/${id}?completed=0`
+  );
+  return data;
+};
+
+export const usePerExamCategoryTakenByExamCategoryId = (payload) => {
+  return useQuery(["examcategorytaken", payload], () =>
+    fetchPerExamCategoryTakenByExamCategoryId(payload)
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { sanitizeHTML } from "../../../utils/helper";
 
 const getBackgroundColor = (selected, rightOrWrong, choiceKey, rightAnswer) => {
   if (selected) {
@@ -81,7 +82,7 @@ const PerChoiceContainer = ({
       </div>
       <p
         className="flex-grow w-[282px] text-base font-semibold text-center"
-        dangerouslySetInnerHTML={{ __html: choice.value }}
+        dangerouslySetInnerHTML={{ __html: sanitizeHTML(choice.value) }}
       />
     </button>
   );

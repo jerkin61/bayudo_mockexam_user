@@ -11,6 +11,7 @@ import {
   // hasAccess,
 } from "@utils/auth-utils";
 import { permissions } from "../../../utils/is-loggedin";
+import { sanitizeHTML } from "../../../utils/helper";
 const classes = {
   root: "flex justify-start items-center self-stretch relative overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px]  hover:bg-[#b2e3ff] hover:text-white bg-[#fbfdff] cursor-pointer",
   normal:
@@ -102,10 +103,9 @@ const PerRandomQuestion = ({
             <span
               className="w-full self-stretch w-[324px] text-base font-semibold text-center text-white"
               dangerouslySetInnerHTML={{
-                __html:
-                  question.exam_category.category_name +
-                  ":" +
-                  question.question,
+                __html: sanitizeHTML(
+                  question.exam_category.category_name + ":" + question.question
+                ),
               }}
             />
           </div>

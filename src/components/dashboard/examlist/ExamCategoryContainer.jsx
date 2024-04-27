@@ -8,6 +8,7 @@ import Button from "../../ui/button";
 import { useExamTakenMutation } from "@data/examtaken/use-examtaken.mutation";
 import { usePerExamTaken } from "@data/examtaken/use-per-examtaken.query";
 import PageLoader from "../../ui/page-loader";
+import { sanitizeHTML } from "../../../utils/helper";
 
 const ExamCategoryContainer = ({
   item,
@@ -109,7 +110,7 @@ const ExamCategoryContainer = ({
             </span>
             <span
               className="flex-grow text-[15px] text-left text-[#140d0d] wrap"
-              dangerouslySetInnerHTML={{ __html: description }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHTML(description) }}
             />
           </p>
         </div>

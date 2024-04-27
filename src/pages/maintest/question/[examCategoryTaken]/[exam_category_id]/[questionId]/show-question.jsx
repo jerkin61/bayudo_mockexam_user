@@ -21,6 +21,7 @@ QuestionList.Layout = HomeLayout;
 
 export const getServerSideProps = async (ctx) => {
   const { token, permissions } = getAuthCredentials(ctx);
+  console.log("aaaaaaaaaaaaaaaa", ctx);
   // if (
   //   !isAuthenticated({ token, permissions }) ||
   //   !hasAccess(allowedRoles, permissions)

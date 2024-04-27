@@ -1,9 +1,10 @@
 import NextLink from "next/link";
 import Button from "../button";
 import { useExamCategoryTakenMutation } from "@data/examcategorytaken/use-examcategorytaken.mutation";
-import { usePerExamCategoryTaken } from "@data/examcategorytaken/use-per-examcategorytaken.query";
+import { usePerExamCategoryTakenByExamCategoryId } from "@data/examcategorytaken/use-per-examcategorytaken.query";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { sanitizeHTML } from "../../../utils/helper";
 const SelectExamType = ({ data }) => {
   console.log("daaatttaa", data);
   const router = useRouter();
@@ -14,20 +15,23 @@ const SelectExamType = ({ data }) => {
     mutateAsync: craeteExamCategory,
     isLoading: craeteExamCategoryLoading,
   } = useExamCategoryTakenMutation();
+  console.log("id", id);
   const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
-    usePerExamCategoryTaken(id);
-
+    usePerExamCategoryTakenByExamCategoryId({ id });
+  console.log("dataPerExamCategory", dataPerExamCategory);
   const exam_category_id = dataPerExamCategory?.id;
+
+  const payload = {
+    exam_taken_id: examTaken,
+    time_done: null,
+    number_of_items: items_count,
+    pass: 0,
+    exam_result: 0,
+    exam_percentage: 0,
+    exam_category_id: id,
+  };
+
   const confirmStartTest = () => {
-    const payload = {
-      exam_taken_id: examTaken,
-      time_done: null,
-      number_of_items: items_count,
-      pass: 0,
-      exam_result: 0,
-      exam_percentage: 0,
-      exam_category_id: id,
-    };
     craeteExamCategory(payload, {
       onSuccess: async ({ id: examCategoryId }) => {
         await router.push(
@@ -43,9 +47,23 @@ const SelectExamType = ({ data }) => {
   console.log("dataPerExamCategory", dataPerExamCategory);
   const confirmResumeTest = () => {
     dataPerExamCategory &&
+      dataPerExamCategory?.completed !== 1 &&
       router.push(
         `/maintest/question/${examTaken}/${exam_category_id}/${id}/show-question`
       );
+  };
+  const confirmRetry = () => {
+    craeteExamCategory(payload, {
+      onSuccess: async ({ id: examCategoryId }) => {
+        await router.push(
+          `/maintest/question/${examTaken}/${examCategoryId}/${id}/show-question`
+        );
+      },
+      onError: ({ response }) => {
+        // toast.error(response.data.exam_category_id[0]);
+        toast.error("Something went wrong");
+      },
+    });
   };
   return (
     <div className="py-6 px-5 sm:p-8  w-screen md:max-w-md h-screen md:h-auto flex flex-col justify-center bg-[#f1f9ff]">
@@ -66,7 +84,11 @@ const SelectExamType = ({ data }) => {
                     Welcome to your exam
                   </p>
 
-                  <div dangerouslySetInnerHTML={{ __html: instruction }} />
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeHTML(instruction),
+                    }}
+                  />
 
                   <p className="self-stretch w-full text-[11px] font-bold text-left text-[#140d0d]">
                     Date Finished: 7/24/2002
@@ -76,17 +98,33 @@ const SelectExamType = ({ data }) => {
             </div>
           </div>
           <div className="flex flex-row gap-[10px] w-full justify-between">
+            {dataPerExamCategory?.completed !== 1 && (
+              <Button
+                disabled={!dataPerExamCategory}
+                type="normal"
+                onClick={confirmResumeTest}
+              >
+                {" "}
+                Resume Exam{" "}
+              </Button>
+            )}{" "}
+            {dataPerExamCategory?.completed === 1 && (
+              <Button
+                disabled={!dataPerExamCategory}
+                type="normal"
+                onClick={confirmRetry}
+              >
+                {" "}
+                Retry{" "}
+              </Button>
+            )}
             <Button
-              disabled={!dataPerExamCategory}
               type="normal"
-              onClick={confirmResumeTest}
-            >
-              {" "}
-              Resume Exam{" "}
-            </Button>{" "}
-            <Button
-              type="normal"
-              disabled={dataPerExamCategoryLoading || dataPerExamCategory}
+              disabled={
+                dataPerExamCategoryLoading ||
+                dataPerExamCategory ||
+                craeteExamCategoryLoading
+              }
               onClick={confirmStartTest}
             >
               {" "}

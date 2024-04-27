@@ -40,7 +40,7 @@ const MyExamCategory = ({ data }) => {
         >
           <Button className="flex flex-row gap-3">
             {" "}
-            <p>{completed ? "Review Exam" : "Continue Exam"}</p>{" "}
+            <p>{completed === 1 ? "Review Exam" : "Continue Exam"}</p>{" "}
             <svg
               width="24"
               height="25"

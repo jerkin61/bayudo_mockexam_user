@@ -1,3 +1,5 @@
+import { sanitizeHTML } from "../../../utils/helper";
+
 const ExplanationModal = ({ data }) => {
   const { explanation } = data;
   return (
@@ -17,7 +19,11 @@ const ExplanationModal = ({ data }) => {
               <div className="flex justify-start items-start self-stretch gap-2.5 px-5 rounded-[5px] bg-white overflow-scroll h-full w-full">
                 <div className="flex flex-col justify-center items-start flex-grow relative gap-2.5">
                   {explanation ? (
-                    <div dangerouslySetInnerHTML={{ __html: explanation }} />
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: sanitizeHTML(explanation),
+                      }}
+                    />
                   ) : (
                     "No explanation set"
                   )}
