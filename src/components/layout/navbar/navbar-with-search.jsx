@@ -44,10 +44,11 @@ const NavbarWithSearch = () => {
     >
       <nav
         className={cn(
-          "w-full h-14 md:h-16 lg:h-22 py-5 px-4 lg:px-8 flex justify-between items-center  top-0 end-0 z-20 transition-transform duration-300 bg-light",
+          "w-full h-14 md:h-16 lg:h-22 py-5 px-4 lg:px-8 flex justify-between items-center  top-0 end-0 z-20 transition-transform duration-300 ",
           {
-            "fixed bg-light lg:absolute": !displayHeaderSearch && hasType,
-            "is-sticky fixed bg-light shadow-sm":
+            "fixed lg:absolute bg-light lg:bg-transparent":
+              !displayHeaderSearch && hasType,
+            "is-sticky fixed shadow-sm bg-light":
               displayHeaderSearch || !hasType,
           }
         )}

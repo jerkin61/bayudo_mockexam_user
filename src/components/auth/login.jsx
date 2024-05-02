@@ -45,7 +45,6 @@ const LoginForm = () => {
     resolver: yupResolver(loginFormSchema),
     defaultValues,
   });
-
   function onSubmit({ email, password }) {
     login(
       {
@@ -59,6 +58,10 @@ const LoginForm = () => {
             Cookies.set("auth_permissions", data.permissions);
             authorize();
             closeModal();
+            if (router.asPath === "/home") {
+              router.push("/main");
+              return;
+            }
             router.reload();
             return;
           }

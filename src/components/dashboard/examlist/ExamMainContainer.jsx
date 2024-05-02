@@ -35,7 +35,7 @@ const ExamMainContainer = ({ item, index, userId }) => {
       key={index}
       className="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5"
     >
-      <div className="flex flex-col justify-center items-start self-stretch overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white hover:bg-[#41b2f3]/50 border-[2px]">
+      <div className="flex flex-col justify-center items-start self-stretch overflow-hidden gap-2.5 hover:bg-[#41b2f3]/50 bg-[#41b2f3]/25 border-[2px] p-5 md:p-8 bg-light shadow rounded">
         <div className="flex justify-center items-center self-stretch relative gap-2.5 px-2.5">
           <div
             className="flex flex-col justify-start items-center h-10 w-10 relative overflow-hidden gap-2.5 rounded-[20px] bg-[#d9d9d9] "

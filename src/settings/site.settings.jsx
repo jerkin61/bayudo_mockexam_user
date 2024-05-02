@@ -9,7 +9,7 @@ export const siteSettings = {
   logo: {
     url: "/logo.svg",
     alt: "MXM",
-    href: "/main",
+    href: "/home",
     width: 128,
     height: 40,
   },

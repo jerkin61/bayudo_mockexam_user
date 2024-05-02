@@ -24,6 +24,7 @@ module.exports = {
         body: ["Roboto", "system-ui", "sans-serif"],
         heading: ["Bai Jumjeree", "Montserrat", "sans-serif"],
         quote: ["Merriweather", "serif"],
+        custom: ["McLaren"],
       },
       colors: {
         light: withOpacity("--color-light"),

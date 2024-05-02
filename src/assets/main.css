@@ -274,3 +274,7 @@ div.App {
   100% {transform:rotate(90deg)}
 }
 /* end page loader  */
+
+.text-stroke-2 {
+    text-shadow: -2px -2px 0 #11266B, 2px -2px 0 #11266B, -2px 2px 0 #11266B, 2px 2px 0 #11266B;
+}

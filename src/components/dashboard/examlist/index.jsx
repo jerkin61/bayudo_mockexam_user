@@ -5,7 +5,7 @@ import { useExamlistQuery } from "@data/examlist/use-examlist.query";
 import PageLoader from "../../ui/page-loader";
 import { usePerExaminee } from "@data/examinee/use-per-examinee.query";
 import { useUI } from "../../../contexts/ui.context";
-import Card from "../../common/card";
+import Alert from "@components/ui/alert";
 export default function Dashboard() {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
@@ -17,19 +17,21 @@ export default function Dashboard() {
     error,
   } = useExamlistQuery({ limit: 20, page, text: searchTerm });
   if (loading) return <PageLoader />;
+  const message = `Hi, ${me?.me.name ?? "there"} This is your exam list.     ${
+    !me?.me && "Please login to access."
+  }`;
   return (
     <>
       <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
         <div className="flex flex-col justify-start items-center self-stretch h-[90vh] gap-[15px]">
           {" "}
-          <Card className={"w-full text-center text-xl text-bold"}>
-            Hi, {me?.me.name ?? "there"} This is your exam list
-          </Card>
-          {!me?.me && (
-            <Card className={"w-full text-center"}>
-              You are currently not logged in.
-            </Card>
-          )}
+          <Alert
+            variant="info"
+            message={message}
+            className="w-full"
+            closeable={true}
+            onClose={() => setErrorMsg("")}
+          />
           <div className="main-container w-full h-full overflow-scroll">
             {(!isAuthorize ? data?.examlist?.data : me?.me?.allExams)?.map(
               (item, index) => (
