@@ -5,8 +5,20 @@ import { usePerExamCategoryTakenByExamCategoryId } from "@data/examcategorytaken
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { sanitizeHTML } from "../../../utils/helper";
+import PageLoader from "../page-loader";
+import { limitOfRetries } from "@utils/auth-utils";
+function getExamCategoryIdWithCompletedZero(dataPerExamCategory) {
+  if (dataPerExamCategory) {
+    for (let item of dataPerExamCategory) {
+      if (item.completed === 0) {
+        return item.id;
+      }
+    }
+    return null;
+  } // Return null if no item with completed: 0 is found
+}
+
 const SelectExamType = ({ data }) => {
-  console.log("daaatttaa", data);
   const router = useRouter();
   const { item, examName, examTaken } = data;
   const { category_name, items_count, instruction, id } = item;
@@ -18,9 +30,8 @@ const SelectExamType = ({ data }) => {
   console.log("id", id);
   const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
     usePerExamCategoryTakenByExamCategoryId({ id });
-  console.log("dataPerExamCategory", dataPerExamCategory);
-  const exam_category_id = dataPerExamCategory?.id;
-
+  const exam_category_id =
+    getExamCategoryIdWithCompletedZero(dataPerExamCategory);
   const payload = {
     exam_taken_id: examTaken,
     time_done: null,
@@ -39,15 +50,12 @@ const SelectExamType = ({ data }) => {
         );
       },
       onError: ({ response }) => {
-        // toast.error(response.data.exam_category_id[0]);
         toast.error("Something went wrong");
       },
     });
   };
-  console.log("dataPerExamCategory", dataPerExamCategory);
   const confirmResumeTest = () => {
-    dataPerExamCategory &&
-      dataPerExamCategory?.completed !== 1 &&
+    exam_category_id &&
       router.push(
         `/maintest/question/${examTaken}/${exam_category_id}/${id}/show-question`
       );
@@ -60,11 +68,11 @@ const SelectExamType = ({ data }) => {
         );
       },
       onError: ({ response }) => {
-        // toast.error(response.data.exam_category_id[0]);
         toast.error("Something went wrong");
       },
     });
   };
+  if (dataPerExamCategoryLoading) return <PageLoader className={"w-1/4"} />;
   return (
     <div className="py-6 px-5 sm:p-8  w-screen md:max-w-md h-screen md:h-auto flex flex-col justify-center bg-[#f1f9ff]">
       <div className="flex flex-col justify-start items-start self-stretch flex-grow gap-2.5 px-[15px] py-2.5 rounded-[5px] bg-[#f1f9ff]">
@@ -98,7 +106,7 @@ const SelectExamType = ({ data }) => {
             </div>
           </div>
           <div className="flex flex-row gap-[10px] w-full justify-between">
-            {dataPerExamCategory?.completed !== 1 && (
+            {!!dataPerExamCategory.length && exam_category_id && (
               <Button
                 disabled={!dataPerExamCategory}
                 type="normal"
@@ -121,14 +129,17 @@ const SelectExamType = ({ data }) => {
             <Button
               type="normal"
               disabled={
+                dataPerExamCategory.length > limitOfRetries ||
                 dataPerExamCategoryLoading ||
-                dataPerExamCategory ||
+                exam_category_id ||
                 craeteExamCategoryLoading
               }
               onClick={confirmStartTest}
             >
               {" "}
-              Start the exam{" "}
+              {dataPerExamCategory.length > limitOfRetries
+                ? "Retries limit reached"
+                : "Start the exam"}
             </Button>
           </div>
         </div>

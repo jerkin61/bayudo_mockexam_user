@@ -34,7 +34,7 @@ export default function Dashboard({}) {
   const getPageData = getKeyValue(sitePages, "main");
   return (
     <>
-      <Banner banner={getPageData.banner} className="max-h-140 h-[300px]" />
+      {/* <Banner banner={getPageData.banner} className="max-h-140 h-[300px]" /> */}
       <Element name="grid">
         <main className="flex-1">
           <div className="bg-gray-100 min-h-full lg:p-8">

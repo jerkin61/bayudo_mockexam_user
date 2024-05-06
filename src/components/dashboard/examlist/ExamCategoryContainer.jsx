@@ -35,10 +35,7 @@ const ExamCategoryContainer = ({
 
   const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
     usePerExamTaken(examListId);
-
-  console.log("dataPerExamCategory", dataPerExamCategory);
-  console.log("item", item);
-  console.log("!dataPerExamCategory", !dataPerExamCategory);
+  console.log("dataPerExamCategoryfromtaketest", dataPerExamCategory);
   const confirmCreateExamTaken = () => {
     const payload = {
       user_id: userId,
@@ -50,7 +47,6 @@ const ExamCategoryContainer = ({
       number_of_items: 20,
     };
     if (!dataPerExamCategory) {
-      console.log("craeteExamTaken");
       craeteExamTaken(payload, {
         onSuccess: async ({ id: examTaken }) => {
           openModal("SELECT_EXAMTYPE", { examTaken, item, examName });
@@ -64,7 +60,6 @@ const ExamCategoryContainer = ({
       });
     }
   };
-  const router = useRouter();
   if (dataPerExamCategoryLoading) return <PageLoader />;
   return (
     <div

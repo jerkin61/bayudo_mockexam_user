@@ -16,16 +16,21 @@ const calculateTotals = (examCategoryTaken) => {
   };
 };
 const MyExamTakenContainer = ({ data }) => {
-  const { exam, exam_category_taken, updated_at } = data;
+  const { exam, exam_category_taken, updated_at, take } = data;
+  console.log("data", data);
   const { totalExamResult, totalNumberOfItems } =
     calculateTotals(exam_category_taken);
   return (
-    <div className="flex flex-col justify-center items-start self-stretch overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white">
+    <div className="flex flex-col justify-center items-start self-stretch overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white shadow rounded">
       <div className="flex flex-col justify-center items-start self-stretch relative gap-2.5">
-        <p className="self-stretch w-[323px] text-xl font-semibold text-left text-[#222]">
-          {exam.name}
-        </p>
-        |
+        <div className="flex flex-col self-stretch w-full text-xl font-semibold text-left text-[#222]">
+          <strong> Take {take}</strong>{" "}
+          <span>
+            {" "}
+            <bold>Exam Name : </bold>
+            {exam.name}
+          </span>
+        </div>
         <p className="self-stretch w-[323px] text-[15px] text-left text-[#140d0d]">
           <span className="self-stretch w-[323px] text-[15px] font-bold text-left text-[#140d0d]">
             Exam Result

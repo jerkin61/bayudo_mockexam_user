@@ -35,15 +35,13 @@ export default function Dashboard({}) {
   const getPageData = getKeyValue(sitePages, "main");
   return (
     <>
-      <Banner banner={getPageData.banner} className="max-h-140 h-[300px]" />
+      {/* <Banner banner={getPageData.banner} className="max-h-140 h-[300px]" /> */}
       <Element name="grid">
-        {/* <BakeryCategory /> */}
         <main className="flex-1">
           <div className="bg-gray-100 min-h-full lg:p-8">
             <div className="flex flex-col justify-start items-start self-stretch flex-grow gap-2.5 px-[15px] py-2.5 rounded-[5px] bg-[#f1f9ff]">
               <div className="flex flex-col justify-start items-center self-stretch gap-[15px]">
                 <div className="flex flex-col justify-start items-center self-stretch h-[598px] gap-[15px]">
-                  {/* here */}
                   <MyExamContainer />
                 </div>
               </div>

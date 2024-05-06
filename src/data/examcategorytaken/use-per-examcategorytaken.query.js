@@ -13,9 +13,9 @@ export const usePerExamCategoryTaken = (payload) => {
   );
 };
 export const fetchPerExamCategoryTakenByExamCategoryId = async (payload) => {
-  const { id, completed } = payload;
+  const { id, completed = "" } = payload;
   const { data } = await http.get(
-    `examcategorytakenbyexamcategoryid/${id}?completed=0`
+    `examcategorytakenbyexamcategoryid/${id}?completed=${completed}`
   );
   return data;
 };

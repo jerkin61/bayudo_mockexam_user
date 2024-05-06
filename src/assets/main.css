@@ -278,3 +278,21 @@ div.App {
 .text-stroke-2 {
     text-shadow: -2px -2px 0 #11266B, 2px -2px 0 #11266B, -2px 2px 0 #11266B, 2px 2px 0 #11266B;
 }
+.score-container .score-item:first-child {
+  background-color: rgb(234, 197, 3, 0.63);
+  }
+.score-container .score-item:first-child .score-item-checker{
+ background-color: rgb(234, 197, 3);
+  }
+.score-container .score-item:nth-child(2) {
+  background-color: rgb(192, 192, 192, 0.63);
+  }
+.score-container .score-item:nth-child(2) .score-item-checker{
+  background-color: rgb(192, 192, 192);
+  }
+  .score-container .score-item:nth-child(3) {
+  background-color: rgb(205, 127, 50, 0.63);
+  }
+.score-container .score-item:nth-child(3) .score-item-checker{
+  background-color: rgb(205, 127, 50);
+  }
