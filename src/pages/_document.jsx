@@ -22,7 +22,10 @@ export default class CustomDocument extends Document {
 
     return (
       <Html>
-        <Head />
+        <Head>
+          <title>Exam Refresher</title>
+          <link rel="shortcut icon" href="/favicon.ico" />
+        </Head>
         <body dir={dir}>
           <Main />
           <NextScript />

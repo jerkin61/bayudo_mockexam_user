@@ -3,8 +3,8 @@ import HomeScoreboard from "./home-scoreboard";
 
 const FeatureScoreboard = () => {
   return (
-    <div class="w-full self-center md:self-stretch flex justify-start items-start  gap-2.5 md:px-[10px] md:px-[100px] py-[10px] md:py-[50px] bg-white">
-      <div class="flex flex-col lg:flex-row justify-center items-center gap-[30px] md:gap-[100px] px-[10px] md:px-[120px]">
+    <div class="w-full self-center xl:self-stretch flex justify-start items-start  gap-2.5 md:px-[10px] md:px-[100px] py-[10px] md:py-[50px] bg-white">
+      <div class="flex flex-col xl:flex-row justify-center items-center gap-[30px] md:gap-[100px] px-[10px] md:px-[120px]">
         <div class="flex flex-col justify-start items-start  w-[576px] relative">
           <svg
             width="572"

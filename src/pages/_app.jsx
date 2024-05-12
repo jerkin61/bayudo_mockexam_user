@@ -114,9 +114,9 @@ function CustomApp({ Component, pageProps }) {
                 {/* <CheckoutProvider> */}
                 <SearchProvider>
                   <Layout {...pageProps}>
-                    {/* <Seo /> */}
+                    {/* <Seo /> <NextNProgress /> */}
+                    {/* <NextNProgress /> */}
                     <Component {...pageProps} />
-
                     {/* <div>Test</div> */}
                   </Layout>
                   {/* <Brader /> */}

@@ -9,6 +9,7 @@ import { useExamTakenMutation } from "@data/examtaken/use-examtaken.mutation";
 import { usePerExamTaken } from "@data/examtaken/use-per-examtaken.query";
 import PageLoader from "../../ui/page-loader";
 import { sanitizeHTML } from "../../../utils/helper";
+import { useQueryClient } from "react-query";
 
 const ExamCategoryContainer = ({
   item,
@@ -17,9 +18,11 @@ const ExamCategoryContainer = ({
   examListId,
   userId,
 }) => {
+  const queryClient = useQueryClient();
   const { openModal } = useModalAction();
   const {
     id,
+    slug,
     category_name,
     created_at,
     description,
@@ -33,10 +36,13 @@ const ExamCategoryContainer = ({
   const { mutateAsync: craeteExamTaken, isLoading: craeteExamTakenLoading } =
     useExamTakenMutation();
 
-  const { data: dataPerExamCategory, isLoading: dataPerExamCategoryLoading } =
-    usePerExamTaken(examListId);
-  console.log("dataPerExamCategoryfromtaketest", dataPerExamCategory);
-  const confirmCreateExamTaken = () => {
+  const {
+    data: dataPerExamCategory,
+    isLoading: dataPerExamCategoryLoading,
+    refetch,
+  } = usePerExamTaken(examListId);
+
+  const confirmCreateExamTaken = async () => {
     const payload = {
       user_id: userId,
       exam_id,
@@ -49,6 +55,7 @@ const ExamCategoryContainer = ({
     if (!dataPerExamCategory) {
       craeteExamTaken(payload, {
         onSuccess: async ({ id: examTaken }) => {
+          await refetch();
           openModal("SELECT_EXAMTYPE", { examTaken, item, examName });
         },
       });
@@ -64,7 +71,6 @@ const ExamCategoryContainer = ({
   return (
     <div
       key={index}
-      // onClick={() => openModal("SELECT_EXAMTYPE")}
       className="flex flex-col justify-center items-center self-stretch relative gap-2.5 p-2.5 rounded-[5px] bg-[#e0ecf2] hover:bg-[#afc4cf]"
     >
       <div className="exam-category-container flex flex-col justify-center items-start flex-grow relative gap-2.5 w-[80%] w-full">
@@ -112,7 +118,7 @@ const ExamCategoryContainer = ({
       </div>
       <div className="w-full flex flex-row gap-1">
         {" "}
-        <NextLink href={`/question/${id}/show-question`}>
+        <NextLink href={`/question/${slug}/show-question`}>
           <Button type="normal"> Random Questions </Button>
         </NextLink>{" "}
         <Button

@@ -24,7 +24,7 @@ const ExamMainContainer = ({ item, index, userId }) => {
   function handleAuthModal() {
     return openModal("LOGIN_VIEW");
   }
-
+  const [examCreated, setExamCreated] = React.useState(false);
   return (
     <div
       onClick={() => {
@@ -111,6 +111,8 @@ const ExamMainContainer = ({ item, index, userId }) => {
               examName={name}
               examListId={id}
               examCategory={exam_category}
+              setExamCreated={setExamCreated}
+              examCreated={examCreated}
             />
           </div>
         )}

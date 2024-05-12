@@ -7,5 +7,5 @@ export const fetchPerExamTaken = async (id) => {
 };
 
 export const usePerExamTaken = (id) => {
-  return useQuery(["examtaken", id], () => fetchPerExamTaken(id));
+  return useQuery(["examtakenbyID", id], () => fetchPerExamTaken(id));
 };

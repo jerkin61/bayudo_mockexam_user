@@ -1,7 +1,14 @@
 import React from "react";
 import ExamCategoryContainer from "./ExamCategoryContainer";
 
-const ExamCategory = ({ examCategory, examListId, examName, userId }) => {
+const ExamCategory = ({
+  examCategory,
+  examListId,
+  examName,
+  userId,
+  examCreated,
+  setExamCreated,
+}) => {
   return (
     <div className="w-full flex flex-col gap-5">
       {" "}
@@ -18,6 +25,8 @@ const ExamCategory = ({ examCategory, examListId, examName, userId }) => {
             item={item}
             index={index}
             examListId={examListId}
+            setExamCreated={setExamCreated}
+            examCreated={examCreated}
           />
         ))}
     </div>

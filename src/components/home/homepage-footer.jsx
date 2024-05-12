@@ -3,9 +3,9 @@ import Logo from "@components/ui/logo";
 
 const HomepageFooter = () => {
   return (
-    <div class="flex flex-col justify-center items-center  gap-2.5 px-[165px] py-7 bg-white">
+    <div class="w-full flex flex-col justify-center items-center  gap-2.5  py-7 bg-white">
       <div class="flex flex-col justify-start items-center  gap-[83px]">
-        <div class="flex flex-col md:flex-row justify-between items-center  relative gap-[30px] md:gap-auto">
+        <div class="flex flex-col lg:flex-row justify-between items-center  relative gap-[30px] md:gap-auto">
           <div class="flex justify-start items-center  relative gap-[62px]">
             <p class=" text-sm font-medium text-center text-[#404041]">ABOUT</p>
             <p class=" text-sm font-medium text-center text-[#404041]">
@@ -60,7 +60,7 @@ const HomepageFooter = () => {
             viewBox="0 0 941 3"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class=""
+            class="hidden md:block"
             preserveAspectRatio="xMidYMid meet"
           >
             <line

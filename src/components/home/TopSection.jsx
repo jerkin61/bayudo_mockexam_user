@@ -38,7 +38,7 @@ const topsectionContent = [
 const TopSection = () => {
   const { openModal } = useModalAction();
   const router = useRouter();
-  const { showHeaderSearch, hideHeaderSearch } = useUI();
+  const { showHeaderSearch, hideHeaderSearch, isAuthorize } = useUI();
   const onWaypointPositionChange = ({ currentPosition }) => {
     if (!currentPosition || currentPosition === "above") {
       showHeaderSearch();
@@ -59,6 +59,13 @@ const TopSection = () => {
       "You are about to be redirected to admin page?"
     );
     if (isConfirmed) router.push(route);
+  };
+  const handleRegisterOrLogin = () => {
+    if (isAuthorize) {
+      router.push("/main");
+      return;
+    }
+    openModal("LOGIN_VIEW");
   };
   return (
     <div class="flex flex-col md:flex-row justify-start items-start h-full w-full gap-[39.66753005981445px] px-[10px] md:px-[100px] py-[36px] bg-[#f2f2f2] mt-[0] lg:mt-[5rem]">
@@ -159,7 +166,7 @@ const TopSection = () => {
               whileHover={{ scale: 1.07 }}
               whileTap={{ scale: 0.8 }}
               class="flex justify-center items-center w-[212.14px] h-[58.64px] gap-[17.246753692626953px] p-[8.623376846313477px] rounded-[34.49px] border-[3.45px] border-[#2d5af2]"
-              onClick={() => openModal("LOGIN_VIEW")}
+              onClick={handleRegisterOrLogin}
             >
               <p class="text-[15.522077560424805px] font-bold text-center text-[#2d5af2]">
                 Login / Register as Student

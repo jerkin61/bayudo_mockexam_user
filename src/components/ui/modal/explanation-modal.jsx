@@ -3,7 +3,7 @@ import { sanitizeHTML } from "../../../utils/helper";
 const ExplanationModal = ({ data }) => {
   const { explanation } = data;
   return (
-    <div className="py-6 px-5 sm:p-8  w-screen md:max-w-md h-screen md:h-auto flex flex-col justify-center bg-[#f1f9ff]">
+    <div className="py-6 px-5 sm:p-8  w-screen md:max-w-xl h-screen md:h-auto flex flex-col justify-center bg-[#f1f9ff]">
       <div className="flex flex-col justify-start items-start self-stretch flex-grow gap-2.5 px-[15px] py-2.5 rounded-[5px] bg-[#f1f9ff]">
         <div className="flex flex-col justify-between items-center self-stretch flex-grow">
           <div className="flex flex-col justify-start items-center self-stretch h-[100vh] gap-[15px]">
