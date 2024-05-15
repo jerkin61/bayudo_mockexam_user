@@ -50,13 +50,13 @@ const HomeScoreboard = () => {
     return () => clearInterval(intervalId);
   }, []);
   return (
-    <div class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 h-[378px] w-[581.54px] overflow-hidden gap-[9.540865898132324px] px-[90.86538696289062px] py-[25.44230842590332px] bg-cover bg-no-repeat bg-center absolute">
-      <div class="flex flex-col justify-start items-center self-stretch flex-grow relative gap-[9.540865898132324px] p-[4.543269157409668px] rounded-[9.09px] bg-[#35a5e3]">
-        <p class="flex-grow-0 flex-shrink-0 w-[247.61px] h-[22.26px] text-[21.807693481445312px] font-bold text-center text-white">
+    <div className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 h-[378px] w-[581.54px] overflow-hidden gap-[9.540865898132324px] px-[90.86538696289062px] py-[25.44230842590332px] bg-cover bg-no-repeat bg-center absolute">
+      <div className="flex flex-col justify-start items-center self-stretch flex-grow relative gap-[9.540865898132324px] p-[4.543269157409668px] rounded-[9.09px] bg-[#35a5e3]">
+        <p className="flex-grow-0 flex-shrink-0 w-[247.61px] h-[22.26px] text-[21.807693481445312px] font-bold text-center text-white">
           SCORE BOARD
         </p>{" "}
         <HomeScoreBoardList data={shuffledItems} />
-        <div class="flex flex-col justify-start items-center self-stretch flex-grow overflow-hidden gap-[4.543269157409668px] px-[14.992788314819336px] py-[4.543269157409668px]"></div>
+        <div className="flex flex-col justify-start items-center self-stretch flex-grow overflow-hidden gap-[4.543269157409668px] px-[14.992788314819336px] py-[4.543269157409668px]"></div>
       </div>
     </div>
   );

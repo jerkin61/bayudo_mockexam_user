@@ -22,7 +22,6 @@ const ExamCategoryContainer = ({
   const { openModal } = useModalAction();
   const {
     id,
-    slug,
     category_name,
     created_at,
     description,
@@ -118,7 +117,7 @@ const ExamCategoryContainer = ({
       </div>
       <div className="w-full flex flex-row gap-1">
         {" "}
-        <NextLink href={`/question/${slug}/show-question`}>
+        <NextLink href={`/question/${id}/show-question?show=t`}>
           <Button type="normal"> Random Questions </Button>
         </NextLink>{" "}
         <Button

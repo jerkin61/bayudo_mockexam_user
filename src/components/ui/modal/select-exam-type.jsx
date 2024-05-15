@@ -21,7 +21,7 @@ function getExamCategoryIdWithCompletedZero(dataPerExamCategory) {
 const SelectExamType = ({ data }) => {
   const router = useRouter();
   const { item, examName, examTaken } = data;
-  const { category_name, items_count, instruction, id, slug } = item;
+  const { category_name, items_count, instruction, id } = item;
 
   const {
     mutateAsync: craeteExamCategory,
@@ -45,7 +45,7 @@ const SelectExamType = ({ data }) => {
     craeteExamCategory(payload, {
       onSuccess: async ({ id: examCategoryId }) => {
         await router.push(
-          `/maintest/question/${examTaken}/${examCategoryId}/${slug}/show-question`
+          `/maintest/question/${examTaken}/${examCategoryId}/${id}/show-question?show=t`
         );
       },
       onError: ({ response }) => {
@@ -56,14 +56,14 @@ const SelectExamType = ({ data }) => {
   const confirmResumeTest = () => {
     exam_category_id &&
       router.push(
-        `/maintest/question/${examTaken}/${exam_category_id}/${slug}/show-question`
+        `/maintest/question/${examTaken}/${exam_category_id}/${id}/show-question?show=t`
       );
   };
   const confirmRetry = () => {
     craeteExamCategory(payload, {
       onSuccess: async ({ id: examCategoryId }) => {
         await router.push(
-          `/maintest/question/${examTaken}/${examCategoryId}/${slug}/show-question`
+          `/maintest/question/${examTaken}/${examCategoryId}/${id}/show-question?show=t`
         );
       },
       onError: ({ response }) => {

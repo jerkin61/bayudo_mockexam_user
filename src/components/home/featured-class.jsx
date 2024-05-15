@@ -29,53 +29,53 @@ const FeaturedClasses = () => {
     ],
   };
   return (
-    <div class="flex flex-col justify-center items-center  w-full overflow-hidden gap-2.5 px-[10px] md:px-[120px] py-[100px] bg-[#00b5f4]">
-      <div class="flex flex-col justify-start items-start  gap-[100px] align-center w-full">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-start items-center  gap-[30px] self-center">
-          <div class="flex flex-col justify-center items-center  relative overflow-hidden gap-1.5 px-[22px] py-[11px] rounded-[5px] bg-[#2d5af2]">
-            <p class=" w-[124px] h-[37px] text-[32px] font-bold text-center text-white">
+    <div className="flex flex-col justify-center items-center  w-full overflow-hidden gap-2.5 px-[10px] md:px-[120px] py-[100px] bg-[#00b5f4]">
+      <div className="flex flex-col justify-start items-start  gap-[100px] align-center w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-start items-center  gap-[30px] self-center">
+          <div className="flex flex-col justify-center items-center  relative overflow-hidden gap-1.5 px-[22px] py-[11px] rounded-[5px] bg-[#2d5af2]">
+            <p className=" w-[124px] h-[37px] text-[32px] font-bold text-center text-white">
               {featureClassesSectionDetails.firstButton.top}
             </p>
-            <p class=" w-[136px] h-[22px] text-base font-bold text-center text-[#e3f8ff]">
+            <p className=" w-[136px] h-[22px] text-base font-bold text-center text-[#e3f8ff]">
               {featureClassesSectionDetails.firstButton.bottom}
             </p>
           </div>
-          <div class="flex flex-col justify-center items-center  relative overflow-hidden gap-1.5 px-[22px] py-[11px] rounded-[5px] bg-[#2d5af2]">
-            <p class=" w-[124px] h-[37px] text-[32px] font-bold text-center text-white">
+          <div className="flex flex-col justify-center items-center  relative overflow-hidden gap-1.5 px-[22px] py-[11px] rounded-[5px] bg-[#2d5af2]">
+            <p className=" w-[124px] h-[37px] text-[32px] font-bold text-center text-white">
               {featureClassesSectionDetails.secondButton.top}
             </p>
-            <p class=" w-[136px] h-[22px] text-base font-bold text-center text-[#e3f8ff]">
+            <p className=" w-[136px] h-[22px] text-base font-bold text-center text-[#e3f8ff]">
               {featureClassesSectionDetails.secondButton.bottom}
             </p>
           </div>
-          <div class="flex flex-col justify-center items-center  relative overflow-hidden gap-1.5 px-[22px] py-[11px] rounded-[5px] bg-[#2d5af2]">
-            <p class=" w-[124px] h-[37px] text-[32px] font-bold text-center text-white">
+          <div className="flex flex-col justify-center items-center  relative overflow-hidden gap-1.5 px-[22px] py-[11px] rounded-[5px] bg-[#2d5af2]">
+            <p className=" w-[124px] h-[37px] text-[32px] font-bold text-center text-white">
               {featureClassesSectionDetails.thirdButton.top}
             </p>
-            <p class=" w-[136px] h-[22px] text-base font-bold text-center text-[#e3f8ff]">
+            <p className=" w-[136px] h-[22px] text-base font-bold text-center text-[#e3f8ff]">
               {featureClassesSectionDetails.thirdButton.bottom}
             </p>
           </div>
-          <div class="flex flex-col md:flex-row justify-center items-center self-stretch overflow-hidden px-2.5 rounded-[5px] bg-[#2d5af2]">
-            <div class="flex flex-col justify-center items-center  relative overflow-hidden gap-1.5 px-[22px] py-[11px] rounded-[5px] bg-[#2d5af2]">
-              <p class=" w-[124px] h-[37px] text-[32px] font-bold text-center text-white">
+          <div className="flex flex-col md:flex-row justify-center items-center self-stretch overflow-hidden px-2.5 rounded-[5px] bg-[#2d5af2]">
+            <div className="flex flex-col justify-center items-center  relative overflow-hidden gap-1.5 px-[22px] py-[11px] rounded-[5px] bg-[#2d5af2]">
+              <p className=" w-[124px] h-[37px] text-[32px] font-bold text-center text-white">
                 {featureClassesSectionDetails.fourthButton.top}
               </p>
-              <p class=" w-[136px] h-[22px] text-base font-bold text-center text-[#e3f8ff]">
+              <p className=" w-[136px] h-[22px] text-base font-bold text-center text-[#e3f8ff]">
                 {featureClassesSectionDetails.fourthButton.bottom}
               </p>
             </div>
             <LandpageStarComponent />
           </div>
         </div>
-        <div class="flex flex-col justify-start items-start self-stretch  gap-5">
-          <div class="flex flex-col justify-center items-center self-stretch  gap-[9px]">
-            <div class="flex justify-center items-center self-stretch  relative overflow-hidden gap-2.5 px-[143px] py-1.5">
-              <p class=" w-[544px] h-[34px] text-3xl font-bold text-center text-white">
+        <div className="flex flex-col justify-start items-start self-stretch  gap-5">
+          <div className="flex flex-col justify-center items-center self-stretch  gap-[9px]">
+            <div className="flex justify-center items-center self-stretch  relative overflow-hidden gap-2.5 px-[143px] py-1.5">
+              <p className=" w-[544px] h-[34px] text-3xl font-bold text-center text-white">
                 Explore Challenging Exams
               </p>
             </div>
-            <div class="flex flex-wrap justify-center gap-[10px] w-full mb-4 text-start">
+            <div className="flex flex-wrap justify-center gap-[10px] w-full mb-4 text-start">
               {featureClassesSectionDetails.classesList.map(({ examName }) => (
                 <a
                   type="button"
@@ -87,56 +87,56 @@ const FeaturedClasses = () => {
               ))}
             </div>
           </div>
-          <div class="flex justify-start items-center self-stretch  h-[294px] gap-5">
-            <div class="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden border-[3px] border-[#e58585]/[0.31]">
-              <div class="self-stretch  w-[215.07px] h-[102px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-              <div class="flex flex-col justify-center items-center self-stretch flex-grow overflow-hidden gap-[5px] p-[5px] border border-[#e58585]/[0.31]">
-                <div class="flex flex-col justify-start items-center self-stretch flex-grow relative border border-[#e58585]/[0.31]">
-                  <div class="flex justify-start items-end self-stretch  h-7 relative gap-[89px] border border-[#e58585]/[0.31]">
-                    <div class="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-                    <div class="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+          <div className="flex justify-start items-center self-stretch  h-[294px] gap-5">
+            <div className="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden border-[3px] border-[#e58585]/[0.31]">
+              <div className="self-stretch  w-[215.07px] h-[102px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+              <div className="flex flex-col justify-center items-center self-stretch flex-grow overflow-hidden gap-[5px] p-[5px] border border-[#e58585]/[0.31]">
+                <div className="flex flex-col justify-start items-center self-stretch flex-grow relative border border-[#e58585]/[0.31]">
+                  <div className="flex justify-start items-end self-stretch  h-7 relative gap-[89px] border border-[#e58585]/[0.31]">
+                    <div className="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                    <div className="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
                   </div>
-                  <div class="self-stretch  w-[205.07px] h-[136px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-                  <div class="self-stretch flex-grow w-[205.07px] h-[18px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                  <div className="self-stretch  w-[205.07px] h-[136px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                  <div className="self-stretch flex-grow w-[205.07px] h-[18px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
                 </div>
               </div>
             </div>
-            <div class="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden border-[3px] border-[#e58585]/[0.31]">
-              <div class="self-stretch  w-[215.07px] h-[102px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-              <div class="flex flex-col justify-center items-center self-stretch flex-grow overflow-hidden gap-[5px] p-[5px] border border-[#e58585]/[0.31]">
-                <div class="flex flex-col justify-start items-center self-stretch flex-grow relative border border-[#e58585]/[0.31]">
-                  <div class="flex justify-start items-end self-stretch  h-7 relative gap-[89px] border border-[#e58585]/[0.31]">
-                    <div class="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-                    <div class="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+            <div className="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden border-[3px] border-[#e58585]/[0.31]">
+              <div className="self-stretch  w-[215.07px] h-[102px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+              <div className="flex flex-col justify-center items-center self-stretch flex-grow overflow-hidden gap-[5px] p-[5px] border border-[#e58585]/[0.31]">
+                <div className="flex flex-col justify-start items-center self-stretch flex-grow relative border border-[#e58585]/[0.31]">
+                  <div className="flex justify-start items-end self-stretch  h-7 relative gap-[89px] border border-[#e58585]/[0.31]">
+                    <div className="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                    <div className="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
                   </div>
-                  <div class="self-stretch  w-[205.07px] h-[136px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-                  <div class="self-stretch flex-grow w-[205.07px] h-[18px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                  <div className="self-stretch  w-[205.07px] h-[136px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                  <div className="self-stretch flex-grow w-[205.07px] h-[18px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
                 </div>
               </div>
             </div>
-            <div class="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden border-[3px] border-[#e58585]/[0.31]">
-              <div class="self-stretch  w-[215.07px] h-[102px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-              <div class="flex flex-col justify-center items-center self-stretch flex-grow overflow-hidden gap-[5px] p-[5px] border border-[#e58585]/[0.31]">
-                <div class="flex flex-col justify-start items-center self-stretch flex-grow relative border border-[#e58585]/[0.31]">
-                  <div class="flex justify-start items-end self-stretch  h-7 relative gap-[89px] border border-[#e58585]/[0.31]">
-                    <div class="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-                    <div class="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+            <div className="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden border-[3px] border-[#e58585]/[0.31]">
+              <div className="self-stretch  w-[215.07px] h-[102px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+              <div className="flex flex-col justify-center items-center self-stretch flex-grow overflow-hidden gap-[5px] p-[5px] border border-[#e58585]/[0.31]">
+                <div className="flex flex-col justify-start items-center self-stretch flex-grow relative border border-[#e58585]/[0.31]">
+                  <div className="flex justify-start items-end self-stretch  h-7 relative gap-[89px] border border-[#e58585]/[0.31]">
+                    <div className="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                    <div className="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
                   </div>
-                  <div class="self-stretch  w-[205.07px] h-[136px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-                  <div class="self-stretch flex-grow w-[205.07px] h-[18px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                  <div className="self-stretch  w-[205.07px] h-[136px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                  <div className="self-stretch flex-grow w-[205.07px] h-[18px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
                 </div>
               </div>
             </div>
-            <div class="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden border-[3px] border-[#e58585]/[0.31]">
-              <div class="self-stretch  w-[215.07px] h-[102px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-              <div class="flex flex-col justify-center items-center self-stretch flex-grow overflow-hidden gap-[5px] p-[5px] border border-[#e58585]/[0.31]">
-                <div class="flex flex-col justify-start items-center self-stretch flex-grow relative border border-[#e58585]/[0.31]">
-                  <div class="flex justify-start items-end self-stretch  h-7 relative gap-[89px] border border-[#e58585]/[0.31]">
-                    <div class="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-                    <div class="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+            <div className="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden border-[3px] border-[#e58585]/[0.31]">
+              <div className="self-stretch  w-[215.07px] h-[102px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+              <div className="flex flex-col justify-center items-center self-stretch flex-grow overflow-hidden gap-[5px] p-[5px] border border-[#e58585]/[0.31]">
+                <div className="flex flex-col justify-start items-center self-stretch flex-grow relative border border-[#e58585]/[0.31]">
+                  <div className="flex justify-start items-end self-stretch  h-7 relative gap-[89px] border border-[#e58585]/[0.31]">
+                    <div className="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                    <div className="self-stretch flex-grow w-[58.03px] h-7 relative overflow-hidden border border-[#e58585]/[0.31]"></div>
                   </div>
-                  <div class="self-stretch  w-[205.07px] h-[136px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
-                  <div class="self-stretch flex-grow w-[205.07px] h-[18px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                  <div className="self-stretch  w-[205.07px] h-[136px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
+                  <div className="self-stretch flex-grow w-[205.07px] h-[18px] relative overflow-hidden border border-[#e58585]/[0.31]"></div>
                 </div>
               </div>
             </div>

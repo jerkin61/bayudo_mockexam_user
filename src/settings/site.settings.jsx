@@ -8,6 +8,7 @@ export const siteSettings = {
   description: "",
   logo: {
     url: "/logo.svg",
+    darkUrl: "/dark_logo.svg",
     alt: "MXM",
     href: "/home",
     width: 128,

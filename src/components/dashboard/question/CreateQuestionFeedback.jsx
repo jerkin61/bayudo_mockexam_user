@@ -122,10 +122,10 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full">
       {" "}
-      <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-5 p-2.5">
-        <div class="flex justify-center items-start self-stretch flex-grow-0 flex-shrink-0 gap-5 flex-col">
-          <div class="flex flex-col justify-start items-start flex-grow gap-2.5 w-full">
-            <div class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5">
+      <div className="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-5 p-2.5">
+        <div className="flex justify-center items-start self-stretch flex-grow-0 flex-shrink-0 gap-5 flex-col">
+          <div className="flex flex-col justify-start items-start flex-grow gap-2.5 w-full">
+            <div className="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5">
               <Input
                 label="Right answer"
                 {...register("right_ans", {
@@ -139,7 +139,7 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
             </div>
           </div>
         </div>
-        <div class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5">
+        <div className="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5">
           <Input
             label="Question"
             longText={true}
@@ -155,7 +155,7 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
           />
         </div>
 
-        <div class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5">
+        <div className="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5">
           <Input
             label="Explanation"
             longText={true}
@@ -174,7 +174,7 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
           Add choice value first then add the choice key (a, b, c .. you can add
           up till j)
         </p>
-        <div class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5 flex-col">
+        <div className="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5 flex-col">
           <Input
             label="Choices (add them in any order)"
             longText={true}
@@ -191,25 +191,25 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
             setResetForm={setResetForm}
             resetForm={resetForm}
           />{" "}
-          <div class="flex flex-col justify-end items-end self-stretch flex-grow-0 flex-shrink-0 gap-2.5">
-            <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-2.5">
-              <div class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5">
-                <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-2.5">
-                  <p class="flex-grow-0 flex-shrink-0 w-[103px] h-[19px] text-base font-bold text-left text-black">
+          <div className="flex flex-col justify-end items-end self-stretch flex-grow-0 flex-shrink-0 gap-2.5">
+            <div className="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-2.5">
+              <div className="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5">
+                <div className="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-2.5">
+                  <p className="flex-grow-0 flex-shrink-0 w-[103px] h-[19px] text-base font-bold text-left text-black">
                     Choice{" "}
                   </p>
                 </div>{" "}
                 <input
                   value={currentChoices.key}
                   onChange={(e) => handleInputChange("key", e.target.value)}
-                  class="flex-grow-0 flex-shrink-0 w-[66px] h-[38px] rounded-[10px] bg-[#d9d9d9]/[0.27] border border-black"
+                  className="flex-grow-0 flex-shrink-0 w-[66px] h-[38px] rounded-[10px] bg-[#d9d9d9]/[0.27] border border-black"
                 />
               </div>
             </div>
-            <div class="flex flex-col justify-end items-end self-stretch flex-grow-0 flex-shrink-0 gap-2.5">
+            <div className="flex flex-col justify-end items-end self-stretch flex-grow-0 flex-shrink-0 gap-2.5">
               <Button
                 type="button"
-                class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-5 px-[15px] py-[7px] rounded-[10px] bg-[#e0ecf2]"
+                className="flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-5 px-[15px] py-[7px] rounded-[10px] bg-[#e0ecf2]"
                 onClick={handleAddChoiceClick}
               >
                 <svg
@@ -218,7 +218,7 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  class="flex-grow-0 flex-shrink-0 w-6 h-6 relative"
+                  className="flex-grow-0 flex-shrink-0 w-6 h-6 relative"
                   preserveAspectRatio="none"
                 >
                   <path
@@ -226,33 +226,33 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
                     fill="#14130A"
                   ></path>
                 </svg>
-                <p class="flex-grow-0 flex-shrink-0 w-28 h-[19px] text-base font-bold text-left text-black">
+                <p className="flex-grow-0 flex-shrink-0 w-28 h-[19px] text-base font-bold text-left text-black">
                   Add Choice
                 </p>
               </Button>
             </div>
           </div>
         </div>
-        <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-5">
+        <div className="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-5">
           {choiceList?.map((choice, index) => (
             <div
               key={index}
-              class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-2.5"
+              className="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-2.5"
             >
-              <div class="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 gap-2.5 p-2.5 rounded-[5px] bg-[#e0ecf2]">
-                <div class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-8 h-8 relative gap-2.5">
+              <div className="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 gap-2.5 p-2.5 rounded-[5px] bg-[#e0ecf2]">
+                <div className="flex justify-center items-center flex-grow-0 flex-shrink-0 w-8 h-8 relative gap-2.5">
                   {choice.key}
                 </div>
-                <div class="flex flex-col justify-center items-start flex-grow relative gap-2.5">
+                <div className="flex flex-col justify-center items-start flex-grow relative gap-2.5">
                   <span
-                    class="flex-grow-0 flex-shrink-0 text-sm text-left text-black"
+                    className="flex-grow-0 flex-shrink-0 text-sm text-left text-black"
                     dangerouslySetInnerHTML={{
                       __html: sanitizeHTML(choice.value),
                     }}
                   />
                 </div>
                 <div
-                  class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 h-10 w-10 relative overflow-hidden gap-2.5"
+                  className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 h-10 w-10 relative overflow-hidden gap-2.5"
                   onClick={() => handleRemoveChoice(index)}
                 >
                   <svg
@@ -261,7 +261,7 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
                     viewBox="0 0 40 40"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="self-stretch flex-grow"
+                    className="self-stretch flex-grow"
                     preserveAspectRatio="xMidYMid meet"
                   >
                     <g filter="url(#filter0_d_250_630)">
@@ -319,7 +319,7 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="flex-grow-0 flex-shrink-0 w-6 h-6 absolute left-2 top-2"
+                    className="flex-grow-0 flex-shrink-0 w-6 h-6 absolute left-2 top-2"
                     preserveAspectRatio="none"
                   >
                     <path
@@ -332,7 +332,7 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
             </div>
           ))}
         </div>
-        <div class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5">
+        <div className="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-5 px-2.5">
           <Input
             label="Input your feedback"
             longText={true}
@@ -348,20 +348,20 @@ const CreateQuestionFeedback = ({ initialValues, question }) => {
           />
         </div>
       </div>
-      <div class="flex flex-col justify-center items-end self-stretch flex-grow-0 flex-shrink-0 gap-2.5">
-        <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[312px] gap-10 p-2.5 rounded-[5px] bg-white">
+      <div className="flex flex-col justify-center items-end self-stretch flex-grow-0 flex-shrink-0 gap-2.5">
+        <div className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[312px] gap-10 p-2.5 rounded-[5px] bg-white">
           <div
             onClick={closeModal}
-            class="flex justify-center items-center flex-grow relative overflow-hidden gap-2.5 px-5 py-2.5 bg-[#41b2f3]"
+            className="flex justify-center items-center flex-grow relative overflow-hidden gap-2.5 px-5 py-2.5 bg-[#41b2f3]"
           >
-            <p class="flex-grow-0 flex-shrink-0 text-base font-semibold text-center text-white">
+            <p className="flex-grow-0 flex-shrink-0 text-base font-semibold text-center text-white">
               Cancel
             </p>
           </div>
-          <div class="flex justify-center items-center flex-grow relative overflow-hidden gap-2.5 px-5 py-2.5 bg-[#41b2f3]">
+          <div className="flex justify-center items-center flex-grow relative overflow-hidden gap-2.5 px-5 py-2.5 bg-[#41b2f3]">
             <Button
               type="submit"
-              class="flex-grow-0 flex-shrink-0 text-base font-semibold text-center text-white"
+              className="flex-grow-0 flex-shrink-0 text-base font-semibold text-center text-white"
             >
               Submit
             </Button>

@@ -8,10 +8,10 @@ export const Item = ({ item, key }) => {
       id={item.user}
     >
       {" "}
-      <div class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-[0] h-[35.44px] absolute left-0 top-[1.36px] gap-[4.543269157409668px] p-[4.543269157409668px] bg-[white]"></div>
-      <div class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[4.543269157409668px] p-[4.543269157409668px]"></div>
-      <div class="flex justify-center items-center flex-grow relative gap-[4.543269157409668px] px-[3.180288553237915px]">
-        <p class="flex-grow-0 flex-shrink-0 text-[14.538461685180664px] font-bold text-center text-black">
+      <div className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-[0] h-[35.44px] absolute left-0 top-[1.36px] gap-[4.543269157409668px] p-[4.543269157409668px] bg-[white]"></div>
+      <div className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[4.543269157409668px] p-[4.543269157409668px]"></div>
+      <div className="flex justify-center items-center flex-grow relative gap-[4.543269157409668px] px-[3.180288553237915px]">
+        <p className="flex-grow-0 flex-shrink-0 text-[14.538461685180664px] font-bold text-center text-black">
           {item.user}
         </p>
       </div>

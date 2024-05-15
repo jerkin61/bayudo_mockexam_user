@@ -3,16 +3,16 @@ import HomeScoreboard from "./home-scoreboard";
 
 const FeatureScoreboard = () => {
   return (
-    <div class="w-full self-center xl:self-stretch flex justify-start items-start  gap-2.5 md:px-[10px] md:px-[100px] py-[10px] md:py-[50px] bg-white">
-      <div class="flex flex-col xl:flex-row justify-center items-center gap-[30px] md:gap-[100px] px-[10px] md:px-[120px]">
-        <div class="flex flex-col justify-start items-start  w-[576px] relative">
+    <div className="w-full self-center xl:self-stretch flex justify-start items-start  gap-2.5 md:px-[10px] md:px-[100px] py-[10px] md:py-[50px] bg-white">
+      <div className="flex flex-col xl:flex-row justify-center items-center gap-[30px] md:gap-[100px] px-[10px] md:px-[120px]">
+        <div className="flex flex-col justify-start items-start  w-[576px] relative">
           <svg
             width="572"
             height="394"
             viewBox="0 0 572 394"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class=""
+            className=""
             preserveAspectRatio="none"
           >
             <path
@@ -22,22 +22,22 @@ const FeatureScoreboard = () => {
           </svg>
           <HomeScoreboard />
         </div>
-        <div class="md:w-full flex flex-col justify-start items-start relative gap-[20px] md:gap-[40px]">
-          <p class="self-stretch  w-full text-[50px] text-left text-[#192430]">
+        <div className="md:w-full flex flex-col justify-start items-start relative gap-[20px] md:gap-[40px]">
+          <p className="self-stretch  w-full text-[50px] text-left text-[#192430]">
             Real-time scoreboard
           </p>
-          <p class="self-stretch  w-full h-[50px] text-base text-left text-[#727272]">
+          <p className="self-stretch  w-full h-[50px] text-base text-left text-[#727272]">
             Create documentation for the collaborators (i.e. designers or devs)
             directly in your design file.
           </p>
-          <div class="flex justify-start items-start self-stretch  relative gap-[30px]">
+          <div className="flex justify-start items-start self-stretch  relative gap-[30px]">
             <svg
               width="180"
               height="179"
               viewBox="0 0 180 179"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              class=" w-[60px] h-[58px]"
+              className=" w-[60px] h-[58px]"
               preserveAspectRatio="none"
             >
               <g filter="url(#filter0_d_1063_750)">
@@ -131,29 +131,29 @@ const FeatureScoreboard = () => {
                 </linearGradient>
               </defs>
             </svg>
-            <div class="flex flex-col justify-start items-start flex-grow relative gap-[9px]">
-              <p class=" w-[92px] h-[27px] text-xl font-semibold text-left text-[#222]">
+            <div className="flex flex-col justify-start items-start flex-grow relative gap-[9px]">
+              <p className=" w-[92px] h-[27px] text-xl font-semibold text-left text-[#222]">
                 Strategic
               </p>
-              <p class="self-stretch  w-full text-[15px] text-left text-[#727272]">
-                <span class="self-stretch   w-full text-[15px] text-left text-[#727272]">
+              <p className="self-stretch  w-full text-[15px] text-left text-[#727272]">
+                <span className="self-stretch   w-full text-[15px] text-left text-[#727272]">
                   Suggests that the component spacing
                 </span>
                 <br />
-                <span class="self-stretch  w-full text-[15px] text-left text-[#727272]">
+                <span className="self-stretch  w-full text-[15px] text-left text-[#727272]">
                   between cards and elements.
                 </span>
               </p>
             </div>
           </div>
-          <div class="flex justify-start items-start self-stretch  relative gap-[30px]">
+          <div className="flex justify-start items-start self-stretch  relative gap-[30px]">
             <svg
               width="180"
               height="178"
               viewBox="0 0 180 178"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              class=" w-[60px] h-[57px]"
+              className=" w-[60px] h-[57px]"
               preserveAspectRatio="none"
             >
               <g filter="url(#filter0_d_1063_761)">
@@ -245,11 +245,11 @@ const FeatureScoreboard = () => {
                 </linearGradient>
               </defs>
             </svg>
-            <div class="flex flex-col justify-start items-start flex-grow relative gap-2.5">
-              <p class=" w-[159px] h-[27px] text-xl font-semibold text-left text-[#222]">
+            <div className="flex flex-col justify-start items-start flex-grow relative gap-2.5">
+              <p className=" w-[159px] h-[27px] text-xl font-semibold text-left text-[#222]">
                 Work schedule
               </p>
-              <p class="self-stretch  w-full text-[15px] text-left text-[#727272]">
+              <p className="self-stretch  w-full text-[15px] text-left text-[#727272]">
                 work schedule is the time an employee is expected to be on the
                 job
               </p>

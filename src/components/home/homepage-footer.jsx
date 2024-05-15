@@ -3,22 +3,28 @@ import Logo from "@components/ui/logo";
 
 const HomepageFooter = () => {
   return (
-    <div class="w-full flex flex-col justify-center items-center  gap-2.5  py-7 bg-white">
-      <div class="flex flex-col justify-start items-center  gap-[83px]">
-        <div class="flex flex-col lg:flex-row justify-between items-center  relative gap-[30px] md:gap-auto">
-          <div class="flex justify-start items-center  relative gap-[62px]">
-            <p class=" text-sm font-medium text-center text-[#404041]">ABOUT</p>
-            <p class=" text-sm font-medium text-center text-[#404041]">
+    <div className="w-full flex flex-col justify-center items-center  gap-2.5  py-7 bg-white">
+      <div className="flex flex-col justify-start items-center  gap-[83px]">
+        <div className="flex flex-col lg:flex-row justify-between items-center  relative gap-[30px] md:gap-auto">
+          <div className="flex justify-start items-center  relative gap-[62px]">
+            <p className=" text-sm font-medium text-center text-[#404041]">
+              ABOUT
+            </p>
+            <p className=" text-sm font-medium text-center text-[#404041]">
               HOW IT WORKS
             </p>
-            <p class=" text-sm font-medium text-center text-[#404041]">
+            <p className=" text-sm font-medium text-center text-[#404041]">
               CONTACT
             </p>
           </div>
           <Logo />
-          <div class="flex justify-start items-center  w-[205px] relative gap-[124px]">
-            <p class=" text-sm font-bold text-center text-[#404041]">Signup</p>
-            <p class=" text-sm font-bold text-center text-[#404041]">Login</p>
+          <div className="flex justify-start items-center  w-[205px] relative gap-[124px]">
+            <p className=" text-sm font-bold text-center text-[#404041]">
+              Signup
+            </p>
+            <p className=" text-sm font-bold text-center text-[#404041]">
+              Login
+            </p>
           </div>
           <svg
             width="86"
@@ -26,7 +32,7 @@ const HomepageFooter = () => {
             viewBox="0 0 86 13"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class=" w-[85.5px] h-[12.02px]"
+            className=" w-[85.5px] h-[12.02px]"
             preserveAspectRatio="none"
           >
             <path
@@ -47,12 +53,14 @@ const HomepageFooter = () => {
             ></path>
           </svg>
         </div>
-        <div class="flex justify-start items-center  relative">
-          <div class="flex justify-between items-center flex-grow relative">
-            <p class=" text-xs text-center text-[#1b1b1b]/[0.35]">
+        <div className="flex justify-start items-center  relative">
+          <div className="flex justify-between items-center flex-grow relative">
+            <p className=" text-xs text-center text-[#1b1b1b]/[0.35]">
               Copyright © 2020.Besnik creative
             </p>
-            <p class=" text-xs text-right text-[#7b827d]">Designed by Besnik</p>
+            <p className=" text-xs text-right text-[#7b827d]">
+              Designed by Besnik
+            </p>
           </div>
           <svg
             width="941"
@@ -60,7 +68,7 @@ const HomepageFooter = () => {
             viewBox="0 0 941 3"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="hidden md:block"
+            className="hidden md:block"
             preserveAspectRatio="xMidYMid meet"
           >
             <line

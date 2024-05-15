@@ -68,8 +68,8 @@ const TopSection = () => {
     openModal("LOGIN_VIEW");
   };
   return (
-    <div class="flex flex-col md:flex-row justify-start items-start h-full w-full gap-[39.66753005981445px] px-[10px] md:px-[100px] py-[36px] bg-[#f2f2f2] mt-[0] lg:mt-[5rem]">
-      <div class="flex flex-col justify-center items-center gap-[36.21818161010742px] w-full md:w-[50%] lg:w-full">
+    <div className="flex flex-col md:flex-row justify-start items-start h-full w-full gap-[39.66753005981445px] px-[10px] md:px-[100px] py-[36px] bg-[#f2f2f2] mt-[0] lg:mt-[5rem]">
+      <div className="flex flex-col justify-center items-center gap-[36.21818161010742px] w-full md:w-[50%] lg:w-full">
         <div
           className={
             "flex flex-col justify-start items-start self-stretch gap-[8.623376846313477px]"
@@ -91,9 +91,9 @@ const TopSection = () => {
               },
             }}
           >
-            <div class="flex justify-center items-center flex-grow pt-[25px]">
+            <div className="flex justify-center items-center flex-grow pt-[25px]">
               <p
-                class={`tracking-wide text-stroke-2 flex-grow w-full text-[60px] text-center text-white stroke-[3px] ${mclaren.className}`}
+                className={`tracking-wide text-stroke-2 flex-grow w-full text-[60px] text-center text-white stroke-[3px] ${mclaren.className}`}
               >
                 {topsectionContent[imageIndex].top_title}
               </p>
@@ -117,12 +117,12 @@ const TopSection = () => {
             }}
           >
             <div
-              class="flex justify-center items-center gap-[17.246753692626953px] px-[17.246753692626953px]"
+              className="flex justify-center items-center gap-[17.246753692626953px] px-[17.246753692626953px]"
               style={{
                 background: topsectionContent[imageIndex].text_background_color,
               }}
             >
-              <p class="tracking-wide text-[55px] font-medium text-center text-[#dafffb] text-stroke-2">
+              <p className="tracking-wide text-[55px] font-medium text-center text-[#dafffb] text-stroke-2">
                 {topsectionContent[imageIndex].middle_title}
               </p>
             </div>
@@ -145,47 +145,47 @@ const TopSection = () => {
             }}
           >
             {" "}
-            <p class="tracking-wide  flex-grow w-[573.45px] text-[41.392208099365234px] font-bold text-center text-[#00b5f4]">
+            <p className="tracking-wide  flex-grow w-[573.45px] text-[41.392208099365234px] font-bold text-center text-[#00b5f4]">
               {topsectionContent[imageIndex].bottom_title}
             </p>
           </motion.div>
-          {/* <div class="">
-            <p class="tracking-wide  flex-grow w-[573.45px] text-[41.392208099365234px] font-bold text-center text-[#00b5f4]">
+          {/* <div className="">
+            <p className="tracking-wide  flex-grow w-[573.45px] text-[41.392208099365234px] font-bold text-center text-[#00b5f4]">
               Pass your exams
             </p>
           </div> */}
         </div>
-        <div class="flex flex-col justify-center items-center self-stretch gap-[34.493507385253906px] p-[17.246753692626953px]">
-          <div class="flex justify-center items-center self-stretch overflow-hidden gap-[17.246753692626953px] p-[8.623376846313477px]">
-            <p class="tracking-wide  flex-grow w-[556.21px] text-[20.696104049682617px] font-bold text-center text-[#023d37]">
+        <div className="flex flex-col justify-center items-center self-stretch gap-[34.493507385253906px] p-[17.246753692626953px]">
+          <div className="flex justify-center items-center self-stretch overflow-hidden gap-[17.246753692626953px] p-[8.623376846313477px]">
+            <p className="tracking-wide  flex-grow w-[556.21px] text-[20.696104049682617px] font-bold text-center text-[#023d37]">
               Subtitile will add lateer while development
             </p>
           </div>
-          <div class="flex justify-start items-start gap-[10px] py-[15px] text">
+          <div className="flex justify-start items-start gap-[10px] py-[15px] text">
             <motion.button
               whileHover={{ scale: 1.07 }}
               whileTap={{ scale: 0.8 }}
-              class="flex justify-center items-center w-[212.14px] h-[58.64px] gap-[17.246753692626953px] p-[8.623376846313477px] rounded-[34.49px] border-[3.45px] border-[#2d5af2]"
+              className="flex justify-center items-center w-[212.14px] h-[58.64px] gap-[17.246753692626953px] p-[8.623376846313477px] rounded-[34.49px] border-[3.45px] border-[#2d5af2]"
               onClick={handleRegisterOrLogin}
             >
-              <p class="text-[15.522077560424805px] font-bold text-center text-[#2d5af2]">
+              <p className="text-[15.522077560424805px] font-bold text-center text-[#2d5af2]">
                 Login / Register as Student
               </p>
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.07 }}
               whileTap={{ scale: 0.8 }}
-              class="flex justify-center items-center w-[212.14px] h-[58.64px] overflow-hidden gap-[17.246753692626953px] p-[8.623376846313477px] rounded-[34.49px] bg-[#2d5af2] border-[3.45px] border-[#2d5af2] opacity-[1] hover:opacity-[0.8]"
+              className="flex justify-center items-center w-[212.14px] h-[58.64px] overflow-hidden gap-[17.246753692626953px] p-[8.623376846313477px] rounded-[34.49px] bg-[#2d5af2] border-[3.45px] border-[#2d5af2] opacity-[1] hover:opacity-[0.8]"
               onClick={proceedToAdminpage}
             >
-              <p class="text-[15.522077560424805px] font-bold text-center text-white">
+              <p className="text-[15.522077560424805px] font-bold text-center text-white">
                 Proceed as Mentor
               </p>
             </motion.button>
           </div>
         </div>{" "}
       </div>
-      <div class="relative flex hidden md:block justify-start items-start self-stretch flex-grow gap-[17.246753692626953px] rounded-[34.49px] w-full h-full overflow-hidden">
+      <div className="relative flex hidden md:block justify-start items-start self-stretch flex-grow gap-[17.246753692626953px] rounded-[34.49px] w-full h-full overflow-hidden">
         <motion.div
           key={imageIndex}
           initial="from"
@@ -216,7 +216,7 @@ const TopSection = () => {
             viewBox="0 0 510 449"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="flex-grow-0 flex-shrink-0 right-0 absolute h-[70%] w-[80%] bottom-0 z-[0]"
+            className="flex-grow-0 flex-shrink-0 right-0 absolute h-[70%] w-[80%] bottom-0 z-[0]"
             preserveAspectRatio="xMidYMid meet"
           >
             <circle

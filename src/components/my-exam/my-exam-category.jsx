@@ -36,7 +36,7 @@ const MyExamCategory = ({ data }) => {
       </span>
       <span className="self-stretch flex flex-row text-[15px] gap-[10px] text-left text-[#140d0d]">
         <Link
-          href={`/maintest/question/${exam_taken_id}/${id}/${exam_category_id}/show-question?completed=true`}
+          href={`/maintest/question/${exam_taken_id}/${id}/${exam_category_id}/show-question?completed=true?show=t`}
         >
           <Button className="flex flex-row gap-3">
             {" "}

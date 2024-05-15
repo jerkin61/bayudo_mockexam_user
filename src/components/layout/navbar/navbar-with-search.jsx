@@ -21,17 +21,13 @@ const AuthorizedMenu = dynamic(
 
 const NavbarWithSearch = () => {
   const { t } = useTranslation("common");
-  const { asPath } = useRouter();
+  const { asPath, query } = useRouter();
+  console.log("asPath", query);
   // const { data } = useTypesQuery();
-  const types = "main";
+  // const types = "main";
   // const slugs = types?.map((item) => item.slug);
-  const currentPath = asPath
-    .substring(
-      0,
-      asPath.indexOf("?") === -1 ? asPath.length : asPath.indexOf("?")
-    )
-    .replace(/\//g, "");
 
+  const isMaintest = asPath.includes("maintest");
   // const hasType = slugs?.includes(currentPath);
   const hasType = true;
 
@@ -61,7 +57,7 @@ const NavbarWithSearch = () => {
         ) : (
           <>
             {/* <div>Logo</div> */}
-            <Logo className="mx-auto lg:mx-0" />
+            <Logo whiteFont={isMaintest} className="mx-auto lg:mx-0" />
             {/* <ProductTypeMenu className="ms-10 me-auto hidden xl:block" /> */}
             <Link href={siteSettings.logo.href}>
               {" "}
@@ -84,7 +80,7 @@ const NavbarWithSearch = () => {
                 {/* <div>Search</div> */}
               </div>
             </div>
-            {/* <ul className="hidden lg:flex items-center flex-shrink-0 space-s-10">
+            <ul className="hidden lg:flex items-center flex-shrink-0 gap-[20px]">
               {siteSettings.headerLinks.map(({ href, label, icon }) => (
                 <li key={`${href}${label}`}>
                   <Link
@@ -105,7 +101,7 @@ const NavbarWithSearch = () => {
                   <JoinButton />
                 </li>
               )}
-            </ul> */}
+            </ul>
           </>
         )}
       </nav>

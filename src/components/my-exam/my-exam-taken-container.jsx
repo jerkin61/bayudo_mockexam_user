@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../ui/button";
 import MyExamCategory from "./my-exam-category";
 import dayjs from "dayjs";
 const calculateTotals = (examCategoryTaken) => {
@@ -24,7 +23,7 @@ const MyExamTakenContainer = ({ data }) => {
     <div className="flex flex-col justify-center items-start self-stretch overflow-hidden gap-2.5 px-5 py-[15px] rounded-[5px] bg-white shadow rounded">
       <div className="flex flex-col justify-center items-start self-stretch relative gap-2.5">
         <div className="flex flex-col self-stretch w-full text-xl font-semibold text-left text-[#222]">
-          <strong> Take {take}</strong>{" "}
+          {/* <strong> Take {take}</strong>{" "} */}
           <span>
             {" "}
             <bold>Exam Name : </bold>

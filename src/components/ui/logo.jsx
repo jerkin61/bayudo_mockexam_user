@@ -5,7 +5,7 @@ import { siteSettings } from "@settings/site.settings";
 import { useSettings } from "@contexts/settings.context";
 import { useRouter } from "next/router";
 
-const Logo = ({ className, ...props }) => {
+const Logo = ({ className, whiteFont, ...props }) => {
   const { logo, siteTitle } = useSettings();
   return (
     <Link
@@ -21,9 +21,10 @@ const Logo = ({ className, ...props }) => {
         }}
       >
         <Image
-          src={logo?.original ?? siteSettings.logo.url}
+          src={whiteFont ? siteSettings.logo.darkUrl : siteSettings.logo.url}
           alt={siteTitle ?? siteSettings.logo.alt}
-          layout="fill"
+          width={250}
+          height={250}
           objectFit="contain"
           loading="eager"
         />

@@ -4,7 +4,6 @@ import React, { useMemo } from "react";
 
 const initialState = {
   isAuthorize: loggedIn(),
-  // sidebarView: "CART_VIEW",
   displaySidebar: false,
   displayHeaderSearch: false,
   displayMobileSearch: false,

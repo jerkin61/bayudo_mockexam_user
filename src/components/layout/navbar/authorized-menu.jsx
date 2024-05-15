@@ -7,9 +7,10 @@ import { zoomInBottom } from "@utils/motion/zoom-in-bottom";
 // import { useCustomerQuery } from "@data/customer/use-customer.query";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+import { usePerExaminee } from "@data/examinee/use-per-examinee.query";
 
 export default function AuthorizedMenu() {
-  // const { data } = useCustomerQuery();
+  const { data } = usePerExaminee();
   const [isOpen, setOpen] = useState(false);
   const router = useRouter();
   const { t } = useTranslation("common");
@@ -42,13 +43,13 @@ export default function AuthorizedMenu() {
         onClick={() => setOpen(!isOpen)}
         {...triggerProps}
       >
-        <div>Avatar</div>
-        {/* <Avatar
+        {/* <div>Avatar</div> */}
+        <Avatar
           src={
             data?.me?.profile?.avatar?.thumbnail ?? "/avatar-placeholder.svg"
           }
           title="user name"
-        /> */}
+        />
         <span className="sr-only">{t("user-avatar")}</span>
       </button>
 

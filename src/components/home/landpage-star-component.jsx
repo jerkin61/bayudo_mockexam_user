@@ -2,15 +2,15 @@ import React from "react";
 
 const LandpageStarComponent = () => {
   return (
-    <div class="flex justify-start items-start ">
-      <div class="flex flex-col justify-start items-start  h-[28.31px] w-[26.85px] relative overflow-hidden gap-[11.6167631149292px] px-[1.161676287651062px] py-[3.4850289821624756px]">
+    <div className="flex justify-start items-start ">
+      <div className="flex flex-col justify-start items-start  h-[28.31px] w-[26.85px] relative overflow-hidden gap-[11.6167631149292px] px-[1.161676287651062px] py-[3.4850289821624756px]">
         <svg
           width="25"
           height="22"
           viewBox="0 0 25 22"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          class="self-stretch flex-grow"
+          className="self-stretch flex-grow"
           preserveAspectRatio="none"
         >
           <path
@@ -23,14 +23,14 @@ const LandpageStarComponent = () => {
           ></path>
         </svg>
       </div>
-      <div class="flex flex-col justify-start items-start  h-[28.31px] w-[26.85px] relative overflow-hidden gap-[11.6167631149292px] px-[1.161676287651062px] py-[3.4850289821624756px]">
+      <div className="flex flex-col justify-start items-start  h-[28.31px] w-[26.85px] relative overflow-hidden gap-[11.6167631149292px] px-[1.161676287651062px] py-[3.4850289821624756px]">
         <svg
           width="26"
           height="22"
           viewBox="0 0 26 22"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          class="self-stretch flex-grow"
+          className="self-stretch flex-grow"
           preserveAspectRatio="none"
         >
           <path
@@ -43,14 +43,14 @@ const LandpageStarComponent = () => {
           ></path>
         </svg>
       </div>
-      <div class="flex flex-col justify-start items-start  h-[28.31px] w-[26.85px] relative overflow-hidden gap-[11.6167631149292px] px-[1.161676287651062px] py-[3.4850289821624756px]">
+      <div className="flex flex-col justify-start items-start  h-[28.31px] w-[26.85px] relative overflow-hidden gap-[11.6167631149292px] px-[1.161676287651062px] py-[3.4850289821624756px]">
         <svg
           width="26"
           height="22"
           viewBox="0 0 26 22"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          class="self-stretch flex-grow"
+          className="self-stretch flex-grow"
           preserveAspectRatio="none"
         >
           <path
@@ -63,14 +63,14 @@ const LandpageStarComponent = () => {
           ></path>
         </svg>
       </div>
-      <div class="flex flex-col justify-start items-start  h-[28.31px] w-[26.85px] relative overflow-hidden gap-[11.6167631149292px] px-[1.161676287651062px] py-[3.4850289821624756px]">
+      <div className="flex flex-col justify-start items-start  h-[28.31px] w-[26.85px] relative overflow-hidden gap-[11.6167631149292px] px-[1.161676287651062px] py-[3.4850289821624756px]">
         <svg
           width="26"
           height="22"
           viewBox="0 0 26 22"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          class="self-stretch flex-grow"
+          className="self-stretch flex-grow"
           preserveAspectRatio="none"
         >
           <path
@@ -83,14 +83,14 @@ const LandpageStarComponent = () => {
           ></path>
         </svg>
       </div>
-      <div class="flex flex-col justify-start items-start  h-[28.31px] w-[26.85px] relative overflow-hidden gap-[11.6167631149292px] px-[1.161676287651062px] py-[3.4850289821624756px]">
+      <div className="flex flex-col justify-start items-start  h-[28.31px] w-[26.85px] relative overflow-hidden gap-[11.6167631149292px] px-[1.161676287651062px] py-[3.4850289821624756px]">
         <svg
           width="25"
           height="22"
           viewBox="0 0 25 22"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          class="self-stretch flex-grow"
+          className="self-stretch flex-grow"
           preserveAspectRatio="none"
         >
           <path
