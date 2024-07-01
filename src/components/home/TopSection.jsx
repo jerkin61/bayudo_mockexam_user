@@ -158,7 +158,7 @@ const TopSection = () => {
         <div className="flex flex-col justify-center items-center self-stretch gap-[34.493507385253906px] p-[17.246753692626953px]">
           <div className="flex justify-center items-center self-stretch overflow-hidden gap-[17.246753692626953px] p-[8.623376846313477px]">
             <p className="tracking-wide  flex-grow w-[556.21px] text-[20.696104049682617px] font-bold text-center text-[#023d37]">
-              Subtitile will add lateer while development
+              Study for exams. Anytime. Anywhere.
             </p>
           </div>
           <div className="flex justify-start items-start gap-[10px] py-[15px] text">

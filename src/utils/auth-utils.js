@@ -56,4 +56,4 @@ export function isAuthenticated(_cookies) {
   );
 }
 
-export const limitOfRetries = 1;
+export const limitOfRetries = 0;

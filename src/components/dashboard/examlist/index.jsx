@@ -10,6 +10,7 @@ import { useUI } from "@contexts/ui.context";
 import Image from "next/image";
 import { Waypoint } from "react-waypoint";
 export default function Dashboard() {
+  const [closeOrOpen, setCloseOrOpen] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
   const { data: me } = usePerExaminee();
@@ -19,7 +20,7 @@ export default function Dashboard() {
     isLoading: loading,
     error,
   } = useExamlistQuery({ limit: 20, page, text: searchTerm });
-  if (loading) return <PageLoader />;
+  // if (loading) return <PageLoader />;
   const message = `Hi, ${me?.me.name ?? "there"} This is your exam list. ${
     !me?.me ? "Please login to access." : ""
   }`;
@@ -42,14 +43,25 @@ export default function Dashboard() {
             closeable={false}
             // onClose={() => setErrorMsg("")}
           />
-          <div className="main-container w-full h-full overflow-scroll">
-            {" "}
-            {(!isAuthorize ? data?.examlist?.data : me?.me?.allExams)?.map(
-              (item, index) => (
-                <ExamMainContainer userId={me?.id} key={index} item={item} />
-              )
-            )}
-          </div>
+          {loading ? (
+            <PageLoader />
+          ) : (
+            <div className="main-container w-full h-full overflow-scroll">
+              {" "}
+              {(!isAuthorize ? data?.examlist?.data : me?.me?.allExams)?.map(
+                (item, index) => (
+                  <ExamMainContainer
+                    userId={me?.id}
+                    key={index}
+                    i={index}
+                    item={item}
+                    setCloseOrOpen={setCloseOrOpen}
+                    closeOrOpen={closeOrOpen}
+                  />
+                )
+              )}
+            </div>
+          )}
         </div>
       </div>
     </>

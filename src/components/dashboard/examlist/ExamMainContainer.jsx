@@ -5,11 +5,23 @@ import dayjs from "dayjs";
 import { useUI } from "@contexts/ui.context";
 import { useModalAction } from "@components/ui/modal/modal.context";
 import Card from "../../common/card";
+import ExamCategoryContainer from "./ExamCategoryContainer";
+import { AnimatePresence, motion } from "framer-motion";
+import { heightCollapse } from "../../ui/accordion";
+import PageLoader from "../../ui/page-loader";
 
-const ExamMainContainer = ({ item, index, userId }) => {
+const ExamMainContainer = ({
+  item,
+  index,
+  i,
+  userId,
+  setCloseOrOpen,
+  closeOrOpen,
+  loading,
+}) => {
   const { isAuthorize } = useUI();
   const { openModal } = useModalAction();
-  const [closeOrOpen, setCloseOrOpen] = useState(false);
+
   const {
     id,
     name,
@@ -24,7 +36,10 @@ const ExamMainContainer = ({ item, index, userId }) => {
   function handleAuthModal() {
     return openModal("LOGIN_VIEW");
   }
+
   const [examCreated, setExamCreated] = React.useState(false);
+  const isOpen = i === closeOrOpen;
+  if (loading) return <PageLoader />;
   return (
     <div
       onClick={() => {
@@ -32,7 +47,7 @@ const ExamMainContainer = ({ item, index, userId }) => {
           handleAuthModal();
         }
       }}
-      key={index}
+      key={name}
       className="flex flex-col justify-start items-center self-stretch gap-[15px] py-2.5"
     >
       <div className="flex flex-col justify-center items-start self-stretch overflow-hidden gap-2.5 hover:bg-[#41b2f3]/50 bg-[#41b2f3]/25 border-[2px] p-5 md:p-8 bg-light shadow rounded">
@@ -41,10 +56,10 @@ const ExamMainContainer = ({ item, index, userId }) => {
             className="flex flex-col justify-start items-center h-10 w-10 relative overflow-hidden gap-2.5 rounded-[20px] bg-[#d9d9d9] "
             title={"text-edit"}
             onClick={() => {
-              isAuthorize && setCloseOrOpen(!closeOrOpen);
+              isAuthorize && setCloseOrOpen(isOpen ? false : i);
             }}
           >
-            {closeOrOpen ? (
+            {isOpen ? (
               <svg
                 width="24"
                 height="24"
@@ -98,24 +113,53 @@ const ExamMainContainer = ({ item, index, userId }) => {
               Date added: {dayjs(created_at).format("MMMM D, YYYY")}
             </p>
           </div>
-        </div>
-        {closeOrOpen && (
-          <div className="flex flex-col justify-start items-center self-stretch gap-2.5 pl-[50px] py-2.5">
-            <div className="flex justify-between items-center self-stretch relative">
-              <p className="w-full h-[19px] text-base font-bold text-left text-black">
-                PLEASE SELECT CATEGORY
-              </p>
-            </div>
-            <ExamCategory
+        </div>{" "}
+        <AnimatePresence initial={false}>
+          {isOpen && (
+            <motion.div
+              className="flex flex-col justify-start items-center self-stretch gap-2.5 pl-[50px] py-2.5"
+              key={name}
+              initial="from"
+              animate="to"
+              exit="from"
+              variants={heightCollapse()}
+            >
+              <div className="flex justify-between items-center self-stretch relative">
+                <p className="w-full h-[19px] text-base font-bold text-left text-black">
+                  PLEASE SELECT CATEGORY
+                </p>
+              </div>
+              {/* <ExamCategory
               userId={userId}
               examName={name}
               examListId={id}
               examCategory={exam_category}
               setExamCreated={setExamCreated}
               examCreated={examCreated}
-            />
-          </div>
-        )}
+            /> */}
+              <div className="w-full flex flex-col gap-5">
+                {" "}
+                {!exam_category.length && (
+                  <div className="flex justify-center items-center self-stretch relative gap-2.5 p-2.5 rounded-[5px] bg-[#e0ecf2]">
+                    No category assigned
+                  </div>
+                )}
+                {exam_category &&
+                  exam_category.map((item, index) => (
+                    <ExamCategoryContainer
+                      userId={userId}
+                      examName={name}
+                      item={item}
+                      index={index}
+                      examListId={id}
+                      setExamCreated={setExamCreated}
+                      examCreated={examCreated}
+                    />
+                  ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

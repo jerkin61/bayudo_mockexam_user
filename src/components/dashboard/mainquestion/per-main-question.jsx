@@ -38,7 +38,6 @@ const PerMainQuestion = ({
   previousPageScroll,
   locked,
 }) => {
-  console.log("question", question);
   const parsedImage = JSON.parse(question.image_for_question);
   const { openModal } = useModalAction();
   const { data: me, loading: meLoading } = usePerExaminee();
@@ -150,7 +149,7 @@ const PerMainQuestion = ({
             </div>
             <div className="flex flex-col align-center w-full self-stretch relative gap-2.5 px-5 py-2.5 rounded-[5px]">
               <span
-                className="w-full self-stretch w-[324px] text-base font-semibold text-center text-white"
+                className="text-xl w-full self-stretch w-[324px] text-base font-semibold text-center text-white"
                 dangerouslySetInnerHTML={{
                   __html: sanitizeHTML(
                     question.exam_category.category_name +
@@ -183,15 +182,15 @@ const PerMainQuestion = ({
                 ))}{" "}
           </div>{" "}
         </div>
-        <div className="lg:w-[40%] w-full">
+        <div className="lg:w-[40%] w-full text-white">
           {question.image_for_question && (
             <div>
-              <h2>Use this image to solve</h2>
+              <h2 className="my-5 font-bold">Use this image to solve</h2>
               <Image
                 alt={"test"}
                 src={parsedImage?.original}
                 // layout="fill"
-                width={400}
+                width={500}
                 height={400}
                 // priority={true}
               />

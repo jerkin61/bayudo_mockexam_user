@@ -1,7 +1,7 @@
-// import { FacebookIcon } from "@components/icons/facebook";
-// import { InstagramIcon } from "@components/icons/instagram";
-// import { TwitterIcon } from "@components/icons/twitter";
-// import { YouTubeIcon } from "@components/icons/youtube";
+import { FacebookIcon } from "@components/icons/facebook";
+import { InstagramIcon } from "@components/icons/instagram";
+import { TwitterIcon } from "@components/icons/twitter";
+import { YouTubeIcon } from "@components/icons/youtube";
 // import { ROUTES } from "@utils/routes";
 export const siteSettings = {
   name: "MXM",
@@ -28,45 +28,45 @@ export const siteSettings = {
       default: "Argon",
     },
   },
-  // author: {
-  //   name: "RedQ, Inc.",
-  //   websiteUrl: "https://redq.io",
-  //   address: "115 E 9th St, New York, CA 90079,USA",
-  //   phone: "+971-321-4841-78",
-  //   social: [
-  //     {
-  //       link: "https://www.facebook.com",
-  //       icon: <FacebookIcon width="16px" height="16px" />,
-  //       hoverClass: "text-social-facebook",
-  //     },
-  //     {
-  //       link: "https://www.instagram.com",
-  //       icon: <InstagramIcon width="16px" height="16px" />,
-  //       hoverClass: "text-social-instagram",
-  //     },
-  //     {
-  //       link: "https://www.twitter.com",
-  //       icon: <TwitterIcon width="16px" height="16px" />,
-  //       hoverClass: "text-social-twitter",
-  //     },
-  //     {
-  //       link: "https://www.youtube.com",
-  //       icon: <YouTubeIcon width="16px" height="16px" />,
-  //       hoverClass: "text-social-youtube",
-  //     },
-  //   ],
-  // },
+  author: {
+    name: "RedQ, Inc.",
+    websiteUrl: "https://redq.io",
+    address: "115 E 9th St, New York, CA 90079,USA",
+    phone: "+971-321-4841-78",
+    social: [
+      {
+        link: "https://www.facebook.com",
+        icon: <FacebookIcon width="16px" height="16px" />,
+        hoverClass: "text-social-facebook",
+      },
+      // {
+      //   link: "https://www.instagram.com",
+      //   icon: <InstagramIcon width="16px" height="16px" />,
+      //   hoverClass: "text-social-instagram",
+      // },
+      {
+        link: "https://www.twitter.com",
+        icon: <TwitterIcon width="16px" height="16px" />,
+        hoverClass: "text-social-twitter",
+      },
+      {
+        link: "https://www.youtube.com",
+        icon: <YouTubeIcon width="16px" height="16px" />,
+        hoverClass: "text-social-youtube",
+      },
+    ],
+  },
   headerLinks: [
-    { href: "ROUTES.SHOPS", icon: null, label: "nav-menu-shops" },
-    { href: "ROUTES.OFFERS", icon: null, label: "nav-menu-offer" },
-    { href: "ROUTES.HELP", label: "nav-menu-faq" },
-    { href: "ROUTES.CONTACT", label: "nav-menu-contact" },
+    { href: "main", icon: null, label: "Exams" },
+    { href: "my-exams", icon: null, label: "My Results" },
+    { href: "help", label: "Help" },
+    { href: "contact", label: "Contact Us" },
   ],
   authorizedLinks: [
     // { href: "profile", label: "auth-menu-profile" },
     // { href: "checkout", label: "auth-menu-checkout" },
-    { href: "my-exams", label: "auth-menu-my-exams" },
-    { href: "logout", label: "auth-menu-logout" },
+    { href: "my-exams", label: "My Results" },
+    { href: "logout", label: "Logout" },
   ],
   dashboardSidebarMenu: [
     {
@@ -89,37 +89,5 @@ export const siteSettings = {
     //   href: ROUTES.LOGOUT,
     //   menulabel: "profile-sidebar-logout",
     // },
-  ],
-  deliverySchedule: [
-    {
-      id: "1",
-      title: "express-delivery",
-      description: "90 min express delivery",
-    },
-    {
-      id: "2",
-      title: "8am-11am",
-      description: "8.00 AM - 11.00 AM",
-    },
-    {
-      id: "3",
-      title: "11am-2pm",
-      description: "11.00 AM - 2.00 PM",
-    },
-    {
-      id: "4",
-      title: "2pm-5pm",
-      description: "2.00 PM - 5.00 PM",
-    },
-    {
-      id: "5",
-      title: "5pm-8pm",
-      description: "5.00 PM - 8.00 PM",
-    },
-    {
-      id: "6",
-      title: "next day",
-      description: "Next Day",
-    },
   ],
 };

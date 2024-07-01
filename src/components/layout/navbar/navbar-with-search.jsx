@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import Search from "../../common/search";
+import { useWindowSize } from "react-use";
 
 const AuthorizedMenu = dynamic(
   () => import("@components/layout/navbar/authorized-menu"),
@@ -26,8 +27,9 @@ const NavbarWithSearch = () => {
   // const { data } = useTypesQuery();
   // const types = "main";
   // const slugs = types?.map((item) => item.slug);
-
-  const isMaintest = asPath.includes("maintest");
+  const { width } = useWindowSize();
+  console.log("width", width);
+  const isMaintest = asPath.includes("show-question") && width > 1024;
   // const hasType = slugs?.includes(currentPath);
   const hasType = true;
 
@@ -84,8 +86,11 @@ const NavbarWithSearch = () => {
               {siteSettings.headerLinks.map(({ href, label, icon }) => (
                 <li key={`${href}${label}`}>
                   <Link
-                    href={href}
-                    className="font-semibold text-heading flex items-center transition duration-200 no-underline hover:text-accent focus:text-accent"
+                    href={`/${href}`}
+                    className={cn(
+                      "font-semibold text-heading flex items-center transition duration-200 no-underline hover:text-accent focus:text-accent",
+                      isMaintest ? "text-white" : ""
+                    )}
                   >
                     {icon && <span className="me-2">{icon}</span>}
                     {t(label)}

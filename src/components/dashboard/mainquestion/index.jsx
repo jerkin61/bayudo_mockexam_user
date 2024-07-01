@@ -97,11 +97,6 @@ const QuestionList = () => {
   const moreDataAvailable = currPage !== data?.pages + 1 && hasNextPage;
 
   const scrollToNextElement = () => {
-    if (moreDataAvailable) {
-      fetchNextPage();
-      completeExamPerItem();
-      setCurrPage(currPage + 1);
-    }
     const scrollContainer = document.getElementById("scroll-container");
     if (!scrollContainer) return;
     const scrollDistance = scrollContainer.clientHeight;
@@ -109,6 +104,11 @@ const QuestionList = () => {
       top: scrollDistance,
       behavior: "smooth",
     });
+    if (moreDataAvailable) {
+      fetchNextPage();
+      completeExamPerItem();
+      setCurrPage(currPage + 1);
+    }
   };
 
   const previousPageScroll = () => {

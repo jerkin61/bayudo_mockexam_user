@@ -21,8 +21,8 @@ module.exports = {
         "3xl": "1900px",
       },
       fontFamily: {
-        body: ["Roboto", "system-ui", "sans-serif"],
-        heading: ["Bai Jumjeree", "Montserrat", "sans-serif"],
+        body: ["McLaren", "system-ui", "sans-serif"],
+        heading: ["McLaren", "Montserrat", "sans-serif"],
         quote: ["Merriweather", "serif"],
         custom: ["McLaren"],
       },
